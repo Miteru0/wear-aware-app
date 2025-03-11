@@ -6,13 +6,21 @@ enum Difficulty {
     HARD
 }
 
+enum Language {
+    GERMAN,
+    ENGLISH,
+    FRENCH,
+    ITALIAN
+}
+
 public class Question {
     private Difficulty difficulty;
+    private Language language;
     private String question;
     private String correctAnswer;
     private String explanationCorrect;
     private String explanationIncorrect;
-    public Question(String question, String correctAnswer, String explanationCorrect, String explanationIncorrect, String difficulty) {
+    public Question(String question, String correctAnswer, String explanationCorrect, String explanationIncorrect, String difficulty, String language) {
         if(question == null || correctAnswer == null || explanationCorrect == null || explanationIncorrect == null || difficulty == null){
             throw new IllegalArgumentException("Question not formatted correctly");
         }
@@ -26,6 +34,15 @@ public class Question {
             this.difficulty = Difficulty.MEDIUM;
         } else {
             this.difficulty = Difficulty.HARD;
+        }
+        if(language.equals("GERMAN")){
+            this.language = Language.GERMAN;
+        } else if(language.equals("ENGLISH")){
+            this.language = Language.ENGLISH;
+        } else if (language.equals("FRENCH")){
+            this.language = Language.FRENCH;
+        } else {
+            this.language = Language.ITALIAN;
         }
     }
 
@@ -47,5 +64,9 @@ public class Question {
 
     public String getExplanationIncorrect() {
         return explanationIncorrect;
+    }
+
+    public Language getLanguage() {
+        return language;
     }
 }
