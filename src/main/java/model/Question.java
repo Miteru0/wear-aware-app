@@ -28,6 +28,7 @@ public class Question {
         this.correctAnswer = correctAnswer;
         this.explanationCorrect = explanationCorrect;
         this.explanationIncorrect = explanationIncorrect;
+
         if(difficulty.equals("EASY")){
             this.difficulty = Difficulty.EASY;
         } else if (difficulty.equals("MEDIUM")){
@@ -35,6 +36,7 @@ public class Question {
         } else {
             this.difficulty = Difficulty.HARD;
         }
+
         if(language.equals("GERMAN")){
             this.language = Language.GERMAN;
         } else if(language.equals("ENGLISH")){

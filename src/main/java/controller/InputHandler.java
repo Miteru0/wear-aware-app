@@ -1,11 +1,13 @@
 package controller;
 
 import model.Clothing;
+import model.Question;
 
 import java.util.List;
 
 public class InputHandler {
     private List<Clothing> allValidInputs;
+    QuestionHandler questionHandler = new QuestionHandler();
 
     public void setAllValidInputs(List<Clothing> allValidInputs) {
         this.allValidInputs = allValidInputs;
@@ -17,5 +19,10 @@ public class InputHandler {
     }
     public void pointUpdate(boolean answerCorrect){
         //TODO: update the point-number of the Player-Object in Question-Handler
+        if(answerCorrect){
+            questionHandler.getPlayer().setPoints(questionHandler.getPlayer().getPoints() + 1);
+        } else {
+            questionHandler.getPlayer().setPoints(questionHandler.getPlayer().getPoints() - 1);
+        }
     }
 }

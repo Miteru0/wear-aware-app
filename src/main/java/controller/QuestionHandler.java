@@ -16,6 +16,7 @@ public class QuestionHandler {
 
     private boolean isAppropriateQuestion(Question question){
         //TODO: checks, whether or not a question is appropriate or not
+        //TODO: checks for language of the player (standard: German)
         return false;
     }
 
