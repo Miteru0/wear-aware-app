@@ -1,6 +1,9 @@
-package controller;
+package ch.fhnw.team6.controller;
+
+import com.google.gson.Gson;
 
 public class JsonReader {
+    private final Gson gson = new Gson();
     public void setUpData(){
         loadClothes();
         loadQuestions();

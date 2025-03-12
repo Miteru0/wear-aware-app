@@ -1,7 +1,7 @@
-package controller;
+package ch.fhnw.team6.controller;
 
-import model.Player;
-import model.Question;
+import ch.fhnw.team6.model.Player;
+import ch.fhnw.team6.model.Question;
 
 import java.util.List;
 

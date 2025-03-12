@@ -1,4 +1,4 @@
-package view;
+package ch.fhnw.team6.view;
 
 public class SceneHandler {
     public void nextScene(){

@@ -1,0 +1,10 @@
+[
+  {
+    "question": "English-Dummy Frage",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "ENGLISH"
+  }
+]
