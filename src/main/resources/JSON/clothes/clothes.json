@@ -1,0 +1,22 @@
+[
+  {
+    "barcode": "1",
+    "name": "T-shirt",
+    "imagePath": "/images/Tshirt.png"
+  },
+  {
+    "barcode": "2",
+    "name": "Hose",
+    "imagePath": "/images/Hose.png"
+  },
+  {
+    "barcode": "3",
+    "name": "Jeans",
+    "imagePath": "/images/Jeans.png"
+  },
+  {
+    "barcode": "4",
+    "name": "Pullover",
+    "imagePath": "/images/Pullover.png"
+  }
+]
