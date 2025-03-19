@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "question": "English-Dummy Frage",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "1",
+    "question": "Deutsch-Dummy Frage",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "GERMAN"
+  },
+  {
+    "id": "1",
+    "question": "Français-Dummy Frage",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "FRENCH"
+  },
+  {
+    "id": "1",
+    "question": "Italiano-Dummy Frage",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "ITALIAN"
+  }
+]
