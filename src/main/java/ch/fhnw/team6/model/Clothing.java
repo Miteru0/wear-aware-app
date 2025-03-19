@@ -1,6 +1,10 @@
 package ch.fhnw.team6.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Clothing {
+    private Set<String> usedBarcodes = new HashSet<>();
     private String name;
     private String barcode;
 
@@ -14,7 +18,7 @@ public class Clothing {
         if(name == null || name.isBlank() || barcode == null || barcode.isBlank()){
             throw new IllegalArgumentException("name and barcode cannot be empty");
         }
-        //TODO check if barcode was already used
+        //TODO used barcodes
         this.name = name;
         this.barcode = barcode;
     }
@@ -26,6 +30,5 @@ public class Clothing {
     public String getBarcode() {
         return barcode;
     }
-
 
 }

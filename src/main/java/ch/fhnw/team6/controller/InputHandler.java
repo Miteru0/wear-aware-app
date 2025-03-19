@@ -1,20 +1,15 @@
 package ch.fhnw.team6.controller;
 
 import ch.fhnw.team6.model.Clothing;
-import java.util.Scanner;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.List;
 
 public class InputHandler {
     private List<Clothing> allValidInputs;
     QuestionHandler questionHandler = new QuestionHandler();
 
-    private static void scannerInput(){
 
-    Scanner scanner = new Scanner(System.in);
-    int barcode = sc
-
-
-}
     public void setAllValidInputs(List<Clothing> allValidInputs) {
         this.allValidInputs = allValidInputs;
     }
