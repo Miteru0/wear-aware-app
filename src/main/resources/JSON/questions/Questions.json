@@ -3,10 +3,12 @@
     "id": "1",
     "question": "English-Dummy Frage",
     "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST",
+    "explanationRight german ": "TEST TEST TEST",
     "difficulty": "EASY",
     "explanationWrong": "TEST TEST TEST",
-    "language": "ENGLISH"
+    "language": "ENGLISH",
+    "explanationRight english": "TEST TEST TEST",
+    
   },
   {
     "id": "1",
@@ -29,6 +31,15 @@
   {
     "id": "1",
     "question": "Italiano-Dummy Frage",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "2",
+    "question": "aihfaewihogöahiogh-Dummy Frage",
     "rightClothingBarcode": "4",
     "explanationRight": "TEST TEST TEST",
     "difficulty": "EASY",
