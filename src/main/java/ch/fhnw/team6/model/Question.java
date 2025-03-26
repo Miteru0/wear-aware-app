@@ -11,7 +11,6 @@ public class Question {
     private String correctAnswer = "";
     private Map<Language, String> explanationCorrect = new HashMap<>();
     private Map<Language, String> explanationIncorrect = new HashMap<>();
-    private String rightAnswer;
 
     /**
      * creates new Question instance

@@ -1,0 +1,18 @@
+[
+    {
+      "barcode": "1",
+      "name": "T-shirt"
+    },
+    {
+      "barcode": "2",
+      "name": "Hose"
+    },
+    {
+      "barcode": "3",
+      "name": "Jeans"
+    },
+    {
+      "barcode": "4",
+      "name": "Pullover"
+    }
+]

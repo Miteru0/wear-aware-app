@@ -1,0 +1,54 @@
+package ch.fhnw.team6.model;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class QuestionDTO {
+
+    private Map<Language, String> question = new HashMap<>();
+    private String rightClothingBarcode;
+    private Map<Language, String> explanationRight = new HashMap<>();
+    private String difficulty;
+    private Map<Language, String> explanationWrong = new HashMap<>();
+
+    public void addQuestion(String question, Language language) {
+        this.question.put(language, question);
+    }
+
+    public void addExplanationRight(String explanationRight, Language language) {
+        this.explanationRight.put(language, explanationRight);
+    }
+
+    public void addExplanationWrong(String explanationWrong, Language language) {
+        this.explanationWrong.put(language, explanationWrong);
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
+    }
+
+    public void setRightClothingBarcode(String rightClothingBarcode) {
+        this.rightClothingBarcode = rightClothingBarcode;
+    }
+
+    public Map<Language, String> getQuestion() {
+        return question;
+    }
+
+    public String getRightClothingBarcode() {
+        return rightClothingBarcode;
+    }
+
+    public Map<Language, String> getExplanationRight() {
+        return explanationRight;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public Map<Language, String> getExplanationWrong() {
+        return explanationWrong;
+    }
+
+}
