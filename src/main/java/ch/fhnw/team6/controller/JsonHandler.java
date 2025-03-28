@@ -21,8 +21,6 @@ public class JsonHandler {
 
     private final static Gson gson = new Gson();
 
-    private final static String clothesPath = "src/main/resources/JSON/clothes/clothes.json";
-
     /**
      * Reads out the Json-File "clothes" from the folder
      * Turns Json-Data into Objects
