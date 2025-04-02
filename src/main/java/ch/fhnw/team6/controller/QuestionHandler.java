@@ -66,7 +66,7 @@ public class QuestionHandler {
     public Question getNextQuestion() {
         checkQuestions();
         Difficulty questionDifficulty = getDifficultyFromPoints();
-        while (currentQuestions.get(questionDifficulty).isEmpty()) {
+        while (currentQuestions.get(questionDifficulty) == null || currentQuestions.get(questionDifficulty).isEmpty()) {
             questionDifficulty = questionDifficulty.nextDifficulty();
         }
         int random = rand.nextInt(currentQuestions.get(questionDifficulty).size());
@@ -81,10 +81,10 @@ public class QuestionHandler {
      * @throws NoMoreQuestionsException when all questions are used up.
      */
     private void checkQuestions() {
-        if (currentQuestions.get(Difficulty.EASY).isEmpty() &&
-                currentQuestions.get(Difficulty.MEDIUM).isEmpty() &&
-                currentQuestions.get(Difficulty.HARD).isEmpty()) {
-            throw new NoMoreQuestionsException("No more questions available for the player.");
+        if (currentQuestions.get(Difficulty.EASY) == null &&
+                currentQuestions.get(Difficulty.MEDIUM) == null &&
+                currentQuestions.get(Difficulty.HARD) == null) {
+            throw new NoMoreQuestionsException("No questions available for the player.");
         }
     }
 
