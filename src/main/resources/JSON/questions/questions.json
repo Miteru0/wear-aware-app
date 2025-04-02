@@ -12,9 +12,9 @@
     "id": "1",
     "question": "Deutsch-Dummy Frage",
     "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST",
+    "explanationRight": "TEST TEST TEST r",
     "difficulty": "EASY",
-    "explanationWrong": "TEST TEST TEST",
+    "explanationWrong": "TEST TEST TEST w",
     "language": "GERMAN"
   },
   {
@@ -29,6 +29,78 @@
   {
     "id": "1",
     "question": "Italiano-Dummy Frage",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "2",
+    "question": "English-Dummy Frage 2",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "2",
+    "question": "Deutsch-Dummy Frage 2",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST 2r",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST 2w",
+    "language": "GERMAN"
+  },
+  {
+    "id": "2",
+    "question": "Français-Dummy Frage 2",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "FRENCH"
+  },
+  {
+    "id": "2",
+    "question": "Italiano-Dummy Frage 2",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "3",
+    "question": "English-Dummy Frage 2",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "3",
+    "question": "Deutsch-Dummy Frage 2",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST 2r",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST 2w",
+    "language": "GERMAN"
+  },
+  {
+    "id": "3",
+    "question": "Français-Dummy Frage 2",
+    "rightClothingBarcode": "4",
+    "explanationRight": "TEST TEST TEST",
+    "difficulty": "EASY",
+    "explanationWrong": "TEST TEST TEST",
+    "language": "FRENCH"
+  },
+  {
+    "id": "3",
+    "question": "Italiano-Dummy Frage 2",
     "rightClothingBarcode": "4",
     "explanationRight": "TEST TEST TEST",
     "difficulty": "EASY",
