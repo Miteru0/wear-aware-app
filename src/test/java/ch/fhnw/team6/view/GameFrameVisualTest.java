@@ -92,7 +92,7 @@ public class GameFrameVisualTest {
         });
 
 
-        BackgroundPanel backgroundPanel = new BackgroundPanel(animationPaths, 300, "1");
+        ch.fhnw.team6.view.BackgroundPanel backgroundPanel = new ch.fhnw.team6.view.BackgroundPanel(animationPaths, 300, "1");
 
         // Create JFrame
         JFrame frame = new JFrame("Visual Test for BackgroundPanel");

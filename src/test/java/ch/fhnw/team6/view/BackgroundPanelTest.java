@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 class BackgroundPanelTest {
 
-    private BackgroundPanel backgroundPanel;
+    private ch.fhnw.team6.view.BackgroundPanel backgroundPanel;
 
     @BeforeEach
     void setUp() {
@@ -32,7 +32,7 @@ class BackgroundPanelTest {
                 "src/test/resources/images/background/animation1/12.png"
         });
 
-        backgroundPanel = new BackgroundPanel(animationPaths, 100, "1");
+        backgroundPanel = new ch.fhnw.team6.view.BackgroundPanel(animationPaths, 100, "1");
     }
 
     @Test
@@ -80,7 +80,7 @@ class BackgroundPanelTest {
         });
 
         // Initialize BackgroundPanel with the new animation paths
-        BackgroundPanel newPanel = new BackgroundPanel(additionalAnimationPaths, 100, "1");
+        ch.fhnw.team6.view.BackgroundPanel newPanel = new ch.fhnw.team6.view.BackgroundPanel(additionalAnimationPaths, 100, "1");
 
         // Assert that the new animation is loaded
         assertNotNull(newPanel.animations.get("2"));

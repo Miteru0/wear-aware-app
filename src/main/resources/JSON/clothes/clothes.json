@@ -1,18 +1,22 @@
 [
   {
     "barcode": "1",
-    "name": "T-shirt"
+    "name": "Jeans 1 (100% Baumwolle)"
   },
   {
     "barcode": "2",
-    "name": "Hose"
+    "name": "Jeans 2 (80% Baumwolle, 18% Polyester, 2% Elasthan, Secondhand)"
   },
   {
     "barcode": "3",
-    "name": "Jeans"
+    "name": "T-Shirt (100 % Baumwolle)"
   },
   {
     "barcode": "4",
-    "name": "Pullover"
+    "name": "Lederschuhe (Leder) "
+  },
+  {
+    "barcode": "5",
+    "name": "Rock (100% Viskose)"
   }
 ]

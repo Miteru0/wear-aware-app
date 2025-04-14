@@ -6,9 +6,7 @@ import java.awt.Toolkit;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
 
 public abstract class AbstractAnimatedPanel extends JPanel implements Animatable {
 
@@ -118,7 +116,7 @@ public abstract class AbstractAnimatedPanel extends JPanel implements Animatable
      * This method starts the Timer to update the animation frames.
      */
     @Override
-    public void startAnimation() {
+     public void startAnimation() {
         if (!animationTimer.isRunning()) {
             animationTimer.start();
         }
