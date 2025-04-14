@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class JsonHandler {
 
-    private final static Gson gson = new Gson();
+    private final static Gson GSON = new Gson();
 
     /**
      * Reads out the Json-File "clothes" from the folder
@@ -29,7 +29,7 @@ public class JsonHandler {
     public static List<Clothing> loadClothes(String jsonPath) {
         List<Clothing> clothes = new ArrayList<>();
         try (JsonReader reader = new JsonReader(new FileReader(jsonPath))) { // C:\git-repo\wearAware\src\main\resources\JSON\clothes\clothes.json
-            JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
+            JsonArray jsonArray = GSON.fromJson(reader, JsonArray.class);
             for (JsonElement jsonElement : jsonArray) {
                 // String fullString = jsonElement.getAsString();
                 String name = jsonElement.getAsJsonObject().get("name").getAsString();
@@ -43,49 +43,70 @@ public class JsonHandler {
     }
 
     public static List<Question> loadQuestions(String jsonPath) {
-        // makes Question-Objects
-        // Objects are used by the List in Question-Handler --> setAllQuestions()
-        List<Question> questions = new ArrayList<>();
         Map<String, QuestionDTO> questionDTOs = new HashMap<>();
-        try (JsonReader reader = new JsonReader(new FileReader(jsonPath))) { // C:\git-repo\wearAware\src\main\resources\JSON\clothes\clothes.json
-            JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
+        
+        try (JsonReader reader = new JsonReader(new FileReader(jsonPath))) {
+            JsonArray jsonArray = GSON.fromJson(reader, JsonArray.class);
+            
             for (JsonElement jsonElement : jsonArray) {
                 String id = jsonElement.getAsJsonObject().get("id").getAsString();
+                
                 if (questionDTOs.containsKey(id)) {
-                    QuestionDTO questionDTO = questionDTOs.get(id);
-                    String question = jsonElement.getAsJsonObject().get("question").getAsString();
-                    questionDTO.addQuestion(question,
-                            Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString()));
-                    questionDTO.addExplanationRight(jsonElement.getAsJsonObject().get("explanationRight").getAsString(),
-                            Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString()));
-                    questionDTO.addExplanationWrong(jsonElement.getAsJsonObject().get("explanationWrong").getAsString(),
-                            Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString()));
+                    updateQuestionDTO(questionDTOs.get(id), jsonElement);
                 } else {
-                    QuestionDTO questionDTO = new QuestionDTO();
-                    String question = jsonElement.getAsJsonObject().get("question").getAsString();
-                    questionDTO.addQuestion(question,
-                            Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString()));
-                    questionDTO.setRightClothingBarcode(
-                            Arrays.asList(jsonElement.getAsJsonObject().get("rightClothingBarcode").getAsString().split(",")));
-                    questionDTO.addExplanationRight(jsonElement.getAsJsonObject().get("explanationRight").getAsString(),
-                            Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString()));
-                    questionDTO.addExplanationWrong(jsonElement.getAsJsonObject().get("explanationWrong").getAsString(),
-                            Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString()));
-                    questionDTO.setDifficulty(jsonElement.getAsJsonObject().get("difficulty").getAsString());
-                    questionDTOs.put(id, questionDTO);
+                    questionDTOs.put(id, parseQuestionElement(jsonElement));
                 }
             }
         } catch (IOException e) {
             System.err.println("Error loading Questions");
         }
-        for (String questionDTOId : questionDTOs.keySet()) {
-            QuestionDTO questionDTO = questionDTOs.get(questionDTOId);
-            questions.add(new Question(questionDTO.getQuestion(), questionDTO.getExplanationRight(),
-                    questionDTO.getExplanationWrong(), questionDTO.getRightClothingBarcode(),
-                    questionDTO.getDifficulty()));
-        }
-        return questions;
+        
+        return convertDTOsToQuestions(questionDTOs);
     }
 
+    private static QuestionDTO parseQuestionElement(JsonElement jsonElement) {
+        QuestionDTO questionDTO = new QuestionDTO();
+        String question = jsonElement.getAsJsonObject().get("question").getAsString();
+        Language language = Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString());
+        
+        questionDTO.addQuestion(question, language);
+        questionDTO.setRightClothingBarcode(
+            Arrays.asList(jsonElement.getAsJsonObject().get("rightClothingBarcode").getAsString().split(",")));
+        questionDTO.addExplanationRight(
+            jsonElement.getAsJsonObject().get("explanationRight").getAsString(), language);
+        questionDTO.addExplanationWrong(
+            jsonElement.getAsJsonObject().get("explanationWrong").getAsString(), language);
+        questionDTO.setDifficulty(
+            jsonElement.getAsJsonObject().get("difficulty").getAsString());
+        
+        return questionDTO;
+    }
+
+    private static void updateQuestionDTO(QuestionDTO questionDTO, JsonElement jsonElement) {
+        String question = jsonElement.getAsJsonObject().get("question").getAsString();
+        Language language = Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString());
+        
+        questionDTO.addQuestion(question, language);
+        questionDTO.addExplanationRight(
+            jsonElement.getAsJsonObject().get("explanationRight").getAsString(), language);
+        questionDTO.addExplanationWrong(
+            jsonElement.getAsJsonObject().get("explanationWrong").getAsString(), language);
+    }
+
+    private static List<Question> convertDTOsToQuestions(Map<String, QuestionDTO> questionDTOs) {
+        List<Question> questions = new ArrayList<>();
+        
+        for (QuestionDTO questionDTO : questionDTOs.values()) {
+            questions.add(new Question(
+                questionDTO.getQuestion(),
+                questionDTO.getExplanationRight(),
+                questionDTO.getExplanationWrong(),
+                questionDTO.getRightClothingBarcode(),
+                questionDTO.getDifficulty()
+            ));
+        }
+        
+        return questions;
+    }
     
 }
