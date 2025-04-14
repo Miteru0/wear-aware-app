@@ -80,7 +80,10 @@ class BackgroundPanelTest {
         });
 
         // Initialize BackgroundPanel with the new animation paths
-        BackgroundPanel newPanel = new BackgroundPanel(additionalAnimationPaths, 100, "1");
+        BackgroundPanel newPanel = new BackgroundPanel(
+            additionalAnimationPaths,
+            100,
+            "1");
 
         // Assert that the new animation is loaded
         assertNotNull(newPanel.animations.get("2"));

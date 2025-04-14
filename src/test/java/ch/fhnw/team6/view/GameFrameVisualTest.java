@@ -38,14 +38,14 @@ public class GameFrameVisualTest {
                 Language.FRENCH, "Question Exemple",
                 Language.ITALIAN, "Domanda Esempio");
         // Another one to check right answer
-        Map<Language, String> sampleTextExplanationRight = Map.of(
+        Map<Language, String> sampleExplanationRight = Map.of(
                 Language.ENGLISH, "Right!",
                 Language.GERMAN, "Richtig!",
                 Language.FRENCH, "Idk french, La verdad!",
                 Language.ITALIAN, "Same as french, La verdad!");
 
         // Another one to check wrong ones
-        Map<Language, String> sampleTextExplanationWrong = Map.of(
+        Map<Language, String> sampleExplanationWrong = Map.of(
                 Language.ENGLISH, "Wrong!",
                 Language.GERMAN, "Falsch!",
                 Language.FRENCH, "Idk french, Bullshit!",
