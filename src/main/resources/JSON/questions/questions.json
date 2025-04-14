@@ -1,146 +1,326 @@
 [
   {
     "id": "1",
-    "question": "Scanne die Kleider, welche nicht vegan sind (d.h. aus tierischen Produkten).",
+    "question": "Scan the clothing that is not vegan (i.e., made from animal products).",
     "rightClothingBarcode": "4",
-    "explanationRight": "Richtig, diese Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen. ",
+    "explanationRight": "Correct, these materials are not vegan when they are of animal origin, for example, leather is made from animal skin.",
     "difficulty": "EASY",
-    "explanationWrong": "Leider nein, Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen. ",
-    "language": "GERMAN"
-  },
-  {
-    "id": "1",
-    "question": "Scanne die Kleider, welche nicht vegan sind (d.h. aus tierischen Produkten). e",
-    "rightClothingBarcode": "4",
-    "explanationRight": "Richtig, diese Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen. e",
-    "difficulty": "EASY",
-    "explanationWrong": "Leider nein, Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen. e",
+    "explanationWrong": "Unfortunately no, materials are not vegan when they are of animal origin, for example, leather is made from animal skin.",
     "language": "ENGLISH"
   },
   {
     "id": "1",
-    "question": "Scanne die Kleider, welche nicht vegan sind (d.h. aus tierischen Produkten). f",
+    "question": "Scanne die Kleider, welche nicht vegan sind (d.h. aus tierischen Produkten).",
     "rightClothingBarcode": "4",
-    "explanationRight": "Richtig, diese Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen. f",
+    "explanationRight": "Richtig, diese Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen.",
     "difficulty": "EASY",
-    "explanationWrong": "Leider nein, Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen. f",
+    "explanationWrong": "Leider nein, Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen.",
+    "language": "GERMAN"
+  },
+  {
+    "id": "1",
+    "question": "Scannez les vêtements qui ne sont pas végans (c'est-à-dire fabriqués à partir de produits animaux).",
+    "rightClothingBarcode": "4",
+    "explanationRight": "Correct, ces matériaux ne sont pas végans lorsqu'ils sont d'origine animale, par exemple, le cuir est fabriqué à partir de peau animale.",
+    "difficulty": "EASY",
+    "explanationWrong": "Malheureusement non, les matériaux ne sont pas végans lorsqu'ils sont d'origine animale, par exemple, le cuir est fabriqué à partir de peau animale.",
     "language": "FRENCH"
   },
   {
     "id": "1",
-    "question": "Scanne die Kleider, welche nicht vegan sind (d.h. aus tierischen Produkten). i",
+    "question": "Scansiona gli indumenti che non sono vegani (cioè realizzati con prodotti animali).",
     "rightClothingBarcode": "4",
-    "explanationRight": "Richtig, diese Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen. i",
+    "explanationRight": "Corretto, questi materiali non sono vegani quando sono di origine animale, ad esempio, la pelle è ricavata dalla pelle degli animali.",
     "difficulty": "EASY",
-    "explanationWrong": "Leider nein, Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen. i",
+    "explanationWrong": "Purtroppo no, i materiali non sono vegani quando sono di origine animale, ad esempio, la pelle è ricavata dalla pelle degli animali.",
     "language": "ITALIAN"
   },
   {
     "id": "2",
-    "question": "Scanne das Produkt, bei dessen Kauf dein Ökologischer Fussabdruck am kleinsten bleibt. e",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Korrekt, da das Produkt schon produziert wurde fällt nur der Transport bzw. die Lagerung. e",
+    "question": "Scan the product whose purchase leaves the smallest ecological footprint.",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Correct, since the product has already been produced, only transport or storage is required.",
     "difficulty": "EASY",
-    "explanationWrong": "Leider nicht, da ein Produkt welches Secondhand ist schon produziert wurde, fallen dafür nur. e",
+    "explanationWrong": "Unfortunately not, since a secondhand product has already been produced, only transport or storage is required.",
     "language": "ENGLISH"
   },
   {
     "id": "2",
     "question": "Scanne das Produkt, bei dessen Kauf dein Ökologischer Fussabdruck am kleinsten bleibt.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Korrekt, da das Produkt schon produziert wurde fällt nur der Transport bzw. die Lagerung.",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Korrekt, da das Produkt schon produziert wurde fällt nur der Transport bzw. die Lagerung",
     "difficulty": "EASY",
-    "explanationWrong": "Leider nicht, da ein Produkt welches Secondhand ist schon produziert wurde, fallen dafür nur.",
+    "explanationWrong": "Leider nicht, da ein Produkt welches Secondhand ist schon produziert wurde, fallen dafür nur",
     "language": "GERMAN"
   },
   {
     "id": "2",
-    "question": "Scanne das Produkt, bei dessen Kauf dein Ökologischer Fussabdruck am kleinsten bleibt. f",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Korrekt, da das Produkt schon produziert wurde fällt nur der Transport bzw. die Lagerung. f",
+    "question": "Scannez le produit dont l'achat laisse la plus petite empreinte écologique.",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Correct, puisque le produit a déjà été fabriqué, seul le transport ou le stockage est nécessaire.",
     "difficulty": "EASY",
-    "explanationWrong": "Leider nicht, da ein Produkt welches Secondhand ist schon produziert wurde, fallen dafür nur. f",
+    "explanationWrong": "Malheureusement non, puisque un produit d'occasion a déjà été fabriqué, seul le transport ou le stockage est nécessaire.",
     "language": "FRENCH"
   },
   {
     "id": "2",
-    "question": "Scanne das Produkt, bei dessen Kauf dein Ökologischer Fussabdruck am kleinsten bleibt. i",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Korrekt, da das Produkt schon produziert wurde fällt nur der Transport bzw. die Lagerung. i",
+    "question": "Scansiona il prodotto il cui acquisto lascia la più piccola impronta ecologica.",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Corretto, poiché il prodotto è già stato prodotto, è necessario solo il trasporto o lo stoccaggio.",
     "difficulty": "EASY",
-    "explanationWrong": "Leider nicht, da ein Produkt welches Secondhand ist schon produziert wurde, fallen dafür nur. i",
+    "explanationWrong": "Purtroppo no, poiché un prodotto di seconda mano è già stato prodotto, è necessario solo il trasporto o lo stoccaggio.",
     "language": "ITALIAN"
   },
   {
     "id": "3",
-    "question": "Scanne Kleidungsstücke, welche aus mehreren Stoffen bestehen. (z.B. aus Baumwolle und Elasthan) e",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Richtig, diese Jeans besteht aus Baumwolle, Polyester und Elasthan. e",
+    "question": "Scan clothing items that are made of multiple materials (e.g., cotton and elastane).",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Correct, these jeans are made of cotton, polyester, and elastane.",
     "difficulty": "EASY",
-    "explanationWrong": "Nicht ganz, die secondhand Jeans besteht aus Baumwolle, Polyester und Elasthan. e",
+    "explanationWrong": "Not quite, the secondhand jeans are made of cotton, polyester, and elastane.",
     "language": "ENGLISH"
   },
   {
     "id": "3",
-    "question": "Scanne Kleidungsstücke, welche aus mehreren Stoffen bestehen. (z.B. aus Baumwolle und Elasthan) ",
-    "rightClothingBarcode": "2",
+    "question": "Scanne Kleidungsstücke, welche aus mehreren Stoffen bestehen. (z.B. aus Baumwolle und Elasthan)",
+    "rightClothingBarcode": "3",
     "explanationRight": "Richtig, diese Jeans besteht aus Baumwolle, Polyester und Elasthan.",
     "difficulty": "EASY",
-    "explanationWrong": "Nicht ganz, die secondhand Jeans besteht aus Baumwolle, Polyester und Elasthan. ",
+    "explanationWrong": "Nicht ganz, die secondhand Jeans besteht aus Baumwolle, Polyester und Elasthan.",
     "language": "GERMAN"
   },
   {
     "id": "3",
-    "question": "Scanne Kleidungsstücke, welche aus mehreren Stoffen bestehen. (z.B. aus Baumwolle und Elasthan) f",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Richtig, diese Jeans besteht aus Baumwolle, Polyester und Elasthan. f",
+    "question": "Scannez les vêtements composés de plusieurs matériaux (par exemple, coton et élasthanne).",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Correct, ces jeans sont fabriqués en coton, polyester et élasthanne.",
     "difficulty": "EASY",
-    "explanationWrong": "Nicht ganz, die secondhand Jeans besteht aus Baumwolle, Polyester und Elasthan. f",
+    "explanationWrong": "Pas tout à fait, les jeans d'occasion sont fabriqués en coton, polyester et élasthanne.",
     "language": "FRENCH"
   },
   {
     "id": "3",
-    "question": "Scanne Kleidungsstücke, welche aus mehreren Stoffen bestehen. (z.B. aus Baumwolle und Elasthan) i",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Richtig, diese Jeans besteht aus Baumwolle, Polyester und Elasthan. i",
+    "question": "Scansiona gli indumenti realizzati con più materiali (ad esempio, cotone ed elastan).",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Corretto, questi jeans sono realizzati in cotone, poliestere ed elastan.",
     "difficulty": "EASY",
-    "explanationWrong": "Nicht ganz, die secondhand Jeans besteht aus Baumwolle, Polyester und Elasthan. i",
+    "explanationWrong": "Non proprio, i jeans di seconda mano sono realizzati in cotone, poliestere ed elastan.",
     "language": "ITALIAN"
   },
   {
     "id": "4",
-    "question": "Welches Kleidungsstücks belastet die Umwelt beim Waschen am stärksten? ",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Das stimmt, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können.",
+    "question": "Scan the product that has traveled the shortest distance to reach you.",
+    "rightClothingBarcode": "1,2,3,4",
+    "explanationRight": "It's almost impossible to track the journey of your clothing. A T-shirt from Europe may have traveled a very long way. Therefore, all answers are correct here.",
     "difficulty": "EASY",
-    "explanationWrong": "Nein, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können. ",
-    "language": "GERMAN"
-  },
-  {
-    "id": "4",
-    "question": "Welches Kleidungsstücks belastet die Umwelt beim Waschen am stärksten? e",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Das stimmt, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können. e",
-    "difficulty": "EASY",
-    "explanationWrong": "Nein, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können. e",
+    "explanationWrong": "It's almost impossible to track the journey of your clothing. A T-shirt from Europe may have traveled a very long way. Therefore, all answers are correct here.",
     "language": "ENGLISH"
   },
   {
     "id": "4",
-    "question": "Welches Kleidungsstücks belastet die Umwelt beim Waschen am stärksten? f",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Das stimmt, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können. f",
+    "question": "Scanne das Produkt welches den kürzesten Weg bis zu dir zurückgelegt hat.",
+    "rightClothingBarcode": "1,2,3,4",
+    "explanationRight": "Es ist fast unmöglich, den Weg seines Kleidungsstücks zu verfolgen. Ein T-Shirt aus Europa kann einen sehr langen Weg hinter sich haben. Deshalb sind hier alle Antworten richtig.",
     "difficulty": "EASY",
-    "explanationWrong": "Nein, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können. f",
+    "explanationWrong": "Es ist fast unmöglich, den Weg seines Kleidungsstücks zu verfolgen. Ein T-Shirt aus Europa kann einen sehr langen Weg hinter sich haben. Deshalb sind hier alle Antworten richtig.",
+    "language": "GERMAN"
+  },
+  {
+    "id": "4",
+    "question": "Scannez le produit qui a parcouru la distance la plus courte pour vous parvenir.",
+    "rightClothingBarcode": "1,2,3,4",
+    "explanationRight": "Il est presque impossible de retracer le parcours de vos vêtements. Un t-shirt d'Europe peut avoir parcouru un très long chemin. Par conséquent, toutes les réponses sont correctes ici.",
+    "difficulty": "EASY",
+    "explanationWrong": "Il est presque impossible de retracer le parcours de vos vêtements. Un t-shirt d'Europe peut avoir parcouru un très long chemin. Par conséquent, toutes les réponses sont correctes ici.",
     "language": "FRENCH"
   },
   {
     "id": "4",
-    "question": "Welches Kleidungsstücks belastet die Umwelt beim Waschen am stärksten? i",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Das stimmt, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können. i",
+    "question": "Scansiona il prodotto che ha percorso la distanza più breve per raggiungerti.",
+    "rightClothingBarcode": "1,2,3,4",
+    "explanationRight": "È quasi impossibile tracciare il percorso dei tuoi vestiti. Una maglietta dall'Europa può aver viaggiato molto lontano. Pertanto, tutte le risposte sono corrette qui.",
     "difficulty": "EASY",
-    "explanationWrong": "Nein, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können. i",
+    "explanationWrong": "È quasi impossibile tracciare il percorso dei tuoi vestiti. Una maglietta dall'Europa può aver viaggiato molto lontano. Pertanto, tutte le risposte sono corrette qui.",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "5",
+    "question": "Scan the clothing item whose production requires 8,000 liters of water.",
+    "rightClothingBarcode": "2,3",
+    "explanationRight": "Correct, the production of a pair of jeans requires an average of about 8,000 liters of water globally. This amount of water would fill about 53 bathtubs (150 liters each).",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Unfortunately not, the production of a pair of jeans requires an average of about 8,000 liters of water globally. This amount of water would fill about 53 bathtubs (150 liters each).",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "5",
+    "question": "Scanne das Kleidungsstück, wessen Herstellung 8.000 Liter Wasser benötigt.",
+    "rightClothingBarcode": "2,3",
+    "explanationRight": "Korrekt, für die Herstellung einer Jeans werden im globalen Durchschnitt rund 8.000 Liter Wasser benötigt. Diese Wassermenge würde rund 53 Badewannen (a 150 Liter) füllen.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Leider nein, denn für die Herstellung einer Jeans werden im globalen Durchschnitt rund 8.000 Liter Wasser benötigt. Diese Wassermenge würde rund 53 Badewannen (a 150 Liter) füllen.",
+    "language": "GERMAN"
+  },
+  {
+    "id": "5",
+    "question": "Scannez le vêtement dont la production nécessite 8 000 litres d'eau.",
+    "rightClothingBarcode": "2,3",
+    "explanationRight": "Correct, la production d'un jean nécessite en moyenne environ 8 000 litres d'eau à l'échelle mondiale. Cette quantité d'eau remplirait environ 53 baignoires (150 litres chacune).",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Malheureusement non, la production d'un jean nécessite en moyenne environ 8 000 litres d'eau à l'échelle mondiale. Cette quantité d'eau remplirait environ 53 baignoires (150 litres chacune).",
+    "language": "FRENCH"
+  },
+  {
+    "id": "5",
+    "question": "Scansiona l'indumento la cui produzione richiede 8.000 litri d'acqua.",
+    "rightClothingBarcode": "2,3",
+    "explanationRight": "Corretto, la produzione di un paio di jeans richiede in media circa 8.000 litri d'acqua a livello globale. Questa quantità d'acqua riempirebbe circa 53 vasche da bagno (150 litri ciascuna).",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Purtroppo no, la produzione di un paio di jeans richiede in media circa 8.000 litri d'acqua a livello globale. Questa quantità d'acqua riempirebbe circa 53 vasche da bagno (150 litri ciascuna).",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "6",
+    "question": "Which clothing item pollutes the environment the most when washing?",
+    "rightClothingBarcode": "3",
+    "explanationRight": "That's correct, a single wash of polyester clothing can release 700,000 microplastic fibers that can enter the food chain.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "No, a single wash of polyester clothing can release 700,000 microplastic fibers that can enter the food chain.",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "6",
+    "question": "Welches Kleidungsstücks belastet die Umwelt beim Waschen am stärksten?",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Das stimmt, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Nein, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können.",
+    "language": "GERMAN"
+  },
+  {
+    "id": "6",
+    "question": "Quel vêtement pollue le plus l'environnement lors du lavage?",
+    "rightClothingBarcode": "3",
+    "explanationRight": "C'est correct, un seul lavage de vêtements en polyester peut libérer 700 000 fibres microplastiques qui peuvent entrer dans la chaîne alimentaire.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Non, un seul lavage de vêtements en polyester peut libérer 700 000 fibres microplastiques qui peuvent entrer dans la chaîne alimentaire.",
+    "language": "FRENCH"
+  },
+  {
+    "id": "6",
+    "question": "Quale indumento inquina di più l'ambiente durante il lavaggio?",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Esatto, un singolo lavaggio di indumenti in poliestere può rilasciare 700.000 fibre microplastiche che possono entrare nella catena alimentare.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "No, un singolo lavaggio di indumenti in poliestere può rilasciare 700.000 fibre microplastiche che possono entrare nella catena alimentare.",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "7",
+    "question": "Scan the clothing item that is easiest to recycle.",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Correct, pure cotton fabrics are the easiest to recycle.",
+    "difficulty": "HARD",
+    "explanationWrong": "Unfortunately wrong, pure cotton fabrics are the easiest to recycle.",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "7",
+    "question": "Scanne das Kleidungsstück, welches sich am besten recyclen lässt.",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Richtig, reine Baumwollstoffe lassen sich am einfachsten recyclen.",
+    "difficulty": "HARD",
+    "explanationWrong": "Leider falsch, reine Baumwollstoffe lassen sich am einfachsten recyclen.",
+    "language": "GERMAN"
+  },
+  {
+    "id": "7",
+    "question": "Scannez le vêtement qui est le plus facile à recycler.",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Correct, les tissus en coton pur sont les plus faciles à recycler.",
+    "difficulty": "HARD",
+    "explanationWrong": "Malheureusement faux, les tissus en coton pur sont les plus faciles à recycler.",
+    "language": "FRENCH"
+  },
+  {
+    "id": "7",
+    "question": "Scansiona l'indumento che è più facile da riciclare.",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Corretto, i tessuti di cotone puro sono i più facili da riciclare.",
+    "difficulty": "HARD",
+    "explanationWrong": "Purtroppo sbagliato, i tessuti di cotone puro sono i più facili da riciclare.",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "8",
+    "question": "40 percent of clothing in Switzerland is rarely worn. Scan how often you think this clothing is worn.",
+    "rightClothingBarcode": "2,3,4",
+    "explanationRight": "Exactly, 40 percent of our clothes we never wear or wear at most two to four times.",
+    "difficulty": "HARD",
+    "explanationWrong": "40 percent of our clothes we never wear or wear at most two to four times.",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "8",
+    "question": "40 Prozent der Kleidung in der Schweiz werden nur selten getragen. Scanne wie oft das du denkst, dass diese Kleidung getragen wird.",
+    "rightClothingBarcode": "2,3,4",
+    "explanationRight": "Genau, 40 Prozent unserer Kleider tragen wir nie oder höchstens zwei- bis viermal.",
+    "difficulty": "HARD",
+    "explanationWrong": "40 Prozent unserer Kleider tragen wir nie oder höchstens zwei- bis viermal.",
+    "language": "GERMAN"
+  },
+  {
+    "id": "8",
+    "question": "40 % des vêtements en Suisse sont rarement portés. Scannez combien de fois vous pensez que ces vêtements sont portés.",
+    "rightClothingBarcode": "2,3,4",
+    "explanationRight": "Exactement, 40 % de nos vêtements ne sont jamais portés ou le sont au maximum deux à quatre fois.",
+    "difficulty": "HARD",
+    "explanationWrong": "40 % de nos vêtements ne sont jamais portés ou le sont au maximum deux à quatre fois.",
+    "language": "FRENCH"
+  },
+  {
+    "id": "8",
+    "question": "Il 40% degli indumenti in Svizzera viene indossato raramente. Scansiona quanto spesso pensi che questi indumenti vengano indossati.",
+    "rightClothingBarcode": "2,3,4",
+    "explanationRight": "Esatto, il 40% dei nostri vestiti non li indossiamo mai o al massimo due-quattro volte.",
+    "difficulty": "HARD",
+    "explanationWrong": "Il 40% dei nostri vestiti non li indossiamo mai o al massimo due-quattro volte.",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "9",
+    "question": "Which clothing item is easiest to recycle?",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "The T-shirt and the cotton jeans are made only of cotton and are therefore easier to recycle than materials made of multiple fabrics.",
+    "difficulty": "HARD",
+    "explanationWrong": "Unfortunately not, as the T-shirt and the cotton jeans are made only of cotton and are therefore easier to recycle than materials made of multiple fabrics.",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "9",
+    "question": "Welches Kleidungsstück lässt sich am besten recyclen?",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Das T-Shirt und die Jeans aus Baumwolle bestehen nur aus Baumwolle und sind deshalb leichter zu recyclen als Stoffe aus mehreren Materialien.",
+    "difficulty": "HARD",
+    "explanationWrong": "Leider nicht, da das T-Shirt und die Jeans aus Baumwolle bestehen nur aus Baumwolle und sind deshalb leichter zu recyclen als Stoffe aus mehreren Materialien.",
+    "language": "GERMAN"
+  },
+  {
+    "id": "9",
+    "question": "Quel vêtement est le plus facile à recycler?",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Le t-shirt et le jean en coton sont fabriqués uniquement en coton et sont donc plus faciles à recycler que les matériaux composés de plusieurs tissus.",
+    "difficulty": "HARD",
+    "explanationWrong": "Malheureusement non, car le t-shirt et le jean en coton sont fabriqués uniquement en coton et sont donc plus faciles à recycler que les matériaux composés de plusieurs tissus.",
+    "language": "FRENCH"
+  },
+  {
+    "id": "9",
+    "question": "Quale indumento è più facile da riciclare?",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "La maglietta e i jeans di cotone sono realizzati solo in cotone e sono quindi più facili da riciclare rispetto ai materiali realizzati con più tessuti.",
+    "difficulty": "HARD",
+    "explanationWrong": "Purtroppo no, poiché la maglietta e i jeans di cotone sono realizzati solo in cotone e sono quindi più facili da riciclare rispetto ai materiali realizzati con più tessuti.",
     "language": "ITALIAN"
   }
 ]

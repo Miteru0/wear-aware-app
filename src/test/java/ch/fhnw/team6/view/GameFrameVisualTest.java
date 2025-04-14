@@ -38,26 +38,26 @@ public class GameFrameVisualTest {
                 Language.FRENCH, "Question Exemple",
                 Language.ITALIAN, "Domanda Esempio");
         // Another one to check right answer
-        Map<Language, String> sampleTextExplanationRight = Map.of(
+        Map<Language, String> sampleExplanationRight = Map.of(
                 Language.ENGLISH, "Right!",
                 Language.GERMAN, "Richtig!",
                 Language.FRENCH, "Idk french, La verdad!",
                 Language.ITALIAN, "Same as french, La verdad!");
 
         // Another one to check wrong ones
-        Map<Language, String> sampleTextExplanationWrong = Map.of(
+        Map<Language, String> sampleExplanationWrong = Map.of(
                 Language.ENGLISH, "Wrong!",
                 Language.GERMAN, "Falsch!",
                 Language.FRENCH, "Idk french, Bullshit!",
                 Language.ITALIAN, "Same as french, bullshito!");
 
         List<Question> questions = Arrays.asList(
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "EASY"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "EASY"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "Medium"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "Medium"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "Hard"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "Hard"));
+                new Question(sampleText, sampleExplanationRight, sampleExplanationWrong, List.of("1"), "EASY"),
+                new Question(sampleText, sampleExplanationRight, sampleExplanationWrong, List.of("1"), "EASY"),
+                new Question(sampleText, sampleExplanationRight, sampleExplanationWrong, List.of("1"), "Medium"),
+                new Question(sampleText, sampleExplanationRight, sampleExplanationWrong, List.of("1"), "Medium"),
+                new Question(sampleText, sampleExplanationRight, sampleExplanationWrong, List.of("1"), "Hard"),
+                new Question(sampleText, sampleExplanationRight, sampleExplanationWrong, List.of("1"), "Hard"));
 
         questionHandler = new QuestionHandler(player, questions);
 

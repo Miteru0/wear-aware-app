@@ -104,7 +104,7 @@ public class InputHandler {
             throw new NotAValidInputException(input + " is not a valid input");
         }
         // Checks if the scanned barcode is correct
-        return input.equals(currentQuestion.getCorrectAnswer());
+        return currentQuestion.getCorrectAnswer().contains(input);
     }
 
     /**
