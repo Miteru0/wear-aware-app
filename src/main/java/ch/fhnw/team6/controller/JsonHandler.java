@@ -13,6 +13,7 @@ import com.google.gson.stream.JsonReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +27,6 @@ public class JsonHandler {
      * Turns Json-Data into Objects
      */
     public static List<Clothing> loadClothes(String jsonPath) {
-        // TODO: use GSON to read out JSON-file
-
         List<Clothing> clothes = new ArrayList<>();
         try (JsonReader reader = new JsonReader(new FileReader(jsonPath))) { // C:\git-repo\wearAware\src\main\resources\JSON\clothes\clothes.json
             JsonArray jsonArray = gson.fromJson(reader, JsonArray.class);
@@ -44,7 +43,6 @@ public class JsonHandler {
     }
 
     public static List<Question> loadQuestions(String jsonPath) {
-        // TODO: use GSON to read out JSON-file
         // makes Question-Objects
         // Objects are used by the List in Question-Handler --> setAllQuestions()
         List<Question> questions = new ArrayList<>();
@@ -68,7 +66,7 @@ public class JsonHandler {
                     questionDTO.addQuestion(question,
                             Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString()));
                     questionDTO.setRightClothingBarcode(
-                            jsonElement.getAsJsonObject().get("rightClothingBarcode").getAsString());
+                            Arrays.asList(jsonElement.getAsJsonObject().get("rightClothingBarcode").getAsString().split(",")));
                     questionDTO.addExplanationRight(jsonElement.getAsJsonObject().get("explanationRight").getAsString(),
                             Language.valueOf(jsonElement.getAsJsonObject().get("language").getAsString()));
                     questionDTO.addExplanationWrong(jsonElement.getAsJsonObject().get("explanationWrong").getAsString(),
@@ -78,7 +76,7 @@ public class JsonHandler {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error loading Clothes");
+            System.err.println("Error loading Questions");
         }
         for (String questionDTOId : questionDTOs.keySet()) {
             QuestionDTO questionDTO = questionDTOs.get(questionDTOId);

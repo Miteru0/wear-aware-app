@@ -1,6 +1,8 @@
 package ch.fhnw.team6.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -8,7 +10,7 @@ import java.util.Map;
 public class Question {
     private final Difficulty difficulty;
     private Map<Language, String> question = new HashMap<>();
-    private String correctAnswer = "";
+    private List<String> correctAnswer = new ArrayList<>();
     private Map<Language, String> explanationCorrect = new HashMap<>();
     private Map<Language, String> explanationIncorrect = new HashMap<>();
 
@@ -23,7 +25,7 @@ public class Question {
      * @see Question predefined languages
      */
     public Question(Map<Language, String> question, Map<Language, String> explanationCorrect,
-                    Map<Language, String> explanationIncorrect, String correctAnswer, String difficulty) throws IllegalArgumentException{
+                    Map<Language, String> explanationIncorrect, List<String> correctAnswer, String difficulty) throws IllegalArgumentException{
         if(question == null || correctAnswer == null || explanationCorrect == null || explanationIncorrect == null || difficulty == null){
             throw new IllegalArgumentException("Question not formatted correctly");
         }
@@ -56,7 +58,7 @@ public class Question {
         return question.get(language);
     }
 
-    public String getCorrectAnswer() {
+    public List<String> getCorrectAnswer() {
         return correctAnswer;
     }
 

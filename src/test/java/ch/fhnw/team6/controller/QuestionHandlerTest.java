@@ -34,12 +34,12 @@ public class QuestionHandlerTest {
         );
 
         List<Question> questions = Arrays.asList(
-                new Question(sampleText, sampleText, sampleText, "123456", "EASY"),
-                new Question(sampleText, sampleText, sampleText, "123457", "EASY"),
-                new Question(sampleText, sampleText, sampleText, "123458", "MEDIUM"),
-                new Question(sampleText, sampleText, sampleText, "123459", "MEDIUM"),
-                new Question(sampleText, sampleText, sampleText, "123460", "HARD"),
-                new Question(sampleText, sampleText, sampleText, "123461", "HARD")
+                new Question(sampleText, sampleText, sampleText, List.of("123456"), "EASY"),
+                new Question(sampleText, sampleText, sampleText, List.of("123457"), "EASY"),
+                new Question(sampleText, sampleText, sampleText, List.of("123458"), "MEDIUM"),
+                new Question(sampleText, sampleText, sampleText, List.of("123459"), "MEDIUM"),
+                new Question(sampleText, sampleText, sampleText, List.of("123460"), "HARD"),
+                new Question(sampleText, sampleText, sampleText, List.of("123461"), "HARD")
         );
 
         questionHandler = new QuestionHandler(player, questions);

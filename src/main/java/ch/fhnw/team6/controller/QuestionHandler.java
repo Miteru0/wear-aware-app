@@ -19,7 +19,7 @@ public class QuestionHandler {
     private Map<Difficulty, List<Question>> allQuestions = new HashMap<>(); // Stores all loaded questions, grouped by difficulty
     private Map<Difficulty, List<Question>> currentQuestions;   // Stores remaining questions for the current game session
 
-    private final String QUESTIONS_PATH = "src/main/resources/JSON/questions/Questions.json";   // Path to JSON file containing questions
+    private final String QUESTIONS_PATH = "src/main/resources/JSON/questions/questions.json";   // Path to JSON file containing questions
 
     private Player player;
 
@@ -81,9 +81,9 @@ public class QuestionHandler {
      * @throws NoMoreQuestionsException when all questions are used up.
      */
     private void checkQuestions() {
-        if (currentQuestions.get(Difficulty.EASY) == null &&
-                currentQuestions.get(Difficulty.MEDIUM) == null &&
-                currentQuestions.get(Difficulty.HARD) == null) {
+        if ((currentQuestions.get(Difficulty.EASY) == null || currentQuestions.get(Difficulty.EASY).isEmpty()) &&
+                (currentQuestions.get(Difficulty.MEDIUM) == null || currentQuestions.get(Difficulty.MEDIUM).isEmpty()) &&
+                (currentQuestions.get(Difficulty.HARD) == null) || currentQuestions.get(Difficulty.HARD).isEmpty()) {
             throw new NoMoreQuestionsException("No questions available for the player.");
         }
     }
@@ -133,5 +133,13 @@ public class QuestionHandler {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public int questionsLeft() {
+        int questionsLeft = 0;
+        for (List<Question> questions : currentQuestions.values()) {
+            questionsLeft += questions.size();
+        }
+        return questionsLeft;
     }
 }

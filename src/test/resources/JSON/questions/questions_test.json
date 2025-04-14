@@ -2,7 +2,7 @@
     {
       "id": "1",
       "question": "English-Dummy Frage",
-      "rightClothingBarcode": "4",
+      "rightClothingBarcode": "4,1",
       "explanationRight": "TEST TEST TEST",
       "difficulty": "EASY",
       "explanationWrong": "TEST TEST TEST",
@@ -11,7 +11,7 @@
     {
       "id": "1",
       "question": "Deutsch-Dummy Frage",
-      "rightClothingBarcode": "4",
+      "rightClothingBarcode": "4,1",
       "explanationRight": "TEST TEST TEST",
       "difficulty": "EASY",
       "explanationWrong": "TEST TEST TEST",
@@ -20,7 +20,7 @@
     {
       "id": "1",
       "question": "Français-Dummy Frage",
-      "rightClothingBarcode": "4",
+      "rightClothingBarcode": "4,1",
       "explanationRight": "TEST TEST TEST",
       "difficulty": "EASY",
       "explanationWrong": "TEST TEST TEST",
@@ -29,7 +29,7 @@
     {
       "id": "1",
       "question": "Italiano-Dummy Frage",
-      "rightClothingBarcode": "4",
+      "rightClothingBarcode": "4,1",
       "explanationRight": "TEST TEST TEST",
       "difficulty": "EASY",
       "explanationWrong": "TEST TEST TEST",

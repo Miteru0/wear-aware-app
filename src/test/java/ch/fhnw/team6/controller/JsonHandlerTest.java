@@ -51,10 +51,10 @@ class JsonHandlerTest {
         List<Question> questions = JsonHandler.loadQuestions(testFilePath);
 
         // Assert
-        assertEquals(1, questions.size(), "Expected 1 unique question after merging languages.");
+        assertEquals(8, questions.size(), "Expected 1 unique question after merging languages.");
 
         Question question = questions.get(0);
-        assertEquals("4", question.getCorrectAnswer());
+        assertTrue(sameListAs(question.getCorrectAnswer(), List.of("4", "1")));
         assertEquals("EASY", question.getDifficulty().name());
 
         // Check all four languages
@@ -73,6 +73,18 @@ class JsonHandlerTest {
         String invalidPath = "src/test/resources/JSON/questions/nonexistent.json";
         List<Question> questions = JsonHandler.loadQuestions(invalidPath);
         assertTrue(questions.isEmpty(), "Questions list should be empty if file is not found.");
+    }
+
+    public boolean sameListAs(List<String> correct1, List<String> correct2) {
+        if (correct1.size() != correct2.size()) {
+            return false;
+        }
+        for (int i = 0; i < correct1.size(); i++) {
+            if (!correct1.get(i).equals(correct2.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 

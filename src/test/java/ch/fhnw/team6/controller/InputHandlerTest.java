@@ -50,12 +50,12 @@ public class InputHandlerTest {
                 Language.ITALIAN, "Same as french, bullshito!");
 
         List<Question> questions = Arrays.asList(
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "EASY"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "EASY"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "Medium"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "Medium"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "Hard"),
-                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, "1", "Hard"));
+                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, List.of("1"), "EASY"),
+                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, List.of("1"), "EASY"),
+                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, List.of("1"), "Medium"),
+                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, List.of("1"), "Medium"),
+                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, List.of("1"), "Hard"),
+                new Question(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, List.of("1"), "Hard"));
 
         questionHandler = new QuestionHandler(player, questions);
 

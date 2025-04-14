@@ -1,12 +1,13 @@
 package ch.fhnw.team6.model;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class QuestionDTO {
 
     private Map<Language, String> question = new HashMap<>();
-    private String rightClothingBarcode;
+    private List<String> rightClothingBarcode;
     private Map<Language, String> explanationRight = new HashMap<>();
     private String difficulty;
     private Map<Language, String> explanationWrong = new HashMap<>();
@@ -27,7 +28,7 @@ public class QuestionDTO {
         this.difficulty = difficulty;
     }
 
-    public void setRightClothingBarcode(String rightClothingBarcode) {
+    public void setRightClothingBarcode(List<String> rightClothingBarcode) {
         this.rightClothingBarcode = rightClothingBarcode;
     }
 
@@ -35,7 +36,7 @@ public class QuestionDTO {
         return question;
     }
 
-    public String getRightClothingBarcode() {
+    public List<String> getRightClothingBarcode() {
         return rightClothingBarcode;
     }
 
