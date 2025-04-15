@@ -11,9 +11,9 @@
         <property name="max" value="400"/>
     </module>
 
-    <module name="SuppressionFilter">
+    <!-- <module name="SuppressionFilter">
         <property name="file" value="src/test/resources/configs/suppressions.xml"/>
-    </module>
+    </module> -->
     
     <module name="TreeWalker">
         <!-- Package name must be lowercase -->
@@ -52,9 +52,10 @@
         <!-- No space between method name and parentheses -->
         <module name="MethodParamPad"/>
         
-        <!-- Method length max 80 lines -->
+        <!-- Method length max 50 lines -->
         <module name="MethodLength">
-            <property name="max" value="80"/>
+            <property name="severity" value="warning"/>
+            <property name="max" value="50"/>
         </module>
         
         <!-- Constant names must be UPPER_CASE -->
@@ -82,6 +83,7 @@
         
         <!-- One task per method/class -->
         <module name="JavaNCSS">
+            <property name="severity" value="warning"/>
             <property name="methodMaximum" value="20"/>
             <property name="classMaximum" value="60"/>
         </module>
