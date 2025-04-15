@@ -12,6 +12,8 @@ public class InputHandler {
     private QuestionHandler questionHandler;
     private ClothingHandler clothingHandler;
     private Question currentQuestion;
+    boolean isRightAnswer = false;
+
 
     /**
      * Initializes the input handler.
@@ -76,6 +78,12 @@ public class InputHandler {
      */
     public String getQuestionQuestion() {
         return currentQuestion.getQuestion(questionHandler.getPlayer().getLanguage());
+    }
+
+    public String getQuestionAnswer() {
+        return (isRightAnswer)
+                ? currentQuestion.getExplanationCorrect(questionHandler.getPlayer().getLanguage())
+                : currentQuestion.getExplanationIncorrect(questionHandler.getPlayer().getLanguage());
     }
 
     /**

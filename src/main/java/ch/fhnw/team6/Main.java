@@ -28,31 +28,44 @@ public class Main extends JPanel {
     private JLabel questionLabel;
     private JLabel answerLabel;
 
+    // We'll store the screen dimensions for easier reuse.
+    private final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
     public Main() {
+        // Set this panel's size to full screen.
+        this.setPreferredSize(screenSize);
+        this.setSize(screenSize);
+        this.setLayout(null);
         this.setFocusable(true);
         this.requestFocusInWindow();
-        this.setLayout(null);
 
         player = new Player();
         inputHandler = new InputHandler(player);
 
+        // Set up animations.
         Map<String, String[]> animationPaths = new HashMap<>();
-        animationPaths.put("1", new String[]{"src/main/resources/images/background/animation1/0.png",});
-        animationPaths.put("2", new String[]{"src/main/resources/images/background/animation2/0.png",});
+        animationPaths.put("1", new String[]{"src/main/resources/images/background/animation1/0.png"});
+        animationPaths.put("2", new String[]{"src/main/resources/images/background/animation2/0.png"});
         animationPaths.put("3", new String[]{"src/main/resources/images/background/animation3/0.png"});
         animationPaths.put("4", new String[]{"src/main/resources/images/background/animation4/0.png"});
 
         backgroundPanel = new BackgroundPanel(animationPaths, 300, currentAnimationKey);
-        backgroundPanel.setBounds(0, 0, 800, 600);
+        // Set the background panel to use the full screen dimensions.
+        backgroundPanel.setBounds(0, 0, screenSize.width, screenSize.height);
 
+        // Use JLayeredPane to layer background and text panels.
         JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.setSize(800, 600);
+        layeredPane.setSize(screenSize.width, screenSize.height);
         layeredPane.add(backgroundPanel, JLayeredPane.DEFAULT_LAYER);
 
-        JPanel textPanel = new JPanel();
-        textPanel.setLayout(new BorderLayout());
-        textPanel.setBounds(0, 100, 800, 150);
-        textPanel.setOpaque(false);
+        // Create a translucent text panel. We'll make its bounds relative to the screen size.
+        // For instance, leaving 50px margins on the sides:
+        int textPanelWidth = screenSize.width - 100;
+        int textPanelHeight = 150;
+        TranslucentPanel textPanel = new TranslucentPanel();
+        textPanel.setLayout(new GridBagLayout());
+        textPanel.setBounds(50, screenSize.height / 4, textPanelWidth, textPanelHeight);
+        // The custom panel draws the semi-transparent rounded rectangle in its paintComponent.
 
         questionLabel = new JLabel(currentQuestion, SwingConstants.CENTER);
         answerLabel = new JLabel(currentAnswer, SwingConstants.CENTER);
@@ -60,12 +73,21 @@ public class Main extends JPanel {
         answerLabel.setForeground(Color.WHITE);
         questionLabel.setFont(new Font("Arial", Font.PLAIN, 18));
         answerLabel.setFont(new Font("Arial", Font.PLAIN, 18));
-        textPanel.add(questionLabel, BorderLayout.NORTH);
-        textPanel.add(answerLabel, BorderLayout.SOUTH);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.weightx = 1.0;
+        gbc.gridy = 0;
+        textPanel.add(questionLabel, gbc);
+        gbc.gridy = 1;
+        textPanel.add(answerLabel, gbc);
 
         layeredPane.add(textPanel, JLayeredPane.PALETTE_LAYER);
         this.add(layeredPane);
 
+        // Hidden input field for scanner input.
         JTextField hiddenInput = new JTextField();
         hiddenInput.setBounds(0, 0, 1, 1);
         hiddenInput.setOpaque(false);
@@ -78,7 +100,6 @@ public class Main extends JPanel {
             @Override
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
-
                 if ((c == '\n' || c == '\r')) {
                     if (showingExplanation && !gameFinished) {
                         nextQuestion();
@@ -87,7 +108,6 @@ public class Main extends JPanel {
                     }
                     return;
                 }
-
                 scanBuffer.append(c);
             }
 
@@ -101,7 +121,7 @@ public class Main extends JPanel {
             }
         });
 
-        // Start the game loop
+        // Start the game loop.
         new Timer(100, e -> {
             if (gameOver) {
                 restartGame();
@@ -109,6 +129,24 @@ public class Main extends JPanel {
         }).start();
 
         backgroundPanel.startAnimation();
+    }
+
+    /**
+     * A custom panel that draws a semi-transparent rounded rectangle behind its components.
+     */
+    private class TranslucentPanel extends JPanel {
+        private Color backgroundColor = new Color(0, 0, 0, 150); // Semi-transparent black.
+        public TranslucentPanel() {
+            setOpaque(false);
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.setColor(backgroundColor);
+            g2d.fillRoundRect(0, 0, getWidth(), getHeight(), 20, 20);
+            g2d.dispose();
+            super.paintComponent(g);
+        }
     }
 
     private void restartGame() {
@@ -131,13 +169,18 @@ public class Main extends JPanel {
         } else if (input.equalsIgnoreCase("e")) {
             player.setLanguage(Language.ENGLISH);
             translateCurrent();
-        } else {
+        } else if (input.equalsIgnoreCase("i")) {
+            player.setLanguage(Language.ITALIAN);
+            translateCurrent();
+        } else if (input.equalsIgnoreCase("f")) {
+            player.setLanguage(Language.FRENCH);
+            translateCurrent();
+        } else if (!gameOver) {
             try {
                 currentAnswer = inputHandler.answerQuestion(input);
                 showingExplanation = true;
             } catch (NotAValidInputException ex) {
-                currentAnswer = "❌ Invalid input.";
-                showingExplanation = true;
+                // Optionally set an error message here.
             }
         }
         updateLabels();
@@ -146,17 +189,16 @@ public class Main extends JPanel {
     private void translateCurrent() {
         if (!gameOver) {
             currentQuestion = inputHandler.getQuestionQuestion();
-            if (showingExplanation && !gameFinished) {
-                currentAnswer = inputHandler.getQuestionQuestion();
+            if (showingExplanation) {
+                currentAnswer = inputHandler.getQuestionAnswer();
             }
-            updateLabels();
         }
+        updateLabels();
     }
 
     private void nextQuestion() {
         level++;
-        if (level > 3) {
-            // Final screen
+        if (level > 3) { // After 3 levels, show final screen with animation 4.
             setLevelAnimation("4");
             currentQuestion = "🎉 Well done!";
             currentAnswer = "Press Enter to play again.";
@@ -173,10 +215,30 @@ public class Main extends JPanel {
     private void updateLabels() {
         questionLabel.setText(currentQuestion);
         answerLabel.setText(currentAnswer);
+        adjustFontSize(questionLabel);
+        adjustFontSize(answerLabel);
         repaint();
     }
 
+    /**
+     * Adjusts the font size of the label so that the text fits within a maximum width.
+     */
+    private void adjustFontSize(JLabel label) {
+        int maxWidth = screenSize.width - 120; // Account for horizontal padding.
+        int baseSize = 18;
+        Font font = label.getFont();
+        int newSize = baseSize;
+        FontMetrics fm = getFontMetrics(new Font(font.getName(), font.getStyle(), newSize));
+        String text = label.getText();
+        while (fm.stringWidth(text) > maxWidth && newSize > 12) {  // Do not go below font size 12.
+            newSize--;
+            fm = getFontMetrics(new Font(font.getName(), font.getStyle(), newSize));
+        }
+        label.setFont(new Font(font.getName(), font.getStyle(), newSize));
+    }
+
     private void setLevelAnimation(String animationKey) {
+        // Trigger a smooth transition in the background panel.
         backgroundPanel.startTransitionTo(animationKey);
     }
 
@@ -187,14 +249,17 @@ public class Main extends JPanel {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Scanner Game with Animated Background");
-        Main gamePanel = new Main();
-        frame.setContentPane(gamePanel);
-        frame.setSize(800, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
-
         SwingUtilities.invokeLater(() -> {
+            JFrame frame = new JFrame("Scanner Game with Animated Background");
+            Main gamePanel = new Main();
+            frame.setContentPane(gamePanel);
+            // Set the frame to full screen using full screen exclusive mode:
+            frame.setUndecorated(true);
+            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+
+            // Ensure hidden input gets focus.
             for (Component comp : gamePanel.getComponents()) {
                 if (comp instanceof JTextField) {
                     comp.requestFocusInWindow();
