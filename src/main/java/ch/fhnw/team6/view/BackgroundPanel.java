@@ -17,11 +17,11 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
 
     // Transition-related fields:
     private boolean transitioning = false;
-    private float transitionAlpha = 0f; // 0 means fully current; 1 means fully next animation visible.
+    private float transitionAlpha = 0f;
     private String nextAnimationKey = null;
     private Timer transitionTimer;
-    private int transitionDuration = 1000; // Duration for transition in milliseconds
-    private int transitionSteps = 20;      // Number of steps in the transition (e.g., updates every 50ms)
+    private int transitionDuration = 1000;
+    private int transitionSteps = 20;
 
 
     /**
@@ -111,7 +111,6 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
                 if (transitionAlpha >= 1.0f) {
                     transitionAlpha = 1.0f;
                     transitioning = false;
-                    // Finalize transition: make new animation active.
                     setAnimation(nextAnimationKey);
                     nextAnimationKey = null;
                     transitionTimer.stop();
@@ -127,13 +126,11 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g.create();
         if (!transitioning) {
-            // Normal painting: draw the current frame of the current animation.
             Image[] frames = animations.get(currentAnimation);
             if (frames != null && frames.length > 0) {
                 g2d.drawImage(frames[currentFrame], 0, 0, getWidth(), getHeight(), this);
             }
         } else {
-            // Transition mode: crossfade between current and next animations.
             Image[] currFrames = animations.get(currentAnimation);
             Image[] nextFrames = animations.get(nextAnimationKey);
             if (currFrames != null && currFrames.length > 0 && nextFrames != null && nextFrames.length > 0) {
@@ -141,8 +138,6 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
                 g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f - transitionAlpha));
                 g2d.drawImage(currFrames[currentFrame], 0, 0, getWidth(), getHeight(), this);
 
-                // Draw next animation frame with fading-in opacity.
-                // We use the corresponding frame index from next animation.
                 int nextFrameIndex = currentFrame % nextFrames.length;
                 g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, transitionAlpha));
                 g2d.drawImage(nextFrames[nextFrameIndex], 0, 0, getWidth(), getHeight(), this);
