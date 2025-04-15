@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class JsonHandlerTest {
 
     @Test
-    void testLoadClothes_ValidFile() {
+    void testLoadClothesValidFile() {
         // Arrange
         String testFilePath = "src/test/resources/JSON/clothes/clothes_test.json";
 
@@ -36,14 +36,14 @@ class JsonHandlerTest {
     }
 
     @Test
-    void testLoadClothes_FileNotFound() {
+    void testLoadClothesFileNotFound() {
         String invalidPath = "src/test/resources/JSON/clothes/nonexistent.json";
         List<Clothing> clothes = JsonHandler.loadClothes(invalidPath);
         assertTrue(clothes.isEmpty(), "Clothes list should be empty if file is not found.");
     }
 
     @Test
-    void testLoadQuestions_ValidFile() {
+    void testLoadQuestionsValidFile() {
         // Arrange
         String testFilePath = "src/test/resources/JSON/questions/questions_test.json";
 
@@ -69,7 +69,7 @@ class JsonHandlerTest {
     }
 
     @Test
-    void testLoadQuestions_FileNotFound() {
+    void testLoadQuestionsFileNotFound() {
         String invalidPath = "src/test/resources/JSON/questions/nonexistent.json";
         List<Question> questions = JsonHandler.loadQuestions(invalidPath);
         assertTrue(questions.isEmpty(), "Questions list should be empty if file is not found.");

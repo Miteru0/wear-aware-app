@@ -69,21 +69,21 @@ public class InputHandlerTest {
     }
 
     @Test
-    void testAnswerQuestion_CorrectInput() throws NotAValidInputException {
+    void testAnswerQuestionCorrectInput() throws NotAValidInputException {
         String response = inputHandler.answerQuestion("1");
         assertNotNull(response, "Response should not be null.");
         assertEquals("Right!", response, "Expected correct answer explanation.");
     }
 
     @Test
-    void testAnswerQuestion_IncorrectInput() throws NotAValidInputException {
+    void testAnswerQuestionIncorrectInput() throws NotAValidInputException {
         String response = inputHandler.answerQuestion("2"); // Incorrect input
         assertNotNull(response, "Response should not be null.");
         assertEquals("Wrong!", response, "Expected incorrect answer explanation.");
     }
 
     @Test
-    void testAnswerQuestion_InvalidInput() {
+    void testAnswerQuestionInvalidInput() {
         assertThrows(NotAValidInputException.class, () -> inputHandler.answerQuestion("invalidBarcode12030214021"),
                 "Should throw NotAValidInputException for an invalid input.");
     }
