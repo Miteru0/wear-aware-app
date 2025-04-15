@@ -29,7 +29,7 @@ public class GameFrameVisualTest {
     public static void main(String[] args) {
 
         // Initialize Player and other components directly
-        player = new Player(Language.ENGLISH);
+        player = new Player(Language.ENGLISH);//language
 
         // Mock questions in multiple languages
         Map<Language, String> sampleText = Map.of(
