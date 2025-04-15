@@ -8,7 +8,7 @@ import ch.fhnw.team6.model.Clothing;
 
 public class ClothingHandler {
 
-    private final String CLOTHES_PATH = "src/main/resources/JSON/clothes/clothes.json";
+    private final static String CLOTHES_PATH = "src/main/resources/JSON/clothes/clothes.json";
 
     private List<Clothing> allClothes = new ArrayList<>();
     private List<String> allInputs = new ArrayList<>();

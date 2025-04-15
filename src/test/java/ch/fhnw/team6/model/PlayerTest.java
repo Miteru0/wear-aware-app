@@ -26,19 +26,19 @@ public class PlayerTest {
     }
 
     @Test
-    void testAnswer_Correct() {
+    void testAnswerCorrect() {
         player.answer(true);
         assertEquals(1, player.getPoints(), "Points should increase by 1 on correct answer.");
     }
 
     @Test
-    void testAnswer_Incorrect_NoNegativePoints() {
+    void testAnswerIncorrectNoNegativePoints() {
         player.answer(false);
         assertEquals(0, player.getPoints(), "Points should not go below zero.");
     }
 
     @Test
-    void testAnswer_Incorrect_AfterCorrect() {
+    void testAnswerIncorrectAfterCorrect() {
         player.answer(true);
         player.answer(false);
         assertEquals(0, player.getPoints(), "Points should decrease by 1 after incorrect answer.");

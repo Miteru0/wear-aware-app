@@ -7,6 +7,7 @@
     <groupId>ch.fhnw.team6</groupId>
     <artifactId>wearAware</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <url>https://gitlab.fhnw.ch/ip12-24vt/ip12-24vt_fast_fashion/wearAware</url>
 
     <properties>
         <maven.compiler.source>23</maven.compiler.source>
@@ -16,6 +17,12 @@
         <maven-shade.version>3.5.0</maven-shade.version>
         <maven-deploy.version>2.7</maven-deploy.version>
         <maven-antrun.version>1.8</maven-antrun.version>
+        <maven-javadoc.version>3.6.0</maven-javadoc.version>
+        <maven-project-info-reports.version>3.4.1</maven-project-info-reports.version>
+        <maven-checkstyle.version>3.3.0</maven-checkstyle.version>
+        <maven-site.version>3.9.1</maven-site.version>
+        <maven-jxr.version>3.3.1</maven-jxr.version>
+        <maven-surefire.version>3.0.0-M5</maven-surefire.version>
 
         <gson.version>2.10.1</gson.version>
         <junit.version>5.11.0-M2</junit.version>
@@ -125,21 +132,83 @@
                 </dependencies>
             </plugin>
             
+            <!-- Maven Site Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>${maven-site.version}</version> 
+                <configuration>
+                    <outputDirectory>${project.build.directory}/site</outputDirectory>
+                </configuration>
+            </plugin>
+
             <!-- ensures that Maven Surefire will recognize and run JUnit 5 tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version> <!-- Use the latest version -->
+                <version>${maven-surefire.version}</version> <!-- Use the latest version -->
                 <configuration>
                     <dependenciesToScan>
                         <dependency>org.junit.jupiter</dependency> <!-- JUnit 5 support -->
                     </dependenciesToScan>
                 </configuration>
             </plugin>
+
+            <!-- Checkstyle plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle.version}</version>
+                <configuration>
+                    <configLocation>${project.basedir}/src/test/resources/configs/checkstyle.xml</configLocation>
+                    <encoding>UTF-8</encoding>
+                    <consoleOutput>true</consoleOutput>
+                    <failsOnError>true</failsOnError>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                    <id>verify</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         
     </build>
 
+    <reporting>
+        <plugins>
+            <!-- Maven Project Info Reports Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${maven-project-info-reports.version}</version> 
+            </plugin>
+
+            <!-- Maven Checkstyle Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>${maven-checkstyle.version}</version>
+                <configuration>
+                    <configLocation>${project.basedir}/src/test/resources/configs/checkstyle.xml</configLocation>
+                    <includeTestSourceDirectory>true</includeTestSourceDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- Maven JXR Plugin (for resolving Xref link warnings) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>${maven-jxr.version}</version>
+            </plugin>
+            
+        </plugins>
+    </reporting>
     
 
 </project>

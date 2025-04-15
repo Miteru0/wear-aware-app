@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 
 public class QuestionHandler {
 
+    private static final String QUESTIONS_PATH = "src/main/resources/JSON/questions/questions.json";   // Path to JSON file containing questions
+
     private final Random rand = ThreadLocalRandom.current(); // For randomly generated questions (ThreadLocalRandom is better for multiple thread applications)
 
     private Map<Difficulty, List<Question>> allQuestions = new HashMap<>(); // Stores all loaded questions, grouped by difficulty
     private Map<Difficulty, List<Question>> currentQuestions;   // Stores remaining questions for the current game session
-
-    private final String QUESTIONS_PATH = "src/main/resources/JSON/questions/questions.json";   // Path to JSON file containing questions
 
     private Player player;
 
