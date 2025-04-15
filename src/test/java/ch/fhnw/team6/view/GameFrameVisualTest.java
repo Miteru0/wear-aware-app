@@ -170,7 +170,7 @@ public class GameFrameVisualTest {
                 backgroundPanel.setAnimation("" + level);
                 return;
             }
-            backgroundPanel.setAnimation("" + level);
+            backgroundPanel.startTransitionTo("" + level);
             textField.setText("");
         });
         // Add components to layered pane

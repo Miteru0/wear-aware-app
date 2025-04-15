@@ -37,8 +37,8 @@ public class Main extends JPanel {
         inputHandler = new InputHandler(player);
 
         Map<String, String[]> animationPaths = new HashMap<>();
-        animationPaths.put("1", new String[]{"src/main/resources/images/background/animation1/0.png"});
-        animationPaths.put("2", new String[]{"src/main/resources/images/background/animation2/0.png"});
+        animationPaths.put("1", new String[]{"src/main/resources/images/background/animation1/0.png",});
+        animationPaths.put("2", new String[]{"src/main/resources/images/background/animation2/0.png",});
         animationPaths.put("3", new String[]{"src/main/resources/images/background/animation3/0.png"});
         animationPaths.put("4", new String[]{"src/main/resources/images/background/animation4/0.png"});
 
@@ -107,6 +107,8 @@ public class Main extends JPanel {
                 restartGame();
             }
         }).start();
+
+        backgroundPanel.startAnimation();
     }
 
     private void restartGame() {
@@ -175,9 +177,7 @@ public class Main extends JPanel {
     }
 
     private void setLevelAnimation(String animationKey) {
-        this.currentAnimationKey = animationKey;
-        backgroundPanel.setAnimation(animationKey);
-        backgroundPanel.startAnimation();
+        backgroundPanel.startTransitionTo(animationKey);
     }
 
     @Override
