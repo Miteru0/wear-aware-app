@@ -225,7 +225,7 @@ public class Main extends JPanel {
      */
     private void adjustFontSize(JLabel label) {
         int maxWidth = screenSize.width - 120; // Account for horizontal padding.
-        int baseSize = 18;
+        int baseSize = 26;
         Font font = label.getFont();
         int newSize = baseSize;
         FontMetrics fm = getFontMetrics(new Font(font.getName(), font.getStyle(), newSize));

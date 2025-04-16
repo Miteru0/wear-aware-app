@@ -14,5 +14,9 @@
   {
     "barcode": "4",
     "name": "Lederschuhe"
+  },
+  {
+    "barcode": "5",
+    "name": "Rock"
   }
 ]
