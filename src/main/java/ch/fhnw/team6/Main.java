@@ -100,7 +100,7 @@ public class Main extends JPanel {
             @Override
             public void keyTyped(KeyEvent e) {
                 char c = e.getKeyChar();
-                if ((c == '\n' || c == '\r')) {
+                if ((c == ' ')) {
                     if (showingExplanation && !gameFinished) {
                         nextQuestion();
                     } else if (gameFinished) {
