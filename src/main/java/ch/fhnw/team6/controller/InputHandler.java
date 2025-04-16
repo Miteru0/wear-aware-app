@@ -12,7 +12,7 @@ public class InputHandler {
     private QuestionHandler questionHandler;
     private ClothingHandler clothingHandler;
     private Question currentQuestion;
-    boolean isRightAnswer = false;
+    private boolean isRightAnswer = false;
 
 
     /**

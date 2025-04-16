@@ -110,7 +110,7 @@
   {
     "id": "4",
     "question": "Scan the product that has traveled the shortest distance to reach you.",
-    "rightClothingBarcode": "1,2,3,4",
+    "rightClothingBarcode": "1,2,3,4,5",
     "explanationRight": "It's almost impossible to track the journey of your clothing. A T-shirt from Europe may have traveled a very long way. Therefore, all answers are correct here.",
     "difficulty": "EASY",
     "explanationWrong": "It's almost impossible to track the journey of your clothing. A T-shirt from Europe may have traveled a very long way. Therefore, all answers are correct here.",
@@ -119,7 +119,7 @@
   {
     "id": "4",
     "question": "Scanne das Produkt welches den kürzesten Weg bis zu dir zurückgelegt hat.",
-    "rightClothingBarcode": "1,2,3,4",
+    "rightClothingBarcode": "1,2,3,4,5",
     "explanationRight": "Es ist fast unmöglich, den Weg seines Kleidungsstücks zu verfolgen. Ein T-Shirt aus Europa kann einen sehr langen Weg hinter sich haben. Deshalb sind hier alle Antworten richtig.",
     "difficulty": "EASY",
     "explanationWrong": "Es ist fast unmöglich, den Weg seines Kleidungsstücks zu verfolgen. Ein T-Shirt aus Europa kann einen sehr langen Weg hinter sich haben. Deshalb sind hier alle Antworten richtig.",
@@ -128,7 +128,7 @@
   {
     "id": "4",
     "question": "Scannez le produit qui a parcouru la distance la plus courte pour vous parvenir.",
-    "rightClothingBarcode": "1,2,3,4",
+    "rightClothingBarcode": "1,2,3,4,5",
     "explanationRight": "Il est presque impossible de retracer le parcours de vos vêtements. Un t-shirt d'Europe peut avoir parcouru un très long chemin. Par conséquent, toutes les réponses sont correctes ici.",
     "difficulty": "EASY",
     "explanationWrong": "Il est presque impossible de retracer le parcours de vos vêtements. Un t-shirt d'Europe peut avoir parcouru un très long chemin. Par conséquent, toutes les réponses sont correctes ici.",
@@ -137,7 +137,7 @@
   {
     "id": "4",
     "question": "Scansiona il prodotto che ha percorso la distanza più breve per raggiungerti.",
-    "rightClothingBarcode": "1,2,3,4",
+    "rightClothingBarcode": "1,2,3,4,5",
     "explanationRight": "È quasi impossibile tracciare il percorso dei tuoi vestiti. Una maglietta dall'Europa può aver viaggiato molto lontano. Pertanto, tutte le risposte sono corrette qui.",
     "difficulty": "EASY",
     "explanationWrong": "È quasi impossibile tracciare il percorso dei tuoi vestiti. Una maglietta dall'Europa può aver viaggiato molto lontano. Pertanto, tutte le risposte sono corrette qui.",
