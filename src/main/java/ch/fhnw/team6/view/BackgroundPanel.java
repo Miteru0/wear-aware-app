@@ -4,7 +4,6 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.io.File;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,6 +22,38 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
     private Timer transitionTimer;
     private int transitionDuration = 1000;
     private int transitionSteps = 20;
+
+
+    /**
+     * Constructor for BackgroundPanel using default animations.
+     */
+    public BackgroundPanel() {
+        super(getAnimationPaths(), 100, "1");
+        startRepaintTimer();
+    }
+
+    /**
+     * Constructor for BackgroundPanel.
+     * @param animationPaths A map of animation names to their file paths.
+     * @param frameDelay Delay between frames in milliseconds.
+     * @param defaultAnimation The animation key to use initially.
+     */
+    public BackgroundPanel(Map<String, String[]> animationPaths, int frameDelay, String defaultAnimation) {
+        super(animationPaths, frameDelay, defaultAnimation);
+        startRepaintTimer();
+    }
+
+    /**
+     * Starts a small timer that repaints the panel every 30ms.
+     */
+    private void startRepaintTimer() {
+        new Timer(30, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                repaint();
+            }
+        }).start();
+    }
 
     /**
      * Get the paths of the animation files
@@ -56,37 +87,6 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
             result[i] = animationDir + File.separator + fileNames[i];
         }
         return result;
-    }
-
-    /**
-     * Constructor for BackgroundPanel using default animations.
-     */
-    public BackgroundPanel() {
-        super(getAnimationPaths(), 100, "1");
-        startRepaintTimer();
-    }
-
-    /**
-     * Constructor for BackgroundPanel.
-     * @param animationPaths A map of animation names to their file paths.
-     * @param frameDelay Delay between frames in milliseconds.
-     * @param defaultAnimation The animation key to use initially.
-     */
-    public BackgroundPanel(Map<String, String[]> animationPaths, int frameDelay, String defaultAnimation) {
-        super(animationPaths, frameDelay, defaultAnimation);
-        startRepaintTimer();
-    }
-
-    /**
-     * Starts a small timer that repaints the panel every 30ms.
-     */
-    private void startRepaintTimer() {
-        new Timer(30, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                repaint();
-            }
-        }).start();
     }
 
     /**
