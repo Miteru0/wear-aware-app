@@ -11,10 +11,10 @@ public class BackgroundPanelVisualTest {
         // Prepare animation paths
         Map<String, String[]> animationPaths = new HashMap<>();
         animationPaths.put("1", new String[] {
-            "src/test/resources/images/background/animation1/1.png",
-            "src/test/resources/images/background/animation1/2.png",
-            "src/test/resources/images/background/animation1/3.png",
-            "src/test/resources/images/background/animation1/4.png"
+            "images/background/animation1/1.png",
+            "images/background/animation1/2.png",
+            "images/background/animation1/3.png",
+            "images/background/animation1/4.png"
         });
 
         ch.fhnw.team6.view.BackgroundPanel backgroundPanel = new ch.fhnw.team6.view.BackgroundPanel(animationPaths, 300, "1");

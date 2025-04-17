@@ -18,18 +18,18 @@ class BackgroundPanelTest {
 
         Map<String, String[]> animationPaths = new HashMap<>();
         animationPaths.put("1", new String[] {
-                "src/test/resources/images/background/animation1/1.png",
-                "src/test/resources/images/background/animation1/2.png",
-                "src/test/resources/images/background/animation1/3.png",
-                "src/test/resources/images/background/animation1/4.png",
-                "src/test/resources/images/background/animation1/5.png",
-                "src/test/resources/images/background/animation1/6.png",
-                "src/test/resources/images/background/animation1/7.png",
-                "src/test/resources/images/background/animation1/8.png",
-                "src/test/resources/images/background/animation1/9.png",
-                "src/test/resources/images/background/animation1/10.png",
-                "src/test/resources/images/background/animation1/11.png",
-                "src/test/resources/images/background/animation1/12.png"
+                "images/background/animation1/1.png",
+                "images/background/animation1/2.png",
+                "images/background/animation1/3.png",
+                "images/background/animation1/4.png",
+                "images/background/animation1/5.png",
+                "images/background/animation1/6.png",
+                "images/background/animation1/7.png",
+                "images/background/animation1/8.png",
+                "images/background/animation1/9.png",
+                "images/background/animation1/10.png",
+                "images/background/animation1/11.png",
+                "images/background/animation1/12.png"
         });
 
         backgroundPanel = new BackgroundPanel(animationPaths, 100, "1");
@@ -75,8 +75,7 @@ class BackgroundPanelTest {
         // Add another animation to test setAnimation
         Map<String, String[]> additionalAnimationPaths = new HashMap<>();
         additionalAnimationPaths.put("2", new String[] {
-                "src/test/resources/images/background/animation2/1.png",
-                "src/test/resources/images/background/animation2/2.png"
+                "images/background/animation2/0.png",
         });
 
         // Initialize BackgroundPanel with the new animation paths
@@ -87,7 +86,7 @@ class BackgroundPanelTest {
 
         // Assert that the new animation is loaded
         assertNotNull(newPanel.animations.get("2"));
-        assertEquals(2, newPanel.animations.get("2").length);
+        assertEquals(1, newPanel.animations.get("2").length);
 
         // Set a new animation
         newPanel.setAnimation("2");

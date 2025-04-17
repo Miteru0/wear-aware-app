@@ -70,25 +70,25 @@ public class GameFrameVisualTest {
         inputHandler = new InputHandler(questionHandler, clothingHandler);
         Map<String, String[]> animationPaths = new HashMap<>();
         animationPaths.put("1", new String[] {
-            "src/test/resources/images/background/animation1/1.png",
-            "src/test/resources/images/background/animation1/2.png",
-            "src/test/resources/images/background/animation1/3.png",
-            "src/test/resources/images/background/animation1/4.png"
+            "images/background/animation1/1.png",
+            "images/background/animation1/2.png",
+            "images/background/animation1/3.png",
+            "images/background/animation1/4.png"
         });
         animationPaths.put("2", new String[] {
-            "src/test/resources/images/background/animation2/0.png"
+            "images/background/animation2/0.png"
         });
         animationPaths.put("3", new String[] {
-            "src/test/resources/images/background/animation3/0.png"
+            "images/background/animation3/0.png"
         });
         animationPaths.put("4", new String[] {
-            "src/test/resources/images/background/animation4/0.png"
+            "images/background/animation4/0.png"
         });
         animationPaths.put("5", new String[] {
-            "src/test/resources/images/background/animation5/0.png"
+            "images/background/animation5/0.png"
         });
         animationPaths.put("6", new String[] {
-            "src/test/resources/images/background/animation6/0.png"
+            "images/background/animation6/0.png"
         });
 
 

@@ -103,15 +103,33 @@
                         </goals>
                         <configuration>
                             <target>
-                            <scp localFile="${project.basedir}/target/${project.name}-${project.version}.jar" 
-                            remoteToFile="pi@pi4j.local:/home/pi/jars/${project.name}.jar"
-                            verbose="true" 
-                            password="pi4j"
-                            trust="true" />
-                            <!-- calls deploy script (don't use yet!!)-->
-                            <!-- <sshexec host="pi4j.local" trust="yes"
-                            username="pi" password="pi4j"
-                            command="sh /home/pi/jars/start.sh" /> -->
+                                <echo message="Deploying to Raspberry Pi" />
+                                <scp localFile="${project.basedir}/target/${project.name}-${project.version}.jar" 
+                                remoteToFile="pi@pi4j.local:/home/pi/jars/${project.name}.jar"
+                                verbose="true" 
+                                password="pi4j"
+                                trust="true" />
+
+                                <!-- calls deploy script (Don't use it if PI already runs an application)-->
+                                <!-- <sshexec host="pi4j.local" trust="yes"
+                                username="pi" password="pi4j"
+                                command="sh /home/pi/jars/start.sh" /> -->
+
+                                <!-- Make sure directory exists on remote -->
+                                <sshexec host="pi4j.local"
+                                        username="pi"
+                                        password="pi4j"
+                                        command="mkdir -p /home/pi/jars/json" />
+                                <!-- Copy JSON files -->
+                                <scp todir="pi@pi4j.local:/home/pi/jars/json"
+                                    password="pi4j"
+                                    trust="true"
+                                    verbose="true">
+                                    <fileset dir="${project.basedir}/src/main/resources/json">
+                                        <include name="clothes.json"/>
+                                        <include name="questions.json"/>
+                                    </fileset>
+                                </scp>
                             </target>
                         </configuration>
                     </execution>

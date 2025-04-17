@@ -9,10 +9,9 @@ import ch.fhnw.team6.view.BackgroundPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Main extends JPanel {
+
     private Player player;
     private InputHandler inputHandler;
     private String currentQuestion = "Scan to begin.";
@@ -21,7 +20,6 @@ public class Main extends JPanel {
     private boolean gameOver = true;
     private boolean showingExplanation = false;
     private boolean gameFinished = false;
-    private String currentAnimationKey = "1";
     private BackgroundPanel backgroundPanel;
     private StringBuilder scanBuffer = new StringBuilder();
 
@@ -42,14 +40,7 @@ public class Main extends JPanel {
         player = new Player();
         inputHandler = new InputHandler(player);
 
-        // Set up animations.
-        Map<String, String[]> animationPaths = new HashMap<>();
-        animationPaths.put("1", new String[]{"src/main/resources/images/background/animation1/0.png"});
-        animationPaths.put("2", new String[]{"src/main/resources/images/background/animation2/0.png"});
-        animationPaths.put("3", new String[]{"src/main/resources/images/background/animation3/0.png"});
-        animationPaths.put("4", new String[]{"src/main/resources/images/background/animation4/0.png"});
-
-        backgroundPanel = new BackgroundPanel(animationPaths, 300, currentAnimationKey);
+        backgroundPanel = new BackgroundPanel();
         // Set the background panel to use the full screen dimensions.
         backgroundPanel.setBounds(0, 0, screenSize.width, screenSize.height);
 
@@ -58,14 +49,11 @@ public class Main extends JPanel {
         layeredPane.setSize(screenSize.width, screenSize.height);
         layeredPane.add(backgroundPanel, JLayeredPane.DEFAULT_LAYER);
 
-        // Create a translucent text panel. We'll make its bounds relative to the screen size.
-        // For instance, leaving 50px margins on the sides:
         int textPanelWidth = screenSize.width - 100;
         int textPanelHeight = 150;
         TranslucentPanel textPanel = new TranslucentPanel();
         textPanel.setLayout(new GridBagLayout());
         textPanel.setBounds(50, screenSize.height / 4, textPanelWidth, textPanelHeight);
-        // The custom panel draws the semi-transparent rounded rectangle in its paintComponent.
 
         questionLabel = new JLabel(currentQuestion, SwingConstants.CENTER);
         answerLabel = new JLabel(currentAnswer, SwingConstants.CENTER);
@@ -113,7 +101,7 @@ public class Main extends JPanel {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if (!showingExplanation && !scanBuffer.isEmpty()) {
+                if (!showingExplanation && !scanBuffer.isEmpty() && !gameFinished) {
                     String input = scanBuffer.toString().trim();
                     scanBuffer.setLength(0);
                     processScan(input);
@@ -122,7 +110,7 @@ public class Main extends JPanel {
         });
 
         // Start the game loop.
-        new Timer(100, e -> {
+        new Timer(100, _ -> {
             if (gameOver) {
                 restartGame();
             }
@@ -132,13 +120,16 @@ public class Main extends JPanel {
     }
 
     /**
-     * A custom panel that draws a semi-transparent rounded rectangle behind its components.
+     * A custom panel that draws a semi-transparent rounded rectangle behind its
+     * components.
      */
     private class TranslucentPanel extends JPanel {
         private Color backgroundColor = new Color(0, 0, 0, 150); // Semi-transparent black.
+
         public TranslucentPanel() {
             setOpaque(false);
         }
+
         @Override
         protected void paintComponent(Graphics g) {
             Graphics2D g2d = (Graphics2D) g.create();
@@ -180,7 +171,7 @@ public class Main extends JPanel {
                 currentAnswer = inputHandler.answerQuestion(input);
                 showingExplanation = true;
             } catch (NotAValidInputException ex) {
-                // Optionally set an error message here.
+                // Just ignore invalid input
             }
         }
         updateLabels();
@@ -201,7 +192,7 @@ public class Main extends JPanel {
         if (level > 3) { // After 3 levels, show final screen with animation 4.
             setLevelAnimation("4");
             currentQuestion = "🎉 Well done!";
-            currentAnswer = "Press Enter to play again.";
+            currentAnswer = "Press Spacebar to play again.";
             gameFinished = true;
         } else {
             setLevelAnimation(String.valueOf(level));
@@ -221,7 +212,8 @@ public class Main extends JPanel {
     }
 
     /**
-     * Adjusts the font size of the label so that the text fits within a maximum width.
+     * Adjusts the font size of the label so that the text fits within a maximum
+     * width.
      */
     private void adjustFontSize(JLabel label) {
         int maxWidth = screenSize.width - 120; // Account for horizontal padding.
@@ -230,7 +222,7 @@ public class Main extends JPanel {
         int newSize = baseSize;
         FontMetrics fm = getFontMetrics(new Font(font.getName(), font.getStyle(), newSize));
         String text = label.getText();
-        while (fm.stringWidth(text) > maxWidth && newSize > 12) {  // Do not go below font size 12.
+        while (fm.stringWidth(text) > maxWidth && newSize > 12) { // Do not go below font size 12.
             newSize--;
             fm = getFontMetrics(new Font(font.getName(), font.getStyle(), newSize));
         }
@@ -249,15 +241,26 @@ public class Main extends JPanel {
     }
 
     public static void main(String[] args) {
+
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Scanner Game with Animated Background");
             Main gamePanel = new Main();
             frame.setContentPane(gamePanel);
-            // Set the frame to full screen using full screen exclusive mode:
-            frame.setUndecorated(true);
-            frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
+
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice gd = ge.getDefaultScreenDevice();
+
+            // Make the frame fullscreen exclusive
+            if (gd.isFullScreenSupported()) {
+                frame.setUndecorated(true);
+                gd.setFullScreenWindow(frame);
+            } else {
+                // Fall back to maximized window if fullscreen is not supported
+                frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                frame.setUndecorated(true);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
+            }
 
             // Ensure hidden input gets focus.
             for (Component comp : gamePanel.getComponents()) {

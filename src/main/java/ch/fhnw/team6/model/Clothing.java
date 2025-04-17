@@ -1,10 +1,7 @@
 package ch.fhnw.team6.model;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Clothing {
-    private Set<String> usedBarcodes = new HashSet<>();
+    // private Set<String> usedBarcodes = new HashSet<>();
     private String name;
     private String barcode;
 

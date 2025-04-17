@@ -1,5 +1,6 @@
 package ch.fhnw.team6.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,7 +9,8 @@ import ch.fhnw.team6.model.Clothing;
 
 public class ClothingHandler {
 
-    private final static String CLOTHES_PATH = "src/main/resources/JSON/clothes/clothes.json";
+    private final static String CLOTHES_PATH = "src/main/resources/json/clothes.json";
+    private final static String CLOTHES_PATH_PRODUCTION = "json/clothes.json";
 
     private List<Clothing> allClothes = new ArrayList<>();
     private List<String> allInputs = new ArrayList<>();
@@ -18,7 +20,16 @@ public class ClothingHandler {
      * and initializes the list of valid inputs (barcodes).
      */
     public ClothingHandler() {
-        allClothes = JsonHandler.loadClothes(CLOTHES_PATH);
+        try {
+            allClothes = JsonHandler.loadClothes(CLOTHES_PATH);
+        } catch (IOException e) {
+            try {
+                allClothes = JsonHandler.loadClothes(CLOTHES_PATH_PRODUCTION);
+            } catch (IOException e1) {
+                System.err.println("Error loading Clothes");
+            }
+        }
+        
         setAllValidInputs();
     }
 
