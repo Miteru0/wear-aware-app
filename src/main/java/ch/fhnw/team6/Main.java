@@ -44,13 +44,13 @@ public class Main extends JPanel {
 
         // Set up animations.
         Map<String, String[]> animationPaths = new HashMap<>();
-        animationPaths.put("1", new String[]{"src/main/resources/images/background/animation1/0.png"});
-        animationPaths.put("2", new String[]{"src/main/resources/images/background/animation2/0.png"});
-        animationPaths.put("3", new String[]{"src/main/resources/images/background/animation3/0.png"});
-        animationPaths.put("4", new String[]{"src/main/resources/images/background/animation4/0.png"});
-        animationPaths.put("5", new String[]{"src/main/resources/images/background/animation5/0.png"});
-        animationPaths.put("6", new String[]{"src/main/resources/images/background/animation6/0.png"});
-
+        animationPaths.put("1", new String[]{"images/background/animation1/0.png"});
+        animationPaths.put("2", new String[]{"images/background/animation2/0.png"});
+        animationPaths.put("3", new String[]{"images/background/animation3/0.png"});
+        animationPaths.put("4", new String[]{"images/background/animation4/0.png"});
+        animationPaths.put("5", new String[]{"images/background/animation5/0.png"});
+        animationPaths.put("6", new String[]{"images/background/animation6/0.png"});
+        animationPaths.put("7", new String[]{"images/background/animation7/0.png"});
         backgroundPanel = new BackgroundPanel(animationPaths, 300, currentAnimationKey);
         // Set the background panel to use the full screen dimensions.
         backgroundPanel.setBounds(0, 0, screenSize.width, screenSize.height);
@@ -177,7 +177,7 @@ public class Main extends JPanel {
         } else if (input.equalsIgnoreCase("f")) {
             player.setLanguage(Language.FRENCH);
             translateCurrent();
-        } else if (!gameOver && level < 6) {
+        } else if (!gameOver && level < 7) {
             try {
                 currentAnswer = inputHandler.answerQuestion(input);
                 showingExplanation = true;
@@ -200,10 +200,10 @@ public class Main extends JPanel {
 
     private void nextQuestion() {
         level++;
-        if (level > 5) { // After 3 levels, show final screen with animation 4.
-            setLevelAnimation("6");
+        if (level > 6) { // After 3 levels, show final screen with animation 7.
+            setLevelAnimation("7");
             currentQuestion = "Well done!";
-            currentAnswer = "Press Enter to play again.";
+            currentAnswer = "Press Space to play again.";
             gameFinished = true;
         } else {
             setLevelAnimation(String.valueOf(level));
