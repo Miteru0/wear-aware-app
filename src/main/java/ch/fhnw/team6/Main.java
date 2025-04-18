@@ -48,6 +48,8 @@ public class Main extends JPanel {
         animationPaths.put("2", new String[]{"src/main/resources/images/background/animation2/0.png"});
         animationPaths.put("3", new String[]{"src/main/resources/images/background/animation3/0.png"});
         animationPaths.put("4", new String[]{"src/main/resources/images/background/animation4/0.png"});
+        animationPaths.put("5", new String[]{"src/main/resources/images/background/animation5/0.png"});
+        animationPaths.put("6", new String[]{"src/main/resources/images/background/animation6/0.png"});
 
         backgroundPanel = new BackgroundPanel(animationPaths, 300, currentAnimationKey);
         // Set the background panel to use the full screen dimensions.
@@ -175,7 +177,7 @@ public class Main extends JPanel {
         } else if (input.equalsIgnoreCase("f")) {
             player.setLanguage(Language.FRENCH);
             translateCurrent();
-        } else if (!gameOver) {
+        } else if (!gameOver && level < 6) {
             try {
                 currentAnswer = inputHandler.answerQuestion(input);
                 showingExplanation = true;
@@ -198,9 +200,9 @@ public class Main extends JPanel {
 
     private void nextQuestion() {
         level++;
-        if (level > 3) { // After 3 levels, show final screen with animation 4.
-            setLevelAnimation("4");
-            currentQuestion = "🎉 Well done!";
+        if (level > 5) { // After 3 levels, show final screen with animation 4.
+            setLevelAnimation("6");
+            currentQuestion = "Well done!";
             currentAnswer = "Press Enter to play again.";
             gameFinished = true;
         } else {
@@ -224,7 +226,7 @@ public class Main extends JPanel {
      * Adjusts the font size of the label so that the text fits within a maximum width.
      */
     private void adjustFontSize(JLabel label) {
-        int maxWidth = screenSize.width - 120; // Account for horizontal padding.
+        int maxWidth = screenSize.width - 120;
         int baseSize = 26;
         Font font = label.getFont();
         int newSize = baseSize;
@@ -238,7 +240,6 @@ public class Main extends JPanel {
     }
 
     private void setLevelAnimation(String animationKey) {
-        // Trigger a smooth transition in the background panel.
         backgroundPanel.startTransitionTo(animationKey);
     }
 
@@ -250,16 +251,14 @@ public class Main extends JPanel {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Scanner Game with Animated Background");
+            JFrame frame = new JFrame("game");
             Main gamePanel = new Main();
             frame.setContentPane(gamePanel);
-            // Set the frame to full screen using full screen exclusive mode:
             frame.setUndecorated(true);
             frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
 
-            // Ensure hidden input gets focus.
             for (Component comp : gamePanel.getComponents()) {
                 if (comp instanceof JTextField) {
                     comp.requestFocusInWindow();
