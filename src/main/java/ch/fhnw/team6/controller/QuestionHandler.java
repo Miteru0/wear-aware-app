@@ -5,6 +5,7 @@ import ch.fhnw.team6.model.Difficulty;
 import ch.fhnw.team6.model.Player;
 import ch.fhnw.team6.model.Question;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,8 @@ import java.util.stream.Collectors;
 
 public class QuestionHandler {
 
-    private static final String QUESTIONS_PATH = "src/main/resources/JSON/questions/questions.json";   // Path to JSON file containing questions
+    private static final String QUESTIONS_PATH = "src/main/resources/json/questions.json";   // Path to JSON file containing questions
+    private static final String QUESTIONS_PATH_PRODUCTION = "json/questions.json"; // Path to JSON file containing questions in production
 
     private final Random rand = ThreadLocalRandom.current(); // For randomly generated questions (ThreadLocalRandom is better for multiple thread applications)
 
@@ -29,7 +31,17 @@ public class QuestionHandler {
      */
     public QuestionHandler(Player player) {
         this.player = player;
-        List<Question> questions = JsonHandler.loadQuestions(QUESTIONS_PATH);
+        List<Question> questions = null;
+        try {
+            questions = JsonHandler.loadQuestions(QUESTIONS_PATH);
+        } catch (IOException e) {
+            try {
+                questions = JsonHandler.loadQuestions(QUESTIONS_PATH_PRODUCTION);
+            } catch (IOException e1) {
+                System.err.println("Error loading Questions");
+                e1.printStackTrace();
+            }
+        }
         allQuestions = sortAllQuestions(questions);
         createQuestionsForGame();
     }

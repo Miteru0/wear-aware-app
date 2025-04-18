@@ -4,7 +4,6 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.io.File;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
@@ -13,7 +12,7 @@ import javax.swing.*;
 
 public class BackgroundPanel extends AbstractAnimatedPanel {
 
-    private static final String ANIMATION_PATH = "src/test/resources/images/background";
+    private static final String ANIMATION_PATH = "images/background";
 
     // Transition-related fields:
     private boolean transitioning = false;
@@ -23,19 +22,19 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
     private int transitionDuration = 1000;
     private int transitionSteps = 20;
 
-
     /**
      * Constructor for BackgroundPanel using default animations.
      */
     public BackgroundPanel() {
-        super(getAnimationPaths(), 100, "1");
+        super(getAnimationPaths(), 100, "animation1");
         startRepaintTimer();
     }
 
     /**
-     * Constructor for BackgroundPanel.
-     * @param animationPaths A map of animation names to their file paths.
-     * @param frameDelay Delay between frames in milliseconds.
+     * Constructor for BackgroundPanel. TEST ONLY please!
+     * 
+     * @param animationPaths   A map of animation names to their file paths.
+     * @param frameDelay       Delay between frames in milliseconds.
      * @param defaultAnimation The animation key to use initially.
      */
     public BackgroundPanel(Map<String, String[]> animationPaths, int frameDelay, String defaultAnimation) {
@@ -57,44 +56,69 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
 
     /**
      * Get the paths of the animation files
+     * 
      * @return A map of animation names to their file paths
      */
     private static Map<String, String[]> getAnimationPaths() {
         Map<String, String[]> animations = new HashMap<>();
-        animations.put("1", getAnimationPaths("animation1"));
-        animations.put("2", getAnimationPaths("animation2"));
-        animations.put("3", getAnimationPaths("animation3"));
-        animations.put("4", getAnimationPaths("animation4"));
+        animations.put("1", getAnimationPaths("animation1", 1));
+        animations.put("2", getAnimationPaths("animation2", 1));
+        animations.put("3", getAnimationPaths("animation3", 1));
+        animations.put("4", getAnimationPaths("animation4", 1));
         return animations;
     }
 
+    // Doesn't work with jar file
+    // /**
+    // * Get the paths of the animation files for a given animation name.
+    // * @param animationName The name of the animation folder
+    // * @return An array of file paths for the animation frames
+    // */
+    // private static String[] getAnimationPaths(String animationName) {
+    // File animationDir = new File(ANIMATION_PATH + File.separator +
+    // animationName);
+    // if (!animationDir.exists() || !animationDir.isDirectory()) {
+    // throw new IllegalArgumentException("Animation directory not found: " +
+    // animationDir.getAbsolutePath());
+    // }
+    // String[] fileNames = animationDir.list();
+    // if (fileNames == null) {
+    // throw new IllegalArgumentException("No files found in animation directory: "
+    // + animationDir.getAbsolutePath());
+    // }
+    // String[] result = new String[fileNames.length];
+    // for (int i = 0; i < fileNames.length; i++) {
+    // result[i] = animationDir + File.separator + fileNames[i];
+    // }
+    // return result;
+    // }
+
     /**
      * Get the paths of the animation files for a given animation name.
+     * 
      * @param animationName The name of the animation folder
      * @return An array of file paths for the animation frames
      */
-    private static String[] getAnimationPaths(String animationName) {
-        File animationDir = new File(ANIMATION_PATH + File.separator + animationName);
-        if (!animationDir.exists() || !animationDir.isDirectory()) {
-            throw new IllegalArgumentException("Animation directory not found: " + animationDir.getAbsolutePath());
+    private static String[] getAnimationPaths(String animationName, int frameCount) {
+        String basePath = ANIMATION_PATH + "/" + animationName + "/";
+
+        String[] paths = new String[frameCount];
+        for (int i = 0; i < frameCount; i++) {
+            paths[i] = basePath + i + ".png";
         }
-        String[] fileNames = animationDir.list();
-        if (fileNames == null) {
-            throw new IllegalArgumentException("No files found in animation directory: " + animationDir.getAbsolutePath());
-        }
-        String[] result = new String[fileNames.length];
-        for (int i = 0; i < fileNames.length; i++) {
-            result[i] = animationDir + File.separator + fileNames[i];
-        }
-        return result;
+
+        return paths;
     }
 
     /**
-     * Initiates a crossfade transition to the new animation identified by newAnimationKey.
+     * Initiates a crossfade transition to the new animation identified by
+     * newAnimationKey.
+     * 
      * @param newAnimationKey The key of the new animation to transition to.
      */
     public void startTransitionTo(String newAnimationKey) {
-        if (transitioning || newAnimationKey.equals(currentAnimation)) return;
+        if (transitioning || newAnimationKey.equals(currentAnimation))
+            return;
 
         this.nextAnimationKey = newAnimationKey;
         transitioning = true;

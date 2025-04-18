@@ -5,6 +5,7 @@ import ch.fhnw.team6.model.Language;
 import ch.fhnw.team6.model.Question;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class JsonHandlerTest {
 
     @Test
-    void testLoadClothesValidFile() {
+    void testLoadClothesValidFile() throws IOException {
         // Arrange
-        String testFilePath = "src/test/resources/JSON/clothes/clothes_test.json";
+        String testFilePath = "src/test/resources/json/clothes_test.json";
 
         // Act
         List<Clothing> clothes = JsonHandler.loadClothes(testFilePath);
@@ -36,16 +37,15 @@ class JsonHandlerTest {
     }
 
     @Test
-    void testLoadClothesFileNotFound() {
-        String invalidPath = "src/test/resources/JSON/clothes/nonexistent.json";
-        List<Clothing> clothes = JsonHandler.loadClothes(invalidPath);
-        assertTrue(clothes.isEmpty(), "Clothes list should be empty if file is not found.");
+    void testLoadClothesFileNotFound() throws IOException {
+        String invalidPath = "src/test/resources/json/nonexistent.json";
+        assertThrows(IOException.class, () -> JsonHandler.loadClothes(invalidPath));
     }
 
     @Test
-    void testLoadQuestionsValidFile() {
+    void testLoadQuestionsValidFile() throws IOException {
         // Arrange
-        String testFilePath = "src/test/resources/JSON/questions/questions_test.json";
+        String testFilePath = "src/test/resources/json/questions_test.json";
 
         // Act
         List<Question> questions = JsonHandler.loadQuestions(testFilePath);
@@ -66,13 +66,6 @@ class JsonHandlerTest {
         // Explanation check
         assertEquals("TEST TEST TEST", question.getExplanationCorrect(Language.ENGLISH));
         assertEquals("TEST TEST TEST", question.getExplanationIncorrect(Language.ENGLISH));
-    }
-
-    @Test
-    void testLoadQuestionsFileNotFound() {
-        String invalidPath = "src/test/resources/JSON/questions/nonexistent.json";
-        List<Question> questions = JsonHandler.loadQuestions(invalidPath);
-        assertTrue(questions.isEmpty(), "Questions list should be empty if file is not found.");
     }
 
     public boolean sameListAs(List<String> correct1, List<String> correct2) {

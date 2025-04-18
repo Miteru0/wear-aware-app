@@ -46,10 +46,13 @@ public abstract class AbstractAnimatedPanel extends JPanel implements Animatable
 
     /**
      * Load animations from the provided paths
+     * 
      * @param animationPaths A map of animation names to their file paths
      */
     private void loadAnimations(Map<String, String[]> animationPaths) {
         if (animationPaths == null || animationPaths.isEmpty()) return;
+    
+        ClassLoader classLoader = getClass().getClassLoader();
     
         for (String key : animationPaths.keySet()) {
             String[] paths = animationPaths.get(key);
@@ -57,11 +60,16 @@ public abstract class AbstractAnimatedPanel extends JPanel implements Animatable
     
             Image[] frames = new Image[paths.length];
             for (int i = 0; i < paths.length; i++) {
-                frames[i] = new ImageIcon(paths[i]).getImage();
+                java.net.URL resource = classLoader.getResource(paths[i]);
+                if (resource == null) {
+                    throw new IllegalArgumentException("Missing resource: " + paths[i]);
+                }
+                frames[i] = new ImageIcon(resource).getImage();
             }
             animations.put(key, frames);
         }
     }
+    
     
 
     /**

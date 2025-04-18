@@ -25,8 +25,9 @@ public class JsonHandler {
     /**
      * Reads out the Json-File "clothes" from the folder
      * Turns Json-Data into Objects
+     * @throws IOException 
      */
-    public static List<Clothing> loadClothes(String jsonPath) {
+    public static List<Clothing> loadClothes(String jsonPath) throws IOException {
         List<Clothing> clothes = new ArrayList<>();
         try (JsonReader reader = new JsonReader(new FileReader(jsonPath))) { // C:\git-repo\wearAware\src\main\resources\JSON\clothes\clothes.json
             JsonArray jsonArray = GSON.fromJson(reader, JsonArray.class);
@@ -37,12 +38,13 @@ public class JsonHandler {
                 clothes.add(new Clothing(name, barcode));
             }
         } catch (IOException e) {
-            System.err.println("Error loading Clothes");
+            System.err.println("Trying production path");
+            throw new IOException();
         }
         return clothes;
     }
 
-    public static List<Question> loadQuestions(String jsonPath) {
+    public static List<Question> loadQuestions(String jsonPath) throws IOException {
         Map<String, QuestionDTO> questionDTOs = new HashMap<>();
         
         try (JsonReader reader = new JsonReader(new FileReader(jsonPath))) {
@@ -58,7 +60,8 @@ public class JsonHandler {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error loading Questions");
+            System.err.println("Trying production path");
+            throw new IOException();
         }
         
         return convertDTOsToQuestions(questionDTOs);
