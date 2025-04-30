@@ -26,7 +26,7 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
      * Constructor for BackgroundPanel using default animations.
      */
     public BackgroundPanel() {
-        super(getAnimationPaths(), 100, "animation1");
+        super(getAnimationPaths(), 300, "animation1");
         startRepaintTimer();
     }
 
@@ -61,10 +61,14 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
      */
     private static Map<String, String[]> getAnimationPaths() {
         Map<String, String[]> animations = new HashMap<>();
-        animations.put("1", getAnimationPaths("animation1", 1));
-        animations.put("2", getAnimationPaths("animation2", 1));
-        animations.put("3", getAnimationPaths("animation3", 1));
-        animations.put("4", getAnimationPaths("animation4", 1));
+        animations.put("1", getAnimationPaths("animation1", 10));
+        animations.put("2", getAnimationPaths("animation2", 10));
+        animations.put("3", getAnimationPaths("animation3", 10));
+        animations.put("4", getAnimationPaths("animation4", 10));
+        animations.put("5", getAnimationPaths("animation4", 10));
+        animations.put("6", getAnimationPaths("animation4", 10));
+        animations.put("7", getAnimationPaths("animation4", 10));
+
         return animations;
     }
 
@@ -104,7 +108,7 @@ public class BackgroundPanel extends AbstractAnimatedPanel {
 
         String[] paths = new String[frameCount];
         for (int i = 0; i < frameCount; i++) {
-            paths[i] = basePath + i + ".png";
+            paths[i] = basePath + (i+1) + ".png";
         }
 
         return paths;

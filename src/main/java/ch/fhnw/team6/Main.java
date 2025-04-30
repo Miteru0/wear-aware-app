@@ -43,15 +43,7 @@ public class Main extends JPanel {
         inputHandler = new InputHandler(player);
 
         // Set up animations.
-        Map<String, String[]> animationPaths = new HashMap<>();
-        animationPaths.put("1", new String[]{"images/background/animation1/0.png"});
-        animationPaths.put("2", new String[]{"images/background/animation2/0.png"});
-        animationPaths.put("3", new String[]{"images/background/animation3/0.png"});
-        animationPaths.put("4", new String[]{"images/background/animation4/0.png"});
-        animationPaths.put("5", new String[]{"images/background/animation5/0.png"});
-        animationPaths.put("6", new String[]{"images/background/animation6/0.png"});
-        animationPaths.put("7", new String[]{"images/background/animation7/0.png"});
-        backgroundPanel = new BackgroundPanel(animationPaths, 300, currentAnimationKey);
+        backgroundPanel = new BackgroundPanel();
         // Set the background panel to use the full screen dimensions.
         backgroundPanel.setBounds(0, 0, screenSize.width, screenSize.height);
 
