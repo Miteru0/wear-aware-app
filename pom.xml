@@ -40,26 +40,33 @@
             <version>${gson.version}</version>
         </dependency>
 
-        <!-- HumbleUI -->
-        <dependency>
+         <dependency>
             <groupId>io.github.humbleui</groupId>
             <artifactId>jwm</artifactId>
-            <version>${humbleui.version}</version>
+            <version>0.4.18</version>
         </dependency>
 
-        <!-- Skija native bindings -->
-        <!-- Windows -->
         <dependency>
             <groupId>io.github.humbleui</groupId>
             <artifactId>skija-windows-x64</artifactId>
-            <version>${skija.version}</version>
+            <version>0.116.4</version>
         </dependency>
-        <!-- Linux -->
+        <dependency>
+            <groupId>io.github.humbleui</groupId>
+            <artifactId>skija-macos-arm64</artifactId>
+            <version>0.116.4</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.humbleui</groupId>
+            <artifactId>skija-macos-x64</artifactId>
+            <version>0.116.4</version>
+        </dependency>
         <dependency>
             <groupId>io.github.humbleui</groupId>
             <artifactId>skija-linux-x64</artifactId>
-            <version>${skija.version}</version>
+            <version>0.116.4</version>
         </dependency>
+
         <!-- For Raspberry PI, we'll just use lib (.so) -->
 
         <!-- JUnit 5 -->
