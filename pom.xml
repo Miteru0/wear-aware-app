@@ -26,7 +26,8 @@
 
         <gson.version>2.10.1</gson.version>
         <junit.version>5.11.0-M2</junit.version>
-        <humbleui.version>0.3.0</humbleui.version>
+        <humbleui.version>0.4.18</humbleui.version>
+        <skija.version>0.116.4</skija.version>
 
         <mainClass>ch.fhnw.team6.Main</mainClass>
     </properties>
@@ -39,49 +40,27 @@
             <version>${gson.version}</version>
         </dependency>
 
-        <!-- HumbleUI (UI framework) -->
+        <!-- HumbleUI -->
         <dependency>
             <groupId>io.github.humbleui</groupId>
-            <artifactId>humbleui-core</artifactId>
+            <artifactId>jwm</artifactId>
             <version>${humbleui.version}</version>
         </dependency>
+
+        <!-- Skija native bindings -->
+        <!-- Windows -->
         <dependency>
             <groupId>io.github.humbleui</groupId>
-            <artifactId>humbleui-skija</artifactId>
-            <version>${humbleui.version}</version>
+            <artifactId>skija-windows-x64</artifactId>
+            <version>${skija.version}</version>
         </dependency>
-        
-        <!-- Platform-specific dependencies (will be selected based on OS) -->
+        <!-- Linux -->
         <dependency>
             <groupId>io.github.humbleui</groupId>
-            <artifactId>humbleui-jwm</artifactId>
-            <version>${humbleui.version}</version>
-            <classifier>linux-aarch64</classifier> <!-- For Raspberry Pi -->
+            <artifactId>skija-linux-x64</artifactId>
+            <version>${skija.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.github.humbleui</groupId>
-            <artifactId>humbleui-jwm</artifactId>
-            <version>${humbleui.version}</version>
-            <classifier>linux-x64</classifier> <!-- For Linux developers -->
-        </dependency>
-        <dependency>
-            <groupId>io.github.humbleui</groupId>
-            <artifactId>humbleui-jwm</artifactId>
-            <version>${humbleui.version}</version>
-            <classifier>macos-aarch64</classifier> <!-- For M1/M2 Macs -->
-        </dependency>
-        <dependency>
-            <groupId>io.github.humbleui</groupId>
-            <artifactId>humbleui-jwm</artifactId>
-            <version>${humbleui.version}</version>
-            <classifier>macos-x64</classifier> <!-- For Intel Macs -->
-        </dependency>
-        <dependency>
-            <groupId>io.github.humbleui</groupId>
-            <artifactId>humbleui-jwm</artifactId>
-            <version>${humbleui.version}</version>
-            <classifier>windows-x64</classifier> <!-- For Windows -->
-        </dependency>
+        <!-- For Raspberry PI, we'll just use lib (.so) -->
 
         <!-- JUnit 5 -->
          <dependency>
