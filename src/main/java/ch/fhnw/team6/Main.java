@@ -2,103 +2,223 @@ package ch.fhnw.team6;
 
 import ch.fhnw.team6.controller.InputHandler;
 import ch.fhnw.team6.exceptions.NotAValidInputException;
-import ch.fhnw.team6.view.AnimationManager;
-import ch.fhnw.team6.view.TextPane;
 import ch.fhnw.team6.model.Player;
+import ch.fhnw.team6.view.AnimationManager;
+import ch.fhnw.team6.view.QuestionPane;
+import ch.fhnw.team6.view.TextAlign;
+import javafx.animation.AnimationTimer;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-import io.github.humbleui.jwm.*;
-import io.github.humbleui.jwm.skija.EventFrameSkija;
-import io.github.humbleui.jwm.skija.LayerGLSkija;
-import io.github.humbleui.skija.*;
-import io.github.humbleui.types.*;
+public class Main extends Application {
 
-public class Main {
+    private AnimationManager animationManager;
+    private InputHandler inputHandler;
+    private QuestionPane questionPane;
+    private String currentQuestion;
+    private String currentAnswer;
+    private boolean isAnswered;
+    private int step;
+    private Canvas canvas;
+    private long lastFrameTime;
 
-    private Window window; // The main application window
-    private AnimationManager animationManager; // Manages the animations
-    private long lastFrameTime = System.nanoTime(); // Time of the last frame in nanoseconds
-    private TextPane questionPane; // Pane for displaying questions
-    private InputHandler inputHandler = new InputHandler(new Player()); // Handles user input
-    private String currentQuestion = inputHandler.getQuestionQuestion(); // Current question text
-    private String currentAnswer = ""; // Current answer text
-    private boolean isAnswered = false; // Flag to check if the question has been answered
-    private int step = 0; // Step counter for the game
+    /**
+     * Initializes the JavaFX application
+     *
+     * @param primaryStage The primary stage for this application
+     */
+    @Override
+    public void start(Stage primaryStage) {
+        initializeGame(primaryStage);
 
-    public static void main(String[] args) {
-        new Main().start();
-    }
+        Group root = new Group(canvas);
+        Scene scene = new Scene(root, 1280, 720, Color.BLACK);
+        primaryStage.setScene(scene);
 
-    private void start() {
-        App.start(() -> {
-            window = App.makeWindow();
-            window.setLayer(new LayerGLSkija());
-            window.setTitle("Animation Test");
+        setupStage(primaryStage);
 
-            // Linux-specific fullscreen setup
-            if (Platform.CURRENT == Platform.X11) {
-                // Proper Linux fullscreen approach
-                Screen screen = App.getPrimaryScreen();
-                window.setWindowPosition(0, 0);
-                window.setWindowSize(screen.getWorkArea().getWidth(), screen.getWorkArea().getHeight());
-                window.setVisible(true);
-                window.setFullScreen(true);
-            } else {
-                // Standard approach for other platforms
-                window.setFullScreen(true);
-                window.setVisible(true);
+        // Key event handling for user input
+        scene.setOnKeyPressed(e -> handleKeyEvent(e.getCode(), primaryStage));
+
+        // Start the animation timer
+        new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                updateGameLoop(now);
             }
-
-            // Initialize after window is ready
-            animationManager = new AnimationManager(window);
-
-            window.setEventListener(this::handleEvent);
-            window.requestFrame();
-        });
+        }.start();
     }
 
-    private void handleEvent(Event e) {
-        switch (e) {
-            case EventWindowCloseRequest _ -> App.terminate();
-            case EventKey keyEvent -> handleKeyEvent(keyEvent);
-            case EventFrameSkija frameEvent -> handleFrameEvent(frameEvent);
-            default -> {
+    /**
+     * Initializes the game components
+     * 
+     * Creates the canvas, input handler, and animation manager
+     * Sets the initial question and answer state
+     * 
+     * @param primaryStage The primary stage for this application
+     */
+    private void initializeGame(Stage primaryStage) {
+        primaryStage.setTitle("Animation Test");
+
+        // Initialize components
+        canvas = new Canvas();
+        inputHandler = new InputHandler(new Player());
+        animationManager = new AnimationManager(canvas, 7, 4);
+
+        // Initial question and answer state
+        currentQuestion = inputHandler.getQuestionQuestion();
+        currentAnswer = "";
+        isAnswered = false;
+        step = 0;
+        lastFrameTime = System.nanoTime();
+    }
+
+    /**
+     * Sets up the primary stage for the application.
+     * 
+     * @param primaryStage The primary stage for this application.
+     */
+    private void setupStage(Stage primaryStage) {
+        primaryStage.setFullScreen(true); // Enable fullscreen mode
+        primaryStage.show();
+
+        // Adjust canvas size on window resize or fullscreen toggle
+        primaryStage.widthProperty().addListener((_, _, _) -> updateCanvasSize(primaryStage));
+        primaryStage.heightProperty().addListener((_, _, _) -> updateCanvasSize(primaryStage));
+    }
+
+    /**
+     * Updates the game loop
+     * 
+     * Calculates the delta time since the last frame
+     * Updates the animation manager
+     * Draws the current animation and question/answer text
+     * 
+     * @param now The current time in nanoseconds
+     */
+    private void updateGameLoop(long now) {
+        double deltaTime = Math.min((now - lastFrameTime) / 1_000_000_000.0, 0.1);
+        lastFrameTime = now;
+
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        clearCanvas(gc);
+        animationManager.update(deltaTime);
+        animationManager.draw(gc);
+        updateTextPane();
+    }
+
+    /**
+     * Clears the canvas by filling it with a black rectangle
+     * 
+     * @param gc The GraphicsContext to clear
+     */
+    private void clearCanvas(GraphicsContext gc) {
+        gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
+    /**
+     * Updates the text pane with the current question and answer
+     * 
+     * Sets the text alignment, background opacity, and position
+     * Draws the question and answer on the canvas
+     */
+    private void updateTextPane() {
+        if (questionPane == null) {
+            questionPane = new QuestionPane(0f, (float) canvas.getHeight(), (float) canvas.getWidth(), (float) canvas.getHeight() / 6f);
+            questionPane.setTextAlign(TextAlign.CENTER);
+            questionPane.setBackgroundOpacity(0.75);
+            questionPane.setPosition(0f, (float) (canvas.getHeight() - questionPane.getHeight()) / 2);
+        }
+        questionPane.setQuestion(currentQuestion);
+        questionPane.setAnswer(currentAnswer);
+        questionPane.draw(canvas);
+    }
+
+    /**
+     * Handles key events for user input
+     * 
+     * @param code The key code of the pressed key
+     */
+    private void handleKeyEvent(KeyCode code, Stage primaryStage) {
+        switch (code) {
+            case SPACE -> handleSpaceKey();
+            case ESCAPE -> System.exit(0);
+            case R -> restartGame();
+            default -> handleAnswerInput(code);
+        }
+    }
+
+
+    /**
+     * Handles the space key event
+     * 
+     * If the question is answered, it proceeds to the next animation
+     * If the step is 7, it restarts the game
+     */
+    private void handleSpaceKey() {
+        if (isAnswered) {
+            animationManager.nextAnimation();
+            currentAnswer = "";
+            currentQuestion = inputHandler.getQuestionQuestion();
+            isAnswered = false;
+            if (step == 7) {
+                restartGame();
             }
         }
     }
 
-    private void handleKeyEvent(EventKey keyEvent) {
-        if (keyEvent.isPressed()) {
-            switch (keyEvent.getKey()) {
-                case SPACE -> {
-                    if (isAnswered) {
-                        animationManager.nextAnimation();
-                        currentAnswer = "";
-                        currentQuestion = inputHandler.getQuestionQuestion();
-                        isAnswered = false;
-                        if (step == 7) {
-                            restartGame();
-                        }
-                    }
-                }
-                case ESCAPE -> App.terminate();
-                case R -> {
-                    restartGame();
-                }
-                default -> {
-                    try  {
-                        currentAnswer = inputHandler.answerQuestion(keyEvent.getKey().getName()); 
-                        isAnswered = true;           
-                        step++;            
-                    } catch (NotAValidInputException e){
-                        System.err.println("Invalid input: " + e.getMessage());
-                    }
-                }
+    /**
+     * Handles the answer input from the user
+     * 
+     * @param code The key code of the pressed key
+     */
+    private void handleAnswerInput(KeyCode code) {
+        if (!isAnswered) {
+            try {
+                currentAnswer = inputHandler.answerQuestion(code.getName());
+                isAnswered = true;
+                step++;
+            } catch (NotAValidInputException e) {
+                System.err.println("Invalid input: " + e.getMessage());
             }
         }
     }
 
+    /**
+     * Updates the canvas size based on the primary stage dimensions
+     * 
+     * Sets the canvas width and height to match the primary stage
+     * Updates the question pane size and position
+     * 
+     * @param primaryStage The primary stage for this application
+     */
+    private void updateCanvasSize(Stage primaryStage) {
+        canvas.setWidth(primaryStage.getWidth());
+        canvas.setHeight(primaryStage.getHeight());
+
+        // Update the text pane size and position
+        if (questionPane != null) {
+            questionPane.setSize((float) primaryStage.getWidth(), (float) primaryStage.getHeight() / 6);
+            questionPane.setPosition(0f, (float) (primaryStage.getHeight() - questionPane.getHeight()) / 2);
+            questionPane.setFontSize(28);
+            questionPane.setLineSpacing(12);
+            questionPane.setPaddingY(20);
+        }
+    }
+
+    /**
+     * Restarts the game by resetting the input handler and question state
+     * 
+     * Resets the current question, answer, and step
+     */
     private void restartGame() {
-        // Restart the game logic
         inputHandler.restartGame(new Player());
         currentQuestion = inputHandler.getQuestionQuestion();
         currentAnswer = "";
@@ -106,34 +226,7 @@ public class Main {
         step = 0;
     }
 
-    private void handleFrameEvent(EventFrameSkija frameEvent) {
-        Canvas canvas = frameEvent.getSurface().getCanvas();
-
-        IRect bounds = window.getWindowRect();
-        // Black background covering potential gaps
-        try (Paint bgPaint = new Paint()) {
-            bgPaint.setColor(0xFF000000);
-            canvas.drawRect(Rect.makeXYWH(0, 0, bounds.getWidth(), bounds.getHeight()), bgPaint);
-        }
-
-        float width = bounds.getWidth();
-        float height = bounds.getHeight() / 6;
-        float paneY = (bounds.getHeight() - height) / 2; // Center vertically
-
-        questionPane = new TextPane(0, paneY, width, height);
-        questionPane.setQuestion(currentQuestion);
-        questionPane.setAnswer(currentAnswer);
-
-        // Calculate delta time
-        long now = System.nanoTime();
-        double deltaTime = Math.min((now - lastFrameTime) / 1_000_000_000.0, 0.1);
-        lastFrameTime = now;
-
-        // Update and draw animations
-        animationManager.update(deltaTime);
-        animationManager.draw(canvas);
-        questionPane.draw(canvas);
-
-        window.requestFrame();
+    public static void main(String[] args) {
+        launch(args);
     }
 }

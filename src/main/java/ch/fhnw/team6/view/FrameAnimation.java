@@ -1,9 +1,8 @@
 package ch.fhnw.team6.view;
 
-import io.github.humbleui.jwm.Window;
-import io.github.humbleui.skija.Canvas;
-import io.github.humbleui.skija.Image;
-import io.github.humbleui.types.IRect;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public class FrameAnimation implements Animation {
 
@@ -11,25 +10,28 @@ public class FrameAnimation implements Animation {
     private final double frameDuration;
     private double accumulator;
     private int currentFrame;
-    private final Window window;
-    private float scale = 1.0f;
+    private final Canvas canvas;
+    private double scale = 1.0;
 
     /**
      * Constructor for FrameAnimation
-     * 
-     * @param window The window to draw on
-     * @param frames Array of images representing the frames of the animation
-     * @param fps    Frames per second for the animation
+     *
+     * @param canvas The canvas on which the animation will be drawn
+     * @param frames The frames of the animation
+     * @param fps    The frames per second for the animation
      */
-    public FrameAnimation(Window window, Image[] frames, double fps) {
-        this.window = window;
+    public FrameAnimation(Canvas canvas, Image[] frames, double fps) {
+        this.canvas = canvas;
         this.frames = frames;
         this.frameDuration = 1.0 / fps;
-        calculateScale();
+
+        updateScale();
     }
 
     /**
-     * Updates the current frame of the animation
+     * Updates the animation state based on the elapsed time
+     *
+     * @param deltaTime The time since the last update
      */
     @Override
     public void update(double deltaTime) {
@@ -41,51 +43,64 @@ public class FrameAnimation implements Animation {
     }
 
     /**
-     * Calculates the scale of the animation based on the window size
+     * Updates the scale based on the current canvas size
      */
-    private void calculateScale() {
-        IRect windowRect = window.getWindowRect();
-        this.scale = Math.min(
-                (float) windowRect.getWidth() / frames[0].getWidth(),
-                (float) windowRect.getHeight() / frames[0].getHeight());
+    private void updateScale() {
+        double canvasWidth = canvas.getWidth();
+        double canvasHeight = canvas.getHeight();
+        
+        // Ensure canvas size is valid before calculating the scale
+        if (canvasWidth > 0 && canvasHeight > 0 && frames.length > 0) {
+            double imageWidth = frames[0].getWidth();
+            double imageHeight = frames[0].getHeight();
+            
+            // Calculate scale to fit the image within the canvas
+            this.scale = Math.min(
+                canvasWidth / imageWidth,
+                canvasHeight / imageHeight
+            );
+        }
     }
 
     /**
-     * Draws the current frame of the animation on the canvas
-     * 
-     * @param canvas The canvas to draw on
+     * Draws the current frame of the animation
+     *
+     * @param gc The GraphicsContext to draw on
      */
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(GraphicsContext gc) {
+        // Ensure the scale is up-to-date before drawing
+        updateScale();
+
         Image frame = frames[currentFrame];
-        canvas.save();
-        canvas.translate(
-                (window.getWindowRect().getWidth() - frame.getWidth() * scale) / 2f,
-                (window.getWindowRect().getHeight() - frame.getHeight() * scale) / 2f);
-        canvas.scale(scale, scale);
-        canvas.drawImage(frame, 0, 0);
-        canvas.restore();
+        double x = (canvas.getWidth() - frame.getWidth() * scale) / 2;
+        double y = (canvas.getHeight() - frame.getHeight() * scale) / 2;
+
+        // Draw the image with the calculated scale
+        gc.drawImage(frame, x, y, frame.getWidth() * scale, frame.getHeight() * scale);
     }
 
     /**
      * Gets the current frame of the animation
      * 
-     * @return The current frame as an Image
+     * @return The current frame of the animation
      */
     public Image getCurrentFrame() {
         return frames[currentFrame];
     }
 
     /**
-     * Checks if the animation is complete and it's not, because it's a loop
+     * Checks if the animation is complete, but since this is a looping animation, it will always return false
+     * 
+     * @return true if the animation is complete, false otherwise
      */
     @Override
     public boolean isComplete() {
-        return false;
+        return false; // It's a loop
     }
 
     /**
-     * Resets the animation to the first frame
+     * Resets the animation to the first frame (not really needed)
      */
     @Override
     public void reset() {

@@ -1,152 +1,87 @@
 package ch.fhnw.team6.view;
 
-import io.github.humbleui.jwm.Window;
-import io.github.humbleui.skija.*;
-import io.github.humbleui.types.*;
+import javafx.scene.canvas.GraphicsContext;
 
 public class FadeTransition implements Animation {
 
-    private final Window window;
-    private final Animation out;
-    private final Animation in;
+    private final FrameAnimation out;
+    private final FrameAnimation in;
     private double progress;
     private double duration;
     private boolean useEasing;
-    private final float fixedScale;
 
     /**
      * Constructor for FadeTransition
-     * 
-     * @param window The window to draw on
-     * @param out    The outgoing animation
-     * @param in     The incoming animation
+     *
+     * @param out        The animation to fade out
+     * @param in         The animation to fade in
+     * @param duration   The duration of the transition
+     * @param useEasing  Whether to use easing for the transition
      */
-    public FadeTransition(Window window, Animation out, Animation in) {
-        this(window, out, in, 1.5, true);
-    }
-
-    /**
-     * Constructor for FadeTransition with custom duration and easing
-     * 
-     * @param window    The window to draw on
-     * @param out       The outgoing animation
-     * @param in        The incoming animation
-     * @param duration  Duration of the transition in seconds
-     * @param useEasing Whether to use easing for the transition
-     */
-    public FadeTransition(Window window, Animation out, Animation in,
-            double duration, boolean useEasing) {
-        this.window = window;
+    public FadeTransition(FrameAnimation out, FrameAnimation in, double duration, boolean useEasing) {
         this.out = out;
         this.in = in;
         this.duration = duration;
         this.useEasing = useEasing;
-
-        Image firstFrame = ((FrameAnimation) out).getCurrentFrame();
-        IRect windowRect = window.getWindowRect();
-        this.fixedScale = Math.min(
-                (float) windowRect.getWidth() / firstFrame.getWidth(),
-                (float) windowRect.getHeight() / firstFrame.getHeight());
     }
 
     /**
-     * Updates the progress of the transition
+     * Updates the transition progress
      * 
-     * @param deltaTime Time since the last update in seconds
+     * @param deltaTime The time since the last update
      */
     @Override
     public void update(double deltaTime) {
-
         progress = Math.min(progress + deltaTime / duration, 1.0);
-
-        // Continue updating both animations independently
         out.update(deltaTime);
         in.update(deltaTime);
     }
 
     /**
-     * Draws the transition on the canvas
+     * Draws the transition
      * 
-     * @param canvas The canvas to draw on
+     * @param gc The GraphicsContext to draw on
      */
     @Override
-    public void draw(Canvas canvas) {
-        canvas.clear(0x00000000);
-        float interpProgress = getInterpolatedProgress();
+    public void draw(GraphicsContext gc) {
+        double interpProgress = getInterpolatedProgress();
 
-        try (Paint outPaint = new Paint()) {
-            outPaint.setAlphaf(1.0f - interpProgress);
-            drawFrame(canvas, ((FrameAnimation) out).getCurrentFrame(), outPaint);
-        }
+        gc.save();
+        gc.setGlobalAlpha(1.0 - interpProgress);
+        out.draw(gc);
+        gc.restore();
 
-        try (Paint inPaint = new Paint()) {
-            inPaint.setAlphaf(interpProgress);
-            drawFrame(canvas, ((FrameAnimation) in).getCurrentFrame(), inPaint);
-        }
+        gc.save();
+        gc.setGlobalAlpha(interpProgress);
+        in.draw(gc);
+        gc.restore();
     }
 
     /**
-     * Draws a frame on the canvas with a fixed scale
+     * Gets the interpolated progress for easing
      * 
-     * @param canvas The canvas to draw on
-     * @param frame  The image frame to draw
-     * @param paint  The paint object for drawing
+     * @return The interpolated progress value
      */
-    private void drawFrame(Canvas canvas, Image frame, Paint paint) {
-        canvas.save();
-        // Integer positioning to prevent sub-pixel jumps
-        int x = (int) ((window.getWindowRect().getWidth() - frame.getWidth() * fixedScale) / 2);
-        int y = (int) ((window.getWindowRect().getHeight() - frame.getHeight() * fixedScale) / 2);
-        canvas.translate(x, y);
-        canvas.scale(fixedScale, fixedScale);
-        canvas.drawImage(frame, 0, 0, paint);
-        canvas.restore();
-    }
-
-    /**
-     * Returns the interpolated progress based on the easing function
-     * 
-     * @return Interpolated progress value
-     */
-    private float getInterpolatedProgress() {
-        if (!useEasing) {
-            return (float) progress;
-        }
-        float x = (float) progress;
+    private double getInterpolatedProgress() {
+        if (!useEasing) return progress;
+        double x = progress;
         return x * x * (3 - 2 * x);
     }
 
     /**
-     * Returns whether the transition is complete
+     * Checks if the transition is complete
      * 
      * @return True if the transition is complete, false otherwise
      */
-    @Override
     public boolean isComplete() {
         return progress >= 1.0;
     }
 
     /**
-     * Resets the transition to its initial state
-     * 
+     * Resets the transition (not really needed)
      */
     @Override
     public void reset() {
-        progress = 0;
-        out.reset();
-        in.reset();
+        // we don't really need it, do we?)
     }
-
-    public void setDuration(double seconds) {
-        this.duration = seconds;
-    }
-
-    public void setEasingEnabled(boolean enabled) {
-        this.useEasing = enabled;
-    }
-
-    public double getRemainingDuration() {
-        return (1.0 - progress) * duration;
-    }
-
 }
