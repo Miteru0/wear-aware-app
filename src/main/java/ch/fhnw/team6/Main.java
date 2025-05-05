@@ -2,6 +2,7 @@ package ch.fhnw.team6;
 
 import ch.fhnw.team6.controller.InputHandler;
 import ch.fhnw.team6.exceptions.NotAValidInputException;
+import ch.fhnw.team6.model.Language;
 import ch.fhnw.team6.model.Player;
 import ch.fhnw.team6.view.AnimationManager;
 import ch.fhnw.team6.view.QuestionPane;
@@ -18,14 +19,19 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private Canvas canvas;
+
     private AnimationManager animationManager;
     private InputHandler inputHandler;
+
     private QuestionPane questionPane;
+    private Player player;
+    
     private String currentQuestion;
     private String currentAnswer;
     private boolean isAnswered;
+
     private int step;
-    private Canvas canvas;
     private long lastFrameTime;
 
     /**
@@ -44,7 +50,7 @@ public class Main extends Application {
         setupStage(primaryStage);
 
         // Key event handling for user input
-        scene.setOnKeyPressed(e -> handleKeyEvent(e.getCode(), primaryStage));
+        scene.setOnKeyPressed(e -> handleKeyEvent(e.getCode()));
 
         // Start the animation timer
         new AnimationTimer() {
@@ -67,8 +73,9 @@ public class Main extends Application {
         primaryStage.setTitle("Animation Test");
 
         // Initialize components
+        player = new Player();
         canvas = new Canvas();
-        inputHandler = new InputHandler(new Player());
+        inputHandler = new InputHandler(player);
         animationManager = new AnimationManager(canvas, 7, 4);
 
         // Initial question and answer state
@@ -144,10 +151,13 @@ public class Main extends Application {
     /**
      * Handles key events for user input
      * 
+     * Processes key presses for language switch, space key, escape key, and answer input
+     * 
      * @param code The key code of the pressed key
      */
-    private void handleKeyEvent(KeyCode code, Stage primaryStage) {
+    private void handleKeyEvent(KeyCode code) {
         switch (code) {
+            case L -> handleLanguageSwitch();
             case SPACE -> handleSpaceKey();
             case ESCAPE -> System.exit(0);
             case R -> restartGame();
@@ -155,6 +165,24 @@ public class Main extends Application {
         }
     }
 
+    /**
+     * Handles the language switch event
+     * 
+     * Switches the player's language to the next available language
+     */
+    private void handleLanguageSwitch() {
+        player.setLanguage(Language.getNextLanguage(player.getLanguage()));
+        updateLanguage();
+    }
+
+    /**
+     * Updates the current question based on the player's language
+     * 
+     * Retrieves the question from the input handler based on the current language
+     */
+    private void updateLanguage() {
+        currentQuestion = inputHandler.getQuestionQuestion();
+    }
 
     /**
      * Handles the space key event
@@ -219,7 +247,8 @@ public class Main extends Application {
      * Resets the current question, answer, and step
      */
     private void restartGame() {
-        inputHandler.restartGame(new Player());
+        player = new Player();
+        inputHandler.restartGame(player);
         currentQuestion = inputHandler.getQuestionQuestion();
         currentAnswer = "";
         isAnswered = false;
