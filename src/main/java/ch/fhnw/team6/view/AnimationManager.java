@@ -22,7 +22,7 @@ public class AnimationManager {
         this.animations = new Animation[7];
         for (int i = 0; i < 7; i++) {
             String name = "animation" + (i + 1);
-            animations[i] = new FrameAnimation(window, ResourceLoader.loadAnimationFrames(name, 4000, 2255), 4);
+            animations[i] = new FrameAnimation(window, ResourceLoader.loadAnimationFrames(name, 1920, 1080), 4);
         }
     }
 
