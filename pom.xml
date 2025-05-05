@@ -26,6 +26,8 @@
 
         <gson.version>2.10.1</gson.version>
         <junit.version>5.11.0-M2</junit.version>
+        <humbleui.version>0.4.18</humbleui.version>
+        <skija.version>0.116.4</skija.version>
 
         <mainClass>ch.fhnw.team6.Main</mainClass>
     </properties>
@@ -37,6 +39,35 @@
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
         </dependency>
+
+         <dependency>
+            <groupId>io.github.humbleui</groupId>
+            <artifactId>jwm</artifactId>
+            <version>0.4.18</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.humbleui</groupId>
+            <artifactId>skija-windows-x64</artifactId>
+            <version>0.116.4</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.humbleui</groupId>
+            <artifactId>skija-macos-arm64</artifactId>
+            <version>0.116.4</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.humbleui</groupId>
+            <artifactId>skija-macos-x64</artifactId>
+            <version>0.116.4</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.humbleui</groupId>
+            <artifactId>skija-linux-x64</artifactId>
+            <version>0.116.4</version>
+        </dependency>
+
+        <!-- For Raspberry PI, we'll just use lib (.so) -->
 
         <!-- JUnit 5 -->
          <dependency>
