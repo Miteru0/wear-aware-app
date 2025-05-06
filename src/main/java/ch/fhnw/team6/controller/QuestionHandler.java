@@ -77,6 +77,7 @@
          * @throws NoMoreQuestionsException if no questions are available.
          */
         public Question getNextQuestion() {
+            System.out.println(player.getPoints());
             checkQuestions();
             Difficulty questionDifficulty = getDifficultyFromPoints();
             while (currentQuestions.get(questionDifficulty) == null || currentQuestions.get(questionDifficulty).isEmpty()) {

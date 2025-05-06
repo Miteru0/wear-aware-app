@@ -349,8 +349,8 @@
     "type": "percent",
     "question": "How many times do you wear this item per month?",
     "explanation": "You chose a frequency that Ї of players also pick.",
-    "givenAnswers": { "1": 5, "2": 3},
-    "numberOfAnswers": 8,
+    "givenAnswers": { "1": 5, "2": 4},
+    "numberOfAnswers": 9,
     "difficulty": "EASY",
     "language": "FRENCH"
   },

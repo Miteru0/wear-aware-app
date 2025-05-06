@@ -33,6 +33,7 @@ public class Main extends Application {
 
     private int step;
     private long lastFrameTime;
+    private String input = "";
 
     /**
      * Initializes the JavaFX application
@@ -182,6 +183,13 @@ public class Main extends Application {
      */
     private void updateLanguage() {
         currentQuestion = inputHandler.getQuestionQuestion();
+        if(isAnswered) {
+            try {
+                currentAnswer = inputHandler.answerQuestion(input);
+            } catch (NotAValidInputException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -195,6 +203,7 @@ public class Main extends Application {
             animationManager.nextAnimation();
             currentAnswer = "";
             currentQuestion = inputHandler.getQuestionQuestion();
+            inputHandler.nextQuestion();
             isAnswered = false;
             if (step == 7) {
                 restartGame();
@@ -210,7 +219,8 @@ public class Main extends Application {
     private void handleAnswerInput(KeyCode code) {
         if (!isAnswered) {
             try {
-                currentAnswer = inputHandler.answerQuestion(code.getName());
+                input = code.getName();
+                currentAnswer = inputHandler.answerQuestion(input);
                 isAnswered = true;
                 step++;
             } catch (NotAValidInputException e) {

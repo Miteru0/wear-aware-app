@@ -67,16 +67,15 @@ public class InputHandler {
     public String answerQuestion(String input) throws NotAValidInputException {
         boolean isRightAnswer = checkInput(input);
         String explanation = currentQuestion.getExplanation(questionHandler.getPlayer().getLanguage(), input);
-        pointUpdate(isRightAnswer);
-        if (currentQuestion instanceof PercentQuestion) {
-            // record the fact that ‘input’ was chosen
-            String jsonPath = "src/main/resources/json/questions.json";
-            try {
-                JsonHandler.updatePercentAnswer(jsonPath, currentQuestion.getId(), input);
-            }catch (IOException e){
-                e.getMessage();
-            }
-        }
+//        if (currentQuestion instanceof PercentQuestion) {
+//            // record the fact that ‘input’ was chosen
+//            String jsonPath = "src/main/resources/json/questions.json";
+//            try {
+//                JsonHandler.updatePercentAnswer(jsonPath, currentQuestion.getId(), input);
+//            }catch (IOException e){
+//                e.getMessage();
+//            }
+//        }
 
         return explanation;
     }
@@ -125,6 +124,7 @@ public class InputHandler {
      * Retrieves the next question from the question handler.
      */
     public void nextQuestion() {
+        pointUpdate(isRightAnswer);
         currentQuestion = questionHandler.getNextQuestion();
     }
 
