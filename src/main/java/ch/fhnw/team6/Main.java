@@ -75,7 +75,7 @@ public class Main extends Application {
 
         // Initialize components
         player = new Player();
-        canvas = new Canvas();
+        canvas = new Canvas(1280, 720);
         inputHandler = new InputHandler(player);
         animationManager = new AnimationManager(canvas, 7, 4);
 
@@ -139,10 +139,11 @@ public class Main extends Application {
      */
     private void updateTextPane() {
         if (questionPane == null) {
-            questionPane = new QuestionPane(0f, (float) canvas.getHeight(), (float) canvas.getWidth(), (float) canvas.getHeight() / 6f);
+            questionPane = new QuestionPane(0, (float) canvas.getHeight(), (float) canvas.getWidth() * 0.8f, (float) canvas.getHeight() / 6f);
             questionPane.setTextAlign(TextAlign.CENTER);
             questionPane.setBackgroundOpacity(0.75);
-            questionPane.setPosition(0f, (float) (canvas.getHeight() - questionPane.getHeight()) / 2);
+            questionPane.setPosition(((float) canvas.getWidth()-questionPane.getWidth()) * 0.5f, (float) (canvas.getHeight() - questionPane.getHeight()) / 2);
+            questionPane.setCornerRadius(90);
         }
         questionPane.setQuestion(currentQuestion);
         questionPane.setAnswer(currentAnswer);
@@ -202,8 +203,8 @@ public class Main extends Application {
         if (isAnswered) {
             animationManager.nextAnimation();
             currentAnswer = "";
-            currentQuestion = inputHandler.getQuestionQuestion();
             inputHandler.nextQuestion();
+            currentQuestion = inputHandler.getQuestionQuestion();
             isAnswered = false;
             if (step == 7) {
                 restartGame();
@@ -243,8 +244,8 @@ public class Main extends Application {
 
         // Update the text pane size and position
         if (questionPane != null) {
-            questionPane.setSize((float) primaryStage.getWidth(), (float) primaryStage.getHeight() / 6);
-            questionPane.setPosition(0f, (float) (primaryStage.getHeight() - questionPane.getHeight()) / 2);
+            questionPane.setSize((float) primaryStage.getWidth() * 0.8f, (float) primaryStage.getHeight() / 6);
+            questionPane.setPosition(((float) primaryStage.getWidth()-questionPane.getWidth()) * 0.5f, (float) (primaryStage.getHeight() - questionPane.getHeight()) / 2);
             questionPane.setFontSize(28);
             questionPane.setLineSpacing(12);
             questionPane.setPaddingY(20);

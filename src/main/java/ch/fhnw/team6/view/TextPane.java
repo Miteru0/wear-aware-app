@@ -21,6 +21,7 @@ public class TextPane {
     protected double backgroundOpacity = 0.7;
     protected TextAlign textAlign = TextAlign.CENTER;
     protected double paddingY = 20;
+    protected double cornerRadius = 0;
 
     /**
      * Constructor for TextPane
@@ -81,6 +82,15 @@ public class TextPane {
      */
     public void setText(String text) {
         this.text = text;
+    }
+
+    /**
+     * Sets the corner radius of the text pane
+     * 
+     * @param cornerRadius The corner radius to be set
+     */
+    public void setCornerRadius(double cornerRadius) {
+        this.cornerRadius = cornerRadius;
     }
 
     /**
@@ -177,7 +187,7 @@ public class TextPane {
      */
     protected void drawBackground(GraphicsContext gc) {
         gc.setFill(Color.rgb(34, 34, 34, backgroundOpacity));
-        gc.fillRect(x, y, width, height);
+        gc.fillRoundRect(x, y, width, height, cornerRadius, cornerRadius);
     }
 
     /**
