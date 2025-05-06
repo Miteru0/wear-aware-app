@@ -65,7 +65,7 @@ public class InputHandler {
      *                                 be ignored in the GUI).
      */
     public String answerQuestion(String input) throws NotAValidInputException {
-        boolean isRightAnswer = checkInput(input);
+       isRightAnswer = checkInput(input);
         String explanation = currentQuestion.getExplanation(questionHandler.getPlayer().getLanguage(), input);
 //        if (currentQuestion instanceof PercentQuestion) {
 //            // record the fact that ‘input’ was chosen
