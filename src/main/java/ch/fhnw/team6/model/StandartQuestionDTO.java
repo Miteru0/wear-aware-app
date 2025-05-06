@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class QuestionDTO {
+public class StandartQuestionDTO {
 
     private Map<Language, String> question = new HashMap<>();
     private List<String> rightClothingBarcode;
     private Map<Language, String> explanationRight = new HashMap<>();
     private String difficulty;
     private Map<Language, String> explanationWrong = new HashMap<>();
+    String id;
 
     public void addQuestion(String question, Language language) {
         this.question.put(language, question);
@@ -31,6 +32,9 @@ public class QuestionDTO {
     public void setRightClothingBarcode(List<String> rightClothingBarcode) {
         this.rightClothingBarcode = rightClothingBarcode;
     }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Map<Language, String> getQuestion() {
         return question;
@@ -50,6 +54,9 @@ public class QuestionDTO {
 
     public Map<Language, String> getExplanationWrong() {
         return explanationWrong;
+    }
+    public String getId() {
+        return id;
     }
 
 }

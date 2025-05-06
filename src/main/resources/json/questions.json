@@ -8,6 +8,7 @@
     "explanationWrong": "Unfortunately no, materials are not vegan when they are of animal origin, for example, leather is made from animal skin.",
     "language": "ENGLISH"
   },
+
   {
     "id": "1",
     "question": "Scanne die Kleider, welche nicht vegan sind (d.h. aus tierischen Produkten).",
@@ -322,5 +323,45 @@
     "difficulty": "HARD",
     "explanationWrong": "Purtroppo no, poiché la maglietta e i jeans di cotone sono realizzati solo in cotone e sono quindi più facili da riciclare rispetto ai materiali realizzati con più tessuti.",
     "language": "ITALIAN"
+  },
+  {
+    "id": "10",
+    "type": "percent",
+    "question": "How many times do you wear this item per month?",
+    "explanation": "You chose a frequency that Ї of players also pick.",
+    "givenAnswers": { "1": 5, "2": 3 },
+    "numberOfAnswers": 8,
+    "difficulty": "EASY",
+    "language": "ENGLISH"
+  },
+  {
+    "id": "10",
+    "type": "percent",
+    "question": "How many times do you wear this item per month?",
+    "explanation": "You chose a frequency that Ї of players also pick.",
+    "givenAnswers": { "1": 5, "2": 3 },
+    "numberOfAnswers": 8,
+    "difficulty": "EASY",
+    "language": "ITALIAN"
+  },
+  {
+    "id": "10",
+    "type": "percent",
+    "question": "How many times do you wear this item per month?",
+    "explanation": "You chose a frequency that Ї of players also pick.",
+    "givenAnswers": { "1": 5, "2": 3},
+    "numberOfAnswers": 8,
+    "difficulty": "EASY",
+    "language": "FRENCH"
+  },
+  {
+    "id": "10",
+    "type": "percent",
+    "question": "How many times do you wear this item per month?",
+    "explanation": "You chose a frequency that Ї of players also pick.",
+    "givenAnswers": { "1": 5, "2": 3 },
+    "numberOfAnswers": 8,
+    "difficulty": "EASY",
+    "language": "GERMAN"
   }
 ]

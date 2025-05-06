@@ -7,14 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import ch.fhnw.team6.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import ch.fhnw.team6.exceptions.NoMoreQuestionsException;
-import ch.fhnw.team6.model.Difficulty;
-import ch.fhnw.team6.model.Language;
-import ch.fhnw.team6.model.Player;
-import ch.fhnw.team6.model.Question;
 
 public class QuestionHandlerTest {
 
@@ -33,16 +30,16 @@ public class QuestionHandlerTest {
                 Language.ITALIAN, "Domanda Esempio"
         );
 
-        List<Question> questions = Arrays.asList(
-                new Question(sampleText, sampleText, sampleText, List.of("123456"), "EASY"),
-                new Question(sampleText, sampleText, sampleText, List.of("123457"), "EASY"),
-                new Question(sampleText, sampleText, sampleText, List.of("123458"), "MEDIUM"),
-                new Question(sampleText, sampleText, sampleText, List.of("123459"), "MEDIUM"),
-                new Question(sampleText, sampleText, sampleText, List.of("123460"), "HARD"),
-                new Question(sampleText, sampleText, sampleText, List.of("123461"), "HARD")
-        );
+//        List<Question> questions = Arrays.asList(
+//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123456"), "EASY"),
+//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123457"), "EASY"),
+//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123458"), "MEDIUM"),
+//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123459"), "MEDIUM"),
+//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123460"), "HARD"),
+//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123461"), "HARD")
+//        );
 
-        questionHandler = new QuestionHandler(player, questions);
+//        questionHandler = new QuestionHandler(player, questions);
     }
 
      @Test

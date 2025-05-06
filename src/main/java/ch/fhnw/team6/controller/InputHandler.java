@@ -1,9 +1,12 @@
 package ch.fhnw.team6.controller;
 
 import ch.fhnw.team6.exceptions.NotAValidInputException;
+import ch.fhnw.team6.model.PercentQuestion;
 import ch.fhnw.team6.model.Player;
 import ch.fhnw.team6.model.Question;
+import ch.fhnw.team6.model.StandardQuestion;
 
+import java.io.IOException;
 import java.util.List;
 
 public class InputHandler {
@@ -63,11 +66,18 @@ public class InputHandler {
      */
     public String answerQuestion(String input) throws NotAValidInputException {
         boolean isRightAnswer = checkInput(input);
-        String explanation = (isRightAnswer)
-                ? currentQuestion.getExplanationCorrect(questionHandler.getPlayer().getLanguage())
-                : currentQuestion.getExplanationIncorrect(questionHandler.getPlayer().getLanguage());
+        String explanation = currentQuestion.getExplanation(questionHandler.getPlayer().getLanguage(), input);
         pointUpdate(isRightAnswer);
-        nextQuestion();
+        if (currentQuestion instanceof PercentQuestion) {
+            // record the fact that ‘input’ was chosen
+            String jsonPath = "src/main/resources/json/questions.json";
+            try {
+                JsonHandler.updatePercentAnswer(jsonPath, currentQuestion.getId(), input);
+            }catch (IOException e){
+                e.getMessage();
+            }
+        }
+
         return explanation;
     }
 
@@ -78,12 +88,6 @@ public class InputHandler {
      */
     public String getQuestionQuestion() {
         return currentQuestion.getQuestion(questionHandler.getPlayer().getLanguage());
-    }
-
-    public String getQuestionAnswer() {
-        return (isRightAnswer)
-                ? currentQuestion.getExplanationCorrect(questionHandler.getPlayer().getLanguage())
-                : currentQuestion.getExplanationIncorrect(questionHandler.getPlayer().getLanguage());
     }
 
     /**
@@ -112,13 +116,15 @@ public class InputHandler {
             throw new NotAValidInputException(input + " is not a valid input");
         }
         // Checks if the scanned barcode is correct
-        return currentQuestion.getCorrectAnswer().contains(input);
+        if(currentQuestion instanceof StandardQuestion) { return ((StandardQuestion) currentQuestion).getCorrectAnswer().contains(input);}
+        return true;
+
     }
 
     /**
      * Retrieves the next question from the question handler.
      */
-    private void nextQuestion() {
+    public void nextQuestion() {
         currentQuestion = questionHandler.getNextQuestion();
     }
 

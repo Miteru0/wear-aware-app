@@ -16,8 +16,8 @@ public class ResourceLoader {
      */
     public static Image[] loadAnimationFrames(String animationName, int targetWidth, int targetHeight) {
 
-        Image[] frames = new Image[10];
-        for (int i = 1; i <= 10; i++) {
+        Image[] frames = new Image[2];
+        for (int i = 1; i <= 2; i++) {
             String path = String.format("images/background/%s/%d.png", animationName, i);
             frames[i - 1] = loadAndScaleImage(path, targetWidth, targetHeight);
             System.out.println("Loaded frame: " + path);
