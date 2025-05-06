@@ -1,33 +1,37 @@
 package ch.fhnw.team6.view;
 
-import io.github.humbleui.jwm.Window;
-import io.github.humbleui.skija.Canvas;
 import ch.fhnw.team6.controller.ResourceLoader;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
 public class AnimationManager {
 
-    private final Window window; // The window to draw on
-    private final Animation[] animations; // Array of animations
-    private int currentIndex; // Current animation index
-    private Animation transition; // Current transition animation
+    private final FrameAnimation[] animations;
+    private int currentIndex;
+    private FadeTransition transition;
 
     /**
      * Constructor for AnimationManager
-     * Initializes the animations and sets the current index to 0
      *
-     * @param window The window to draw on
+     * @param canvas        The canvas on which the animations will be drawn
+     * @param animationCount The number of animations to manage
+     * @param fps           The frames per second for the animations
      */
-    public AnimationManager(Window window) {
-        this.window = window;
-        this.animations = new Animation[7];
-        for (int i = 0; i < 7; i++) {
+    public AnimationManager(Canvas canvas, int animationCount, int fps) {
+        this.animations = new FrameAnimation[animationCount];
+        for (int i = 0; i < animationCount; i++) {
             String name = "animation" + (i + 1);
-            animations[i] = new FrameAnimation(window, ResourceLoader.loadAnimationFrames(name, 1920, 1080), 4);
+            animations[i] = new FrameAnimation(canvas, ResourceLoader.loadAnimationFrames(name, 1280, 720), 4);
         }
+        this.currentIndex = 0;
     }
 
     /**
      * Updates the current animation or transition
+     * If a transition is in progress, it will be updated
+     * Otherwise, the current animation will be updated
+     *
+     * @param deltaTime The time since the last update
      */
     public void update(double deltaTime) {
         if (transition != null) {
@@ -41,25 +45,27 @@ public class AnimationManager {
     }
 
     /**
-     * Draws the current animation or transition on the canvas
+     * Draws the current animation or transition
+     * If a transition is in progress, it will be drawn
+     * Otherwise, the current animation will be drawn
      *
-     * @param canvas The canvas to draw on
+     * @param gc The GraphicsContext to draw on
      */
-    public void draw(Canvas canvas) {
+    public void draw(GraphicsContext gc) {
         if (transition != null) {
-            transition.draw(canvas);
+            transition.draw(gc);
         } else {
-            animations[currentIndex].draw(canvas);
+            animations[currentIndex].draw(gc);
         }
     }
 
     /**
-     * Gets the next animation
+     * Starts a transition to the next animation
+     * The transition will fade out the current animation and fade in the next one
      */
     public void nextAnimation() {
         int nextIndex = (currentIndex + 1) % animations.length;
-        transition = new FadeTransition(window, animations[currentIndex], animations[nextIndex]);
+        transition = new FadeTransition(animations[currentIndex], animations[nextIndex], 1.5, true);
         currentIndex = nextIndex;
     }
-
 }

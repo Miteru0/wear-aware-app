@@ -1,13 +1,10 @@
 package ch.fhnw.team6.view;
 
-import io.github.humbleui.skija.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 
 public interface Animation {
     void update(double deltaTime);
-
-    void draw(Canvas canvas);
-
+    void draw(GraphicsContext gc);
     boolean isComplete();
-
     void reset();
 }
