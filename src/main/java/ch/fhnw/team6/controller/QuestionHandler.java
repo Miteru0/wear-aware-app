@@ -4,7 +4,6 @@
     import ch.fhnw.team6.model.Difficulty;
     import ch.fhnw.team6.model.Player;
     import ch.fhnw.team6.model.Question;
-    import ch.fhnw.team6.model.StandardQuestion;
     
     import java.io.IOException;
     import java.util.HashMap;
@@ -77,7 +76,6 @@
          * @throws NoMoreQuestionsException if no questions are available.
          */
         public Question getNextQuestion() {
-            System.out.println(player.getPoints());
             checkQuestions();
             Difficulty questionDifficulty = getDifficultyFromPoints();
             while (currentQuestions.get(questionDifficulty) == null || currentQuestions.get(questionDifficulty).isEmpty()) {
@@ -107,9 +105,9 @@
          * @return The appropriate difficulty level.
          */
         private Difficulty getDifficultyFromPoints() {
-            if (player.getPoints() < 4) {
+            if (player.getPoints() < 2) {
                 return Difficulty.EASY;
-            } else if (player.getPoints() < 6) {
+            } else if (player.getPoints() < 4) {
                 return Difficulty.MEDIUM;
             } else {
                 return Difficulty.HARD;

@@ -30,33 +30,33 @@ public class QuestionHandlerTest {
                 Language.ITALIAN, "Domanda Esempio"
         );
 
-//        List<Question> questions = Arrays.asList(
-//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123456"), "EASY"),
-//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123457"), "EASY"),
-//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123458"), "MEDIUM"),
-//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123459"), "MEDIUM"),
-//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123460"), "HARD"),
-//                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123461"), "HARD")
-//        );
+       List<Question> questions = Arrays.asList(
+               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123456"), "EASY", "1"),
+               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123457"), "EASY", "2"),
+               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123458"), "MEDIUM", "3"),
+               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123459"), "MEDIUM", "4"),
+               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123460"), "HARD", "5"),
+               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123461"), "HARD", "6")
+       );
 
-//        questionHandler = new QuestionHandler(player, questions);
+       questionHandler = new QuestionHandler(player, questions);
     }
 
      @Test
     void testGetNextQuestionReturnsCorrectDifficulty() {
-        player.setPoints(2); // Should get EASY question
+        player.setPoints(1); // Should get EASY question
         assertEquals(Difficulty.EASY, questionHandler.getNextQuestion().getDifficulty());
 
-        player.setPoints(5); // Should get MEDIUM question
+        player.setPoints(3); // Should get MEDIUM question
         assertEquals(Difficulty.MEDIUM, questionHandler.getNextQuestion().getDifficulty());
 
-        player.setPoints(7); // Should get HARD question
+        player.setPoints(5); // Should get HARD question
         assertEquals(Difficulty.HARD, questionHandler.getNextQuestion().getDifficulty());
     }
 
     @Test
     void testGetNextQuestionMovesToNextDifficulty() {
-        player.setPoints(2); // Get all EASY questions
+        player.setPoints(0); // Get all EASY questions
         questionHandler.getNextQuestion();
         questionHandler.getNextQuestion();
 

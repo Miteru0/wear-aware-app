@@ -43,6 +43,10 @@ public class StandardQuestion extends Question {
         return correctAnswer;
     }
 
+    public Map<Language, String> getExplanation() {
+        return question;
+    }
+
     @Override
     public String getExplanation(Language language, String answer) {
         return correctAnswer.contains(answer)? explanationCorrect.get(language): explanationIncorrect.get(language);
