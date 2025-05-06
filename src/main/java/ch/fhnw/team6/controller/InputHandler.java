@@ -1,12 +1,10 @@
 package ch.fhnw.team6.controller;
 
 import ch.fhnw.team6.exceptions.NotAValidInputException;
-import ch.fhnw.team6.model.PercentQuestion;
 import ch.fhnw.team6.model.Player;
 import ch.fhnw.team6.model.Question;
 import ch.fhnw.team6.model.StandardQuestion;
 
-import java.io.IOException;
 import java.util.List;
 
 public class InputHandler {
