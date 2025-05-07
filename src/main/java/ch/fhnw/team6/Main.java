@@ -5,6 +5,7 @@ import ch.fhnw.team6.exceptions.NotAValidInputException;
 import ch.fhnw.team6.model.Language;
 import ch.fhnw.team6.model.Player;
 import ch.fhnw.team6.view.AnimationManager;
+import ch.fhnw.team6.view.FlagsManager;
 import ch.fhnw.team6.view.QuestionPane;
 import ch.fhnw.team6.view.TextAlign;
 import javafx.animation.AnimationTimer;
@@ -24,6 +25,7 @@ public class Main extends Application {
     private Canvas canvas;
     private AnimationManager animationManager;
     private InputHandler inputHandler;
+    private FlagsManager flagsManager;
 
     private QuestionPane questionPane;
     private Player player;
@@ -64,6 +66,8 @@ public class Main extends Application {
         canvas = new Canvas(1280, 720);
         inputHandler = new InputHandler(player);
         animationManager = new AnimationManager(canvas, TOTAL_STEPS, 4);
+        flagsManager = new FlagsManager(canvas.getWidth()-4*75, canvas.getHeight() - 50, 75, 30);
+        flagsManager.setActiveFlag(player.getLanguage());
 
         currentQuestion = "";
         currentAnswer = "";
@@ -78,8 +82,8 @@ public class Main extends Application {
         primaryStage.setFullScreen(true);
         primaryStage.show();
 
-        primaryStage.widthProperty().addListener((_,__,___) -> updateCanvasSize(primaryStage));
-        primaryStage.heightProperty().addListener((_,__,___) -> updateCanvasSize(primaryStage));
+        primaryStage.widthProperty().addListener((_,_,_) -> updateCanvasSize(primaryStage));
+        primaryStage.heightProperty().addListener((_,_,_) -> updateCanvasSize(primaryStage));
     }
 
     private void updateGameLoop(long now) {
@@ -91,11 +95,16 @@ public class Main extends Application {
         animationManager.update(deltaTime);
         animationManager.draw(gc);
         updateTextPane();
+        flagsManager.draw(canvas);
     }
 
     private void clearCanvas(GraphicsContext gc) {
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+    }
+
+    private void updateFlags() {
+        flagsManager.setFlagPosition(canvas.getWidth() - 5 * flagsManager.getFlagWidth() + 10, flagsManager.getFlagHeight() - 5);
     }
 
     private void updateTextPane() {
@@ -147,7 +156,9 @@ public class Main extends Application {
 
     private void handleLanguageSwitch() {
         if (isGameStarted && !isGameEnded) {
-            player.setLanguage(Language.getNextLanguage(player.getLanguage()));
+            Language nextLanguage = Language.getNextLanguage(player.getLanguage());
+            flagsManager.setActiveFlag(nextLanguage);
+            player.setLanguage(nextLanguage);
             updateLanguage();
         }
     }
@@ -221,6 +232,8 @@ public class Main extends Application {
             questionPane.setLineSpacing(12);
             questionPane.setPaddingY(20);
         }
+
+        updateFlags();
     }
 
     private void restartGame() {

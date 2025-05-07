@@ -2,6 +2,10 @@ package ch.fhnw.team6.controller;
 
 import javafx.scene.image.Image;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
+import ch.fhnw.team6.model.Language;
 
 public class ResourceLoader {
 
@@ -37,6 +41,39 @@ public class ResourceLoader {
         } catch (Exception e) {
             throw new RuntimeException("Failed to load image: " + path, e);
         }
+    }
+
+    // /**
+    //  * Loads an image from resources without scaling.
+    //  *
+    //  * @param path The resource path to the image.
+    //  * @return The loaded Image.
+    //  */
+    // private static Image loadImage(String path) {
+    //     try (InputStream stream = ResourceLoader.class.getResourceAsStream(path)) {
+    //         if (stream == null)
+    //             throw new RuntimeException("Resource not found: " + path);
+                    
+    //         return new Image(stream);
+    //     } catch (Exception e) {
+    //         throw new RuntimeException("Failed to load image: " + path, e);
+    //     }
+    // }
+
+
+    /**
+     * Loads flag images for all supported languages.
+     *
+     * @return A map of Language to Image.
+     */
+    public static Map<Language, Image> loadFlagImages(double width, double height) {
+        Map<Language, Image> flags = new HashMap<>();
+        for (Language lang : Language.values()) {
+            String path = String.format("/images/flags/%s.png", lang.name().toLowerCase());
+            flags.put(lang, loadImage(path, width, height));
+            System.out.println("Loaded flag: " + path);
+        }
+        return flags;
     }
     
 }
