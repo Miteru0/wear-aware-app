@@ -116,6 +116,7 @@ public class Main extends Application {
                     (float) canvas.getHeight() / 6f
             );
             questionPane.setTextAlign(TextAlign.CENTER);
+            questionPane.setFrameWidth(4);
             questionPane.setBackgroundOpacity(0.75);
             questionPane.setPosition(
                     ((float) canvas.getWidth() - questionPane.getWidth()) * 0.5f,

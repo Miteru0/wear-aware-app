@@ -22,7 +22,7 @@ public class TextPane {
     protected TextAlign textAlign = TextAlign.CENTER;
     protected double paddingY = 20;
     protected double cornerRadius = 0;
-
+    protected double frameWidth = 0;
     /**
      * Constructor for TextPane
      *
@@ -175,6 +175,7 @@ public class TextPane {
         gc.setFill(Color.WHITE);
         gc.setFont(Font.font(fontSize));
 
+
         // Draw wrapped text
         double textY = y + paddingY + fontSize;
         drawText(gc, text, textY);
@@ -188,6 +189,9 @@ public class TextPane {
     protected void drawBackground(GraphicsContext gc) {
         gc.setFill(Color.rgb(34, 34, 34, backgroundOpacity));
         gc.fillRoundRect(x, y, width, height, cornerRadius, cornerRadius);
+        gc.setLineWidth(frameWidth);
+        gc.setStroke(Color.BLACK);
+        gc.strokeRoundRect(x, y, width, height, cornerRadius, cornerRadius);
     }
 
     /**
@@ -272,5 +276,9 @@ public class TextPane {
         Text tempText = new Text(text);
         tempText.setFont(gc.getFont());
         return tempText.getLayoutBounds().getWidth();
+    }
+
+    public void setFrameWidth(double frameWidth) {
+        this.frameWidth = frameWidth;
     }
 }
