@@ -2,7 +2,6 @@ package ch.fhnw.team6.view;
 
 import java.util.List;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -47,11 +46,10 @@ public class QuestionPane extends TextPane {
     /**
      * Draws the question and answer text on the canvas
      * 
-     * @param canvas The canvas on which to draw
+     * @param gc The GraphicsContext used for drawing
      */
     @Override
-    public void draw(Canvas canvas) {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+    public void draw(GraphicsContext gc) {
 
         // Draw background
         drawBackground(gc);
@@ -60,7 +58,7 @@ public class QuestionPane extends TextPane {
         gc.setFill(Color.WHITE);
         gc.setFont(Font.font(fontSize));
 
-        double textY = y + paddingY + fontSize;
+        double textY = getY() + paddingY + fontSize;
 
         // Draw the question text
         drawText(gc, question, textY);
@@ -80,7 +78,7 @@ public class QuestionPane extends TextPane {
      * @return The height of the text
      */
     private double computeTextHeight(GraphicsContext gc, String text) {
-        List<String> wrappedText = wrapText(gc, text, width - 20);
+        List<String> wrappedText = wrapText(gc, text, getWidth() - 20);
         return wrappedText.size() * (fontSize + lineSpacing);
     }
 

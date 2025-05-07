@@ -5,7 +5,7 @@ import java.util.Map;
 
 import ch.fhnw.team6.controller.ResourceLoader;
 import ch.fhnw.team6.model.Language;
-import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class FlagsManager {
@@ -17,15 +17,28 @@ public class FlagsManager {
     private double flagHeight = 100;
     private double flagSpacing = 10;
 
-    public FlagsManager(double flagStartX, double flagStartY, double flagWidth, double flagHeight) {
+    /**
+     * Constructor for FlagsManager
+     * 
+     * @param flagStartX The starting x-coordinate for the flags
+     * @param flagY      The y-coordinate for the flags
+     * @param flagWidth  The width of the flags
+     * @param flagHeight The height of the flags
+     */
+    public FlagsManager(double flagStartX, double flagY, double flagWidth, double flagHeight) {
         var images = ResourceLoader.loadFlagImages(flagWidth, flagHeight);
         this.flagWidth = flagWidth;
         this.flagHeight = flagHeight;
         this.flagStartX = flagStartX;
-        this.flagY = flagStartY;
+        this.flagY = flagY;
         initializeFlags(images);
     }
 
+    /**
+     * Initializes the flags with the given images
+     * 
+     * @param images A map of Language to Image
+     */
     private void initializeFlags(Map<Language, Image> images) {
 
         int i = 0;
@@ -41,7 +54,13 @@ public class FlagsManager {
 
     }
 
-    public void setFlagSize(double width, double height) {
+    /**
+     * Sets the size of the flags
+     * 
+     * @param width  The width of the flags
+     * @param height The height of the flags
+     */
+    public void setFlagsSize(double width, double height) {
         this.flagWidth = width;
         this.flagHeight = height;
 
@@ -52,7 +71,13 @@ public class FlagsManager {
         }
     }
 
-    public void setFlagPosition(double x, double y) {
+    /**
+     * Sets the position of the flags
+     * 
+     * @param x The x-coordinate of the flags
+     * @param y The y-coordinate of the flags
+     */
+    public void setFlagsPosition(double x, double y) {
         this.flagStartX = x;
         this.flagY = y;
 
@@ -66,6 +91,11 @@ public class FlagsManager {
         }
     }
 
+    /**
+     * Sets the active flag based on the given language
+     * 
+     * @param lang The language to set as active
+     */
     public void setActiveFlag(Language lang) {
         for (var entry : flags.entrySet()) {
             Flag flag = entry.getValue();
@@ -77,11 +107,16 @@ public class FlagsManager {
         }
     }
 
-    public void draw(Canvas canvas) {
+    /**
+     * Draws the flags on the canvas
+     * 
+     * @param gc The GraphicsContext to draw on
+     */
+    public void draw(GraphicsContext gc) {
 
         for (var entry : flags.entrySet()) {
             Flag flag = entry.getValue();
-            flag.draw(canvas);
+            flag.draw(gc);
         }
 
     }

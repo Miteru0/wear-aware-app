@@ -1,7 +1,6 @@
 package ch.fhnw.team6.view;
 
 import ch.fhnw.team6.controller.ResourceLoader;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 
 public class AnimationManager {
@@ -13,15 +12,22 @@ public class AnimationManager {
     /**
      * Constructor for AnimationManager
      *
-     * @param canvas        The canvas on which the animations will be drawn
-     * @param animationCount The number of animations to manage
-     * @param fps           The frames per second for the animations
+     * @param x            The x position of the animations
+     * @param y            The y position of the animations
+     * @param width        The width of the animations
+     * @param height       The height of the animations
+     * @param folderName   The folder name where the animation frames are stored
+     * @param animationCount The number of animations
+     * @param frameCount   The number of frames in each animation
+     * @param fps          The frames per second for the animations
      */
-    public AnimationManager(Canvas canvas, int animationCount, int fps) {
+    public AnimationManager(double x, double y, double width, double height, String folderName, int animationCount,
+            int frameCount, int fps) {
         this.animations = new FrameAnimation[animationCount];
         for (int i = 0; i < animationCount; i++) {
             String name = "animation" + (i + 1);
-            animations[i] = new FrameAnimation(canvas, ResourceLoader.loadAnimationFrames(name, 1280, 720), 4);
+            animations[i] = new FrameAnimation(x, y, width, height,
+                    ResourceLoader.loadAnimationFrames(folderName, name, frameCount, width, height), 4);
         }
         this.currentIndex = 0;
     }
@@ -68,4 +74,14 @@ public class AnimationManager {
         transition = new FadeTransition(animations[currentIndex], animations[nextIndex], 1.5, true);
         currentIndex = nextIndex;
     }
+
+    /**
+     * Gets the current animation
+     * 
+     * @return The current animation
+     */
+    public FrameAnimation getCurrentAnimation() {
+        return animations[currentIndex];
+    }
+
 }
