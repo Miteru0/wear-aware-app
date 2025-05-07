@@ -3,6 +3,7 @@ package ch.fhnw.team6.controller;
 import javafx.scene.image.Image;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import ch.fhnw.team6.model.Language;
@@ -67,7 +68,7 @@ public class ResourceLoader {
      * @return A map of Language to Image.
      */
     public static Map<Language, Image> loadFlagImages(double width, double height) {
-        Map<Language, Image> flags = new HashMap<>();
+        Map<Language, Image> flags = new LinkedHashMap<>();
         for (Language lang : Language.values()) {
             String path = String.format("/images/flags/%s.png", lang.name().toLowerCase());
             flags.put(lang, loadImage(path, width, height));
