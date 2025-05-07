@@ -11,7 +11,7 @@ public class StandartQuestionDTO {
     private Map<Language, String> explanationRight = new HashMap<>();
     private String difficulty;
     private Map<Language, String> explanationWrong = new HashMap<>();
-    String id;
+    private String id;
 
     public void addQuestion(String question, Language language) {
         this.question.put(language, question);

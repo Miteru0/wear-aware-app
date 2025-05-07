@@ -1,6 +1,6 @@
 package ch.fhnw.team6.view;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import ch.fhnw.team6.controller.ResourceLoader;
@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 
 public class FlagsManager {
 
-    private final Map<Language, Flag> flags = new HashMap<>();
+    private final Map<Language, Flag> flags = new LinkedHashMap<>();
     private double flagStartX = 0;
     private double flagY = 0;
     private double flagWidth = 200;
