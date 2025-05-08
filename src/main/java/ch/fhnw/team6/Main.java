@@ -1,6 +1,7 @@
 package ch.fhnw.team6;
 
 import ch.fhnw.team6.controller.InputHandler;
+import ch.fhnw.team6.controller.ResourceLoader;
 import ch.fhnw.team6.exceptions.NotAValidInputException;
 import ch.fhnw.team6.model.Language;
 import ch.fhnw.team6.model.Player;
@@ -18,13 +19,15 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     // ─── Constants ─────────────────────────────────────────────────────
-    private static final int TOTAL_STEPS = 7;
+    private static final int TOTAL_STEPS = 3;
     private static final double WINDOWED_WIDTH = 1280;
     private static final double WINDOWED_HEIGHT = 720;
 
     // ─── GUI Components ─────────────────────────────────────────────────
     private Canvas canvas;
     private BackgroundManager backgroundAnimation;
+    private AnimationManager mascot;
+    private DialogBubble dialogBubble;
     private FlagsManager flagsManager;
     private QuestionPane questionPane;
 
@@ -72,7 +75,15 @@ public class Main extends Application {
         player = new Player();
         canvas = new Canvas(WINDOWED_WIDTH, WINDOWED_HEIGHT);
         inputHandler = new InputHandler(player);
-        backgroundAnimation = new BackgroundManager(canvas, TOTAL_STEPS, 10, 1280, 720);
+        backgroundAnimation = new BackgroundManager(canvas, TOTAL_STEPS, 3, 1280, 720);
+        mascot = new AnimationManager(WINDOWED_WIDTH * 0.8 - 20, WINDOWED_HEIGHT * 0.6, WINDOWED_WIDTH * 0.2, WINDOWED_HEIGHT * 0.4, "mascot", 1, 4, 4);
+        mascot.setCurrentAnimationVisible(false);
+        dialogBubble = new DialogBubble(0, 0, 1000, 400);
+        dialogBubble.setBubbleImage(ResourceLoader.loadImage("/images/bubble/bubble.png", 1000, 400));
+        //dialogBubble.setBubbleImageSize(1000, 400);
+        dialogBubble.setVisible(false);
+        dialogBubble.setTextAlign(TextAlign.CENTER);
+        
 
         flagsManager = new FlagsManager(canvas.getWidth() - 4 * 75, canvas.getHeight() - 50, 75, 30);
         flagsManager.setActiveFlag(player.getLanguage());
@@ -105,6 +116,12 @@ public class Main extends Application {
 
         updateTextPane();
         flagsManager.draw(gc);
+
+        mascot.update(deltaTime);
+        mascot.draw(gc);
+
+        updateBubble();
+        dialogBubble.draw(gc);
     }
 
     private void clearCanvas(GraphicsContext gc) {
@@ -147,6 +164,9 @@ public class Main extends Application {
                 input = code.getName();
                 currentAnswer = inputHandler.answerQuestion(input);
                 isAnswered = true;
+                mascot.setCurrentAnimationVisible(true);
+                dialogBubble.setText(currentAnswer);
+                updateBubble();
                 step++;
             } catch (NotAValidInputException e) {
                 System.err.println("Invalid input: " + e.getMessage());
@@ -165,11 +185,13 @@ public class Main extends Application {
             backgroundAnimation.nextAnimation();
             inputHandler.nextQuestion();
             currentQuestion = inputHandler.getQuestionQuestion();
-            currentAnswer = "";
-            isAnswered = false;
+            currentAnswer = "";          
         } else {
             endGame();
         }
+        isAnswered = false;
+        mascot.setCurrentAnimationVisible(false);  
+        updateBubble();
     }
 
     private void endGame() {
@@ -225,8 +247,33 @@ public class Main extends Application {
             questionPane.setQuestion(currentQuestion);
         }
 
-        questionPane.setAnswer(currentAnswer);
+        //questionPane.setAnswer(currentAnswer);
         questionPane.draw(canvas.getGraphicsContext2D());
+    }
+
+    private void updateMascot() {
+        mascot.setCurrentAnimationSize(
+            canvas.getWidth()/4,
+            canvas.getHeight()/2.5
+        );
+        mascot.setCurrentAnimationPosition(
+                (canvas.getWidth() - mascot.getCurrentAnimationWidth()),
+                (canvas.getHeight() - mascot.getCurrentAnimationHeight())
+        );     
+    }
+
+    private void updateBubble() {
+        dialogBubble.setVisible(isAnswered);
+        dialogBubble.setText(currentAnswer);
+        dialogBubble.setSize(
+            canvas.getWidth() * 0.5f,
+            currentAnswer.length() / (canvas.getWidth() / 10) * dialogBubble.getFontSize() * dialogBubble.getLineSpacing()
+        );
+        dialogBubble.setPosition(
+                mascot.getCurrentAnimationX() - dialogBubble.getWidth() + mascot.getCurrentAnimationWidth() / 4.2,
+                mascot.getCurrentAnimationY() - dialogBubble.getHeight() + mascot.getCurrentAnimationHeight() / 3.5
+        );
+        dialogBubble.setTextArea();
     }
 
     private void updateCanvasSize(Stage stage) {
@@ -236,22 +283,23 @@ public class Main extends Application {
         if (questionPane != null) {
             questionPane.setSize(
                     (float) stage.getWidth() * 0.8f,
-                    (float) stage.getHeight() / 6f
+                    (float) stage.getHeight() / 8f
             );
             repositionTextPane();
         }
 
         updateFlags();
+        updateMascot();
     }
 
     private void repositionTextPane() {
         questionPane.setPosition(
                 ((float) canvas.getWidth() - questionPane.getWidth()) * 0.5f,
-                ((float) canvas.getHeight() - questionPane.getHeight()) * 0.5f
+                ((float) canvas.getHeight() - questionPane.getHeight()) * 0.3f
         );
         questionPane.setFontSize(28);
         questionPane.setLineSpacing(12);
-        questionPane.setPaddingY(20);
+        questionPane.setPaddingY(30);
     }
 
     private void updateFlags() {

@@ -18,6 +18,8 @@ public class TextPane extends GuiObject {
     protected double paddingY = 20;
     protected double cornerRadius = 0;
     protected double frameWidth = 0;
+    protected boolean isVisible = true;
+    protected double numberOfLines = 0;
 
     /**
      * Constructor for TextPane
@@ -99,7 +101,7 @@ public class TextPane extends GuiObject {
      * 
      * @return The aligned X-coordinate
      */
-    private double calculateAlignedX(String text, double textWidth) {
+    protected double calculateAlignedX(String text, double textWidth) {
         switch (textAlign) {
             case LEFT:
                 return getX() + 10;
@@ -140,7 +142,6 @@ public class TextPane extends GuiObject {
         if (currentLine.length() > 0) {
             lines.add(currentLine.toString());
         }
-
         return lines;
     }
 
@@ -152,7 +153,7 @@ public class TextPane extends GuiObject {
      * 
      * @return The width of the text
      */
-    private double computeTextWidth(GraphicsContext gc, String text) {
+    protected double computeTextWidth(GraphicsContext gc, String text) {
         Text tempText = new Text(text);
         tempText.setFont(gc.getFont());
         return tempText.getLayoutBounds().getWidth();
@@ -167,6 +168,10 @@ public class TextPane extends GuiObject {
         this.fontSize = fontSize;
     }
 
+    public int getFontSize() {
+        return fontSize;
+    }
+
     /**
      * Sets the line spacing of the text
      * 
@@ -176,6 +181,10 @@ public class TextPane extends GuiObject {
         this.lineSpacing = spacing;
     }
 
+    public double getLineSpacing() {
+        return lineSpacing;
+    }
+
     /**
      * Sets the background opacity of the text pane
      * 
@@ -183,6 +192,15 @@ public class TextPane extends GuiObject {
      */
     public void setBackgroundOpacity(double opacity) {
         this.backgroundOpacity = opacity;
+    }
+
+    /**
+     * Gets the background opacity of the text pane
+     * 
+     * @return The background opacity
+     */
+    public double getBackgroundOpacity() {
+        return backgroundOpacity;
     }
 
     /**
@@ -223,5 +241,17 @@ public class TextPane extends GuiObject {
 
     public void setFrameWidth(double frameWidth) {
         this.frameWidth = frameWidth;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public double getNumberOfLines() {
+        return numberOfLines;
     }
 }

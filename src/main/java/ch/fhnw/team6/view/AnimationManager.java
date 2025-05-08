@@ -12,14 +12,14 @@ public class AnimationManager {
     /**
      * Constructor for AnimationManager
      *
-     * @param x            The x position of the animations
-     * @param y            The y position of the animations
-     * @param width        The width of the animations
-     * @param height       The height of the animations
-     * @param folderName   The folder name where the animation frames are stored
+     * @param x              The x position of the animations
+     * @param y              The y position of the animations
+     * @param width          The width of the animations
+     * @param height         The height of the animations
+     * @param folderName     The folder name where the animation frames are stored
      * @param animationCount The number of animations
-     * @param frameCount   The number of frames in each animation
-     * @param fps          The frames per second for the animations
+     * @param frameCount     The number of frames in each animation
+     * @param fps            The frames per second for the animations
      */
     public AnimationManager(double x, double y, double width, double height, String folderName, int animationCount,
             int frameCount, int fps) {
@@ -82,6 +82,38 @@ public class AnimationManager {
      */
     public FrameAnimation getCurrentAnimation() {
         return animations[currentIndex];
+    }
+
+    public void setCurrentAnimationVisible(boolean isVisible) {
+        animations[currentIndex].setVisible(isVisible);
+    }
+
+    public boolean isCurrentAnimationVisible() {
+        return animations[currentIndex].isVisible();
+    }
+
+    public double getCurrentAnimationWidth() {
+        return animations[currentIndex].getWidth();
+    }
+
+    public double getCurrentAnimationHeight() {
+        return animations[currentIndex].getHeight();
+    }
+
+    public double getCurrentAnimationX() {
+        return animations[currentIndex].getX();
+    }
+
+    public double getCurrentAnimationY() {
+        return animations[currentIndex].getY();
+    }
+
+    public void setCurrentAnimationPosition(double x, double y) {
+        animations[currentIndex].setPosition(x, y);
+    }
+
+    public void setCurrentAnimationSize(double width, double height) {
+        animations[currentIndex].setSize(width, height);
     }
 
 }

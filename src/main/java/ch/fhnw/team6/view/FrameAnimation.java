@@ -10,6 +10,7 @@ public class FrameAnimation extends GuiObject implements Animation {
     private double accumulator;
     private double scale = 1.0;
     private int currentFrame;
+    private boolean isVisible = true;
 
     /**
      * Constructor for FrameAnimation
@@ -48,9 +49,13 @@ public class FrameAnimation extends GuiObject implements Animation {
      */
     public void draw(GraphicsContext gc) {
 
+        if (!isVisible) {
+            return;
+        }
+
         Image frame = frames[currentFrame];
 
-        gc.drawImage(frame, getX(), getY(), frame.getWidth() * scale, frame.getHeight() * scale);
+        gc.drawImage(frame, getX(), getY(), getWidth() * scale, getHeight() * scale);
     }
 
     /**
@@ -88,6 +93,14 @@ public class FrameAnimation extends GuiObject implements Animation {
 
     public int getAnimationCount() {
         return frames.length;
+    }
+
+    public void setVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
     }
 
 }

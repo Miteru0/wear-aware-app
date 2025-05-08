@@ -36,7 +36,7 @@ public class ResourceLoader {
      * @param path The resource path to the image.
      * @return The loaded Image.
      */
-    private static Image loadImage(String path, double targetWidth, double targetHeight) {
+    public static Image loadImage(String path, double targetWidth, double targetHeight) {
         try (InputStream stream = ResourceLoader.class.getResourceAsStream(path)) {
             if (stream == null)
                 throw new RuntimeException("Resource not found: " + path);
