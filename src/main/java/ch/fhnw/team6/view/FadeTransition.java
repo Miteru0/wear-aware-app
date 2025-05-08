@@ -4,21 +4,21 @@ import javafx.scene.canvas.GraphicsContext;
 
 public class FadeTransition implements Animation {
 
-    private final FrameAnimation out;
-    private final FrameAnimation in;
+    private final GuiObject out;
+    private final GuiObject in;
     private double progress;
     private double duration;
     private boolean useEasing;
 
     /**
      * Constructor for FadeTransition
-     *
-     * @param out        The animation to fade out
-     * @param in         The animation to fade in
+     * 
+     * @param out        The GuiObject to fade out
+     * @param in         The GuiObject to fade in
      * @param duration   The duration of the transition
      * @param useEasing  Whether to use easing for the transition
      */
-    public FadeTransition(FrameAnimation out, FrameAnimation in, double duration, boolean useEasing) {
+    public FadeTransition(GuiObject out, GuiObject in, double duration, boolean useEasing) {
         this.out = out;
         this.in = in;
         this.duration = duration;

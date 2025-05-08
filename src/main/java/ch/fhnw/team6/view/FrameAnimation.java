@@ -1,31 +1,31 @@
 package ch.fhnw.team6.view;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class FrameAnimation implements Animation {
+public class FrameAnimation extends GuiObject implements Animation {
 
     private final Image[] frames;
     private final double frameDuration;
     private double accumulator;
-    private int currentFrame;
-    private final Canvas canvas;
     private double scale = 1.0;
+    private int currentFrame;
+    private boolean isVisible = true;
 
     /**
      * Constructor for FrameAnimation
      *
-     * @param canvas The canvas on which the animation will be drawn
-     * @param frames The frames of the animation
+     * @param x      The x position of the animation
+     * @param y      The y position of the animation
+     * @param width  The width of the animation
+     * @param height The height of the animation
+     * @param frames The array of frames for the animation
      * @param fps    The frames per second for the animation
      */
-    public FrameAnimation(Canvas canvas, Image[] frames, double fps) {
-        this.canvas = canvas;
+    public FrameAnimation(double x, double y, double width, double height, Image[] frames, double fps) {
+        super(x, y, width, height);
         this.frames = frames;
         this.frameDuration = 1.0 / fps;
-
-        updateScale();
     }
 
     /**
@@ -43,41 +43,28 @@ public class FrameAnimation implements Animation {
     }
 
     /**
-     * Updates the scale based on the current canvas size
-     */
-    private void updateScale() {
-        double canvasWidth = canvas.getWidth();
-        double canvasHeight = canvas.getHeight();
-        
-        // Ensure canvas size is valid before calculating the scale
-        if (canvasWidth > 0 && canvasHeight > 0 && frames.length > 0) {
-            double imageWidth = frames[0].getWidth();
-            double imageHeight = frames[0].getHeight();
-            
-            // Calculate scale to fit the image within the canvas
-            this.scale = Math.min(
-                canvasWidth / imageWidth,
-                canvasHeight / imageHeight
-            );
-        }
-    }
-
-    /**
      * Draws the current frame of the animation
      *
      * @param gc The GraphicsContext to draw on
      */
-    @Override
     public void draw(GraphicsContext gc) {
-        // Ensure the scale is up-to-date before drawing
-        updateScale();
+
+        if (!isVisible) {
+            return;
+        }
 
         Image frame = frames[currentFrame];
-        double x = (canvas.getWidth() - frame.getWidth() * scale) / 2;
-        double y = (canvas.getHeight() - frame.getHeight() * scale) / 2;
 
-        // Draw the image with the calculated scale
-        gc.drawImage(frame, x, y, frame.getWidth() * scale, frame.getHeight() * scale);
+        gc.drawImage(frame, getX(), getY(), getWidth() * scale, getHeight() * scale);
+    }
+
+    /**
+     * Resets the animation to the first frame (not really needed)
+     */
+    @Override
+    public void reset() {
+        currentFrame = 0;
+        accumulator = 0;
     }
 
     /**
@@ -90,7 +77,8 @@ public class FrameAnimation implements Animation {
     }
 
     /**
-     * Checks if the animation is complete, but since this is a looping animation, it will always return false
+     * Checks if the animation is complete, but since this is a looping animation,
+     * it will always return false
      * 
      * @return true if the animation is complete, false otherwise
      */
@@ -99,12 +87,20 @@ public class FrameAnimation implements Animation {
         return false; // It's a loop
     }
 
-    /**
-     * Resets the animation to the first frame (not really needed)
-     */
-    @Override
-    public void reset() {
-        currentFrame = 0;
-        accumulator = 0;
+    public void setScale(double scale) {
+        this.scale = scale;
     }
+
+    public int getAnimationCount() {
+        return frames.length;
+    }
+
+    public void setVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
 }

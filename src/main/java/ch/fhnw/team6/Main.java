@@ -1,13 +1,11 @@
 package ch.fhnw.team6;
 
 import ch.fhnw.team6.controller.InputHandler;
+import ch.fhnw.team6.controller.ResourceLoader;
 import ch.fhnw.team6.exceptions.NotAValidInputException;
 import ch.fhnw.team6.model.Language;
 import ch.fhnw.team6.model.Player;
-import ch.fhnw.team6.view.AnimationManager;
-import ch.fhnw.team6.view.FlagsManager;
-import ch.fhnw.team6.view.QuestionPane;
-import ch.fhnw.team6.view.TextAlign;
+import ch.fhnw.team6.view.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -20,36 +18,47 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private static final int TOTAL_STEPS = 7; // number of quiz questions/animations
+    // ─── Constants ─────────────────────────────────────────────────────
+    private static final int TOTAL_STEPS = 3;
+    private static final double WINDOWED_WIDTH = 1280;
+    private static final double WINDOWED_HEIGHT = 720;
 
+    // ─── GUI Components ─────────────────────────────────────────────────
     private Canvas canvas;
-    private AnimationManager animationManager;
-    private InputHandler inputHandler;
+    private BackgroundManager backgroundAnimation;
+    private AnimationManager mascot;
+    private DialogBubble dialogBubble;
     private FlagsManager flagsManager;
-
     private QuestionPane questionPane;
+
+    // ─── Game Logic ─────────────────────────────────────────────────────
+    private InputHandler inputHandler;
     private Player player;
 
-    private String currentQuestion;
-    private String currentAnswer;
-    private boolean isAnswered;
-    private boolean isGameStarted;
-    private boolean isGameEnded;
-
-    private int step;
+    // ─── Game State ─────────────────────────────────────────────────────
+    private String currentQuestion = "";
+    private String currentAnswer = "";
+    private boolean isAnswered = false;
+    private boolean isGameStarted = false;
+    private boolean isGameEnded = false;
+    private int step = 0;
     private long lastFrameTime;
     private String input = "";
+
+    // ─── Application Entry Point ────────────────────────────────────────
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
     public void start(Stage primaryStage) {
         initializeGame(primaryStage);
 
         Group root = new Group(canvas);
-        Scene scene = new Scene(root, 1280, 720, Color.BLACK);
+        Scene scene = new Scene(root, WINDOWED_WIDTH, WINDOWED_HEIGHT, Color.BLACK);
         primaryStage.setScene(scene);
         setupStage(primaryStage);
-
-        scene.setOnKeyPressed(e -> handleKeyEvent(e.getCode()));
+        setupKeyControls(scene);
 
         new AnimationTimer() {
             @Override
@@ -59,43 +68,60 @@ public class Main extends Application {
         }.start();
     }
 
+    // ─── Initialization ────────────────────────────────────────────────
     private void initializeGame(Stage primaryStage) {
         primaryStage.setTitle("Animation Test");
 
         player = new Player();
-        canvas = new Canvas(1280, 720);
+        canvas = new Canvas(WINDOWED_WIDTH, WINDOWED_HEIGHT);
         inputHandler = new InputHandler(player);
-        animationManager = new AnimationManager(canvas, TOTAL_STEPS, 4);
-        flagsManager = new FlagsManager(canvas.getWidth()-4*75, canvas.getHeight() - 50, 75, 30);
+        backgroundAnimation = new BackgroundManager(canvas, TOTAL_STEPS, 3, 1280, 720);
+        mascot = new AnimationManager(WINDOWED_WIDTH * 0.8 - 20, WINDOWED_HEIGHT * 0.6, WINDOWED_WIDTH * 0.2, WINDOWED_HEIGHT * 0.4, "mascot", 1, 4, 4);
+        mascot.setCurrentAnimationVisible(false);
+        dialogBubble = new DialogBubble(0, 0, 1000, 400);
+        dialogBubble.setBubbleImage(ResourceLoader.loadImage("/images/bubble/bubble.png", 1000, 400));
+        //dialogBubble.setBubbleImageSize(1000, 400);
+        dialogBubble.setVisible(false);
+        dialogBubble.setTextAlign(TextAlign.CENTER);
+        
+
+        flagsManager = new FlagsManager(canvas.getWidth() - 4 * 75, canvas.getHeight() - 50, 75, 30);
         flagsManager.setActiveFlag(player.getLanguage());
 
-        currentQuestion = "";
-        currentAnswer = "";
-        isAnswered = false;
-        isGameStarted = false;
-        isGameEnded = false;
-        step = 0;
         lastFrameTime = System.nanoTime();
     }
 
-    private void setupStage(Stage primaryStage) {
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
+    private void setupStage(Stage stage) {
+        stage.setFullScreen(true);
+        stage.show();
 
-        primaryStage.widthProperty().addListener((_,_,_) -> updateCanvasSize(primaryStage));
-        primaryStage.heightProperty().addListener((_,_,_) -> updateCanvasSize(primaryStage));
+        stage.widthProperty().addListener((_, _, _) -> updateCanvasSize(stage));
+        stage.heightProperty().addListener((_, _, _) -> updateCanvasSize(stage));
     }
 
+    private void setupKeyControls(Scene scene) {
+        scene.setOnKeyPressed(e -> handleKeyEvent(e.getCode()));
+    }
+
+    // ─── Game Loop ──────────────────────────────────────────────────────
     private void updateGameLoop(long now) {
         double deltaTime = Math.min((now - lastFrameTime) / 1_000_000_000.0, 0.1);
         lastFrameTime = now;
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
         clearCanvas(gc);
-        animationManager.update(deltaTime);
-        animationManager.draw(gc);
+
+        backgroundAnimation.update(deltaTime);
+        backgroundAnimation.draw(gc);
+
         updateTextPane();
-        flagsManager.draw(canvas);
+        flagsManager.draw(gc);
+
+        mascot.update(deltaTime);
+        mascot.draw(gc);
+
+        updateBubble();
+        dialogBubble.draw(gc);
     }
 
     private void clearCanvas(GraphicsContext gc) {
@@ -103,55 +129,13 @@ public class Main extends Application {
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
-    private void updateFlags() {
-        flagsManager.setFlagPosition(canvas.getWidth() - 5 * flagsManager.getFlagWidth() + 10, flagsManager.getFlagHeight() - 5);
-    }
-
-    private void updateTextPane() {
-        if (questionPane == null) {
-            questionPane = new QuestionPane(
-                    0f,
-                    (float) canvas.getHeight(),
-                    (float) canvas.getWidth() * 0.8f,
-                    (float) canvas.getHeight() / 6f
-            );
-            questionPane.setTextAlign(TextAlign.CENTER);
-            questionPane.setFrameWidth(4);
-            questionPane.setBackgroundOpacity(0.75);
-            questionPane.setPosition(
-                    ((float) canvas.getWidth() - questionPane.getWidth()) * 0.5f,
-                    ((float) canvas.getHeight() - questionPane.getHeight()) * 0.5f
-            );
-            questionPane.setCornerRadius(90);
-        }
-
-        if (!isGameStarted) {
-            questionPane.setQuestion("Press SPACE to start");
-            questionPane.setAnswer("");
-        } else if (isGameEnded) {
-            questionPane.setQuestion("Quiz complete! Press SPACE to restart");
-            questionPane.setAnswer("");
-        } else {
-            questionPane.setQuestion(currentQuestion);
-            questionPane.setAnswer(currentAnswer);
-        }
-
-        questionPane.draw(canvas);
-    }
-
+    // ─── Event Handling ─────────────────────────────────────────────────
     private void handleKeyEvent(KeyCode code) {
         switch (code) {
-            case L:
-                handleLanguageSwitch();
-                break;
-            case SPACE:
-                handleSpaceKey();
-                break;
-            case ESCAPE:
-                System.exit(0);
-                break;
-            default:
-                handleAnswerInput(code);
+            case L -> handleLanguageSwitch();
+            case SPACE -> handleSpaceKey();
+            case ESCAPE -> System.exit(0);
+            default -> handleAnswerInput(code);
         }
     }
 
@@ -162,6 +146,71 @@ public class Main extends Application {
             player.setLanguage(nextLanguage);
             updateLanguage();
         }
+    }
+
+    private void handleSpaceKey() {
+        if (!isGameStarted) {
+            startGame();
+        } else if (isGameEnded) {
+            restartGame();
+        } else if (isAnswered) {
+            proceedToNextStep();
+        }
+    }
+
+    private void handleAnswerInput(KeyCode code) {
+        if (!isAnswered && isGameStarted && !isGameEnded) {
+            try {
+                input = code.getName();
+                currentAnswer = inputHandler.answerQuestion(input);
+                isAnswered = true;
+                mascot.setCurrentAnimationVisible(true);
+                dialogBubble.setText(currentAnswer);
+                updateBubble();
+                step++;
+            } catch (NotAValidInputException e) {
+                System.err.println("Invalid input: " + e.getMessage());
+            }
+        }
+    }
+
+    // ─── Game State Updates ─────────────────────────────────────────────
+    private void startGame() {
+        isGameStarted = true;
+        currentQuestion = inputHandler.getQuestionQuestion();
+    }
+
+    private void proceedToNextStep() {
+        if (step < TOTAL_STEPS) {
+            backgroundAnimation.nextAnimation();
+            inputHandler.nextQuestion();
+            currentQuestion = inputHandler.getQuestionQuestion();
+            currentAnswer = "";          
+        } else {
+            endGame();
+        }
+        isAnswered = false;
+        mascot.setCurrentAnimationVisible(false);  
+        updateBubble();
+    }
+
+    private void endGame() {
+        isGameEnded = true;
+        currentQuestion = "";
+        currentAnswer = "";
+    }
+
+    private void restartGame() {
+        player = new Player();
+        inputHandler.restartGame(player);
+        backgroundAnimation.nextAnimation();
+
+        currentQuestion = "";
+        currentAnswer = "";
+        isAnswered = false;
+        isGameStarted = false;
+        isGameEnded = false;
+        step = 0;
     }
 
     private void updateLanguage() {
@@ -175,82 +224,88 @@ public class Main extends Application {
         }
     }
 
-    private void handleSpaceKey() {
+    // ─── GUI Updates ────────────────────────────────────────────────────
+    private void updateTextPane() {
+        if (questionPane == null) {
+            questionPane = new QuestionPane(
+                    0f, (float) canvas.getHeight(),
+                    (float) canvas.getWidth() * 0.8f,
+                    (float) canvas.getHeight() / 6f
+            );
+            questionPane.setTextAlign(TextAlign.CENTER);
+            questionPane.setFrameWidth(4);
+            questionPane.setBackgroundOpacity(0.75);
+            questionPane.setCornerRadius(60);
+            repositionTextPane();
+        }
+
         if (!isGameStarted) {
-            // Start the game
-            isGameStarted = true;
-            currentQuestion = inputHandler.getQuestionQuestion();
-            return;
+            questionPane.setQuestion("Press SPACE to start");
+        } else if (isGameEnded) {
+            questionPane.setQuestion("Quiz complete! Press SPACE to restart");
+        } else {
+            questionPane.setQuestion(currentQuestion);
         }
-        if (isGameEnded) {
-            // Restart after end screen
-            restartGame();
-            return;
-        }
-        if (isAnswered) {
-            if (step < TOTAL_STEPS) {
-                // Proceed to next question
-                animationManager.nextAnimation();
-                inputHandler.nextQuestion();
-                currentQuestion = inputHandler.getQuestionQuestion();
-                currentAnswer = "";
-                isAnswered = false;
-            } else {
-                isGameEnded = true;
-                currentQuestion = "";
-                currentAnswer = "";
-            }
-        }
+
+        //questionPane.setAnswer(currentAnswer);
+        questionPane.draw(canvas.getGraphicsContext2D());
     }
 
-    private void handleAnswerInput(KeyCode code) {
-        if (!isAnswered && isGameStarted && !isGameEnded) {
-            try {
-                input = code.getName();
-                currentAnswer = inputHandler.answerQuestion(input);
-                isAnswered = true;
-                step++;
-            } catch (NotAValidInputException e) {
-                System.err.println("Invalid input: " + e.getMessage());
-            }
-        }
+    private void updateMascot() {
+        mascot.setCurrentAnimationSize(
+            canvas.getWidth()/4,
+            canvas.getHeight()/2.5
+        );
+        mascot.setCurrentAnimationPosition(
+                (canvas.getWidth() - mascot.getCurrentAnimationWidth()),
+                (canvas.getHeight() - mascot.getCurrentAnimationHeight())
+        );     
     }
 
-    private void updateCanvasSize(Stage primaryStage) {
-        canvas.setWidth(primaryStage.getWidth());
-        canvas.setHeight(primaryStage.getHeight());
+    private void updateBubble() {
+        dialogBubble.setVisible(isAnswered);
+        dialogBubble.setText(currentAnswer);
+        dialogBubble.setSize(
+            canvas.getWidth() * 0.5f,
+            currentAnswer.length() / (canvas.getWidth() / 10) * dialogBubble.getFontSize() * dialogBubble.getLineSpacing()
+        );
+        dialogBubble.setPosition(
+                mascot.getCurrentAnimationX() - dialogBubble.getWidth() + mascot.getCurrentAnimationWidth() / 4.2,
+                mascot.getCurrentAnimationY() - dialogBubble.getHeight() + mascot.getCurrentAnimationHeight() / 3.5
+        );
+        dialogBubble.setTextArea();
+    }
+
+    private void updateCanvasSize(Stage stage) {
+        canvas.setWidth(stage.getWidth());
+        canvas.setHeight(stage.getHeight());
 
         if (questionPane != null) {
             questionPane.setSize(
-                    (float) primaryStage.getWidth() * 0.8f,
-                    (float) primaryStage.getHeight() / 6f
+                    (float) stage.getWidth() * 0.8f,
+                    (float) stage.getHeight() / 8f
             );
-            questionPane.setPosition(
-                    ((float) primaryStage.getWidth() - questionPane.getWidth()) * 0.5f,
-                    ((float) primaryStage.getHeight() - questionPane.getHeight()) * 0.5f
-            );
-            questionPane.setFontSize(28);
-            questionPane.setLineSpacing(12);
-            questionPane.setPaddingY(20);
+            repositionTextPane();
         }
 
         updateFlags();
+        updateMascot();
     }
 
-    private void restartGame() {
-        player = new Player();
-        inputHandler.restartGame(player);
-        animationManager.nextAnimation();
-
-        currentQuestion = "";
-        currentAnswer = "";
-        isAnswered = false;
-        isGameStarted = false;
-        isGameEnded = false;
-        step = 0;
+    private void repositionTextPane() {
+        questionPane.setPosition(
+                ((float) canvas.getWidth() - questionPane.getWidth()) * 0.5f,
+                ((float) canvas.getHeight() - questionPane.getHeight()) * 0.3f
+        );
+        questionPane.setFontSize(28);
+        questionPane.setLineSpacing(12);
+        questionPane.setPaddingY(30);
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    private void updateFlags() {
+        flagsManager.setFlagsPosition(
+                canvas.getWidth() - 5 * flagsManager.getFlagWidth() + 10,
+                flagsManager.getFlagHeight() - 5
+        );
     }
 }

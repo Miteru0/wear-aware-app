@@ -2,7 +2,6 @@ package ch.fhnw.team6.view;
 
 import java.util.List;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -10,7 +9,9 @@ import javafx.scene.text.Font;
 public class QuestionPane extends TextPane {
 
     private String question;
-    private String answer;
+
+    private Color fontColor = Color.WHITE;
+    // private String answer;
 
     /**
      * Constructor for QuestionPane
@@ -23,7 +24,7 @@ public class QuestionPane extends TextPane {
     public QuestionPane(float x, float y, float width, float height) {
         super(x, y, width, height);
         this.question = "";
-        this.answer = "";
+        // this.answer = "";
     }
 
     /**
@@ -35,32 +36,31 @@ public class QuestionPane extends TextPane {
         this.question = question;
     }
 
-    /**
-     * Sets the answer text
-     * 
-     * @param answer The answer text to be displayed
-     */
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
+    // /**
+    // * Sets the answer text
+    // *
+    // * @param answer The answer text to be displayed
+    // */
+    // public void setAnswer(String answer) {
+    // this.answer = answer;
+    // }
 
     /**
      * Draws the question and answer text on the canvas
      * 
-     * @param canvas The canvas on which to draw
+     * @param gc The GraphicsContext used for drawing
      */
     @Override
-    public void draw(Canvas canvas) {
-        GraphicsContext gc = canvas.getGraphicsContext2D();
+    public void draw(GraphicsContext gc) {
 
         // Draw background
         drawBackground(gc);
 
         // Set font and color
-        gc.setFill(Color.WHITE);
+        gc.setFill(fontColor);
         gc.setFont(Font.font(fontSize));
 
-        double textY = y + paddingY + fontSize;
+        double textY = getY() + paddingY + fontSize;
 
         // Draw the question text
         drawText(gc, question, textY);
@@ -69,7 +69,7 @@ public class QuestionPane extends TextPane {
         textY += computeTextHeight(gc, question) + lineSpacing * 2;
 
         // Draw the answer text
-        drawText(gc, answer, textY);
+        // drawText(gc, answer, textY);
     }
 
     /**
@@ -80,7 +80,7 @@ public class QuestionPane extends TextPane {
      * @return The height of the text
      */
     private double computeTextHeight(GraphicsContext gc, String text) {
-        List<String> wrappedText = wrapText(gc, text, width - 20);
+        List<String> wrappedText = wrapText(gc, text, getWidth() - 20);
         return wrappedText.size() * (fontSize + lineSpacing);
     }
 

@@ -2,7 +2,6 @@ package ch.fhnw.team6.controller;
 
 import javafx.scene.image.Image;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -13,13 +12,18 @@ public class ResourceLoader {
     /**
      * Loads an array of images as animation frames.
      *
-     * @param animationName The folder name inside images/background/
+     * @param animationFolderName The folder name inside images/
+     * @param animationName The name of the animation
+     * @param frameCount   The number of frames
+     * @param targetWidth  The target width for scaling
+     * @param targetHeight The target height for scaling
+     * 
      * @return Array of Images.
      */
-    public static Image[] loadAnimationFrames(String animationName, double targetWidth, double targetHeight) {
-        Image[] frames = new Image[10];
-        for (int i = 1; i <= 10; i++) {
-            String path = String.format("/images/background/%s/%d.png", animationName, i);
+    public static Image[] loadAnimationFrames(String animationFolderName, String animationName, int frameCount, double targetWidth, double targetHeight) {
+        Image[] frames = new Image[frameCount];
+        for (int i = 1; i <= frameCount; i++) {
+            String path = String.format("/images/%s/%s/%d.png", animationFolderName, animationName, i);
             frames[i - 1] = loadImage(path, targetWidth, targetHeight);
             System.out.println("Loaded frame: " + path);
         }
@@ -32,7 +36,7 @@ public class ResourceLoader {
      * @param path The resource path to the image.
      * @return The loaded Image.
      */
-    private static Image loadImage(String path, double targetWidth, double targetHeight) {
+    public static Image loadImage(String path, double targetWidth, double targetHeight) {
         try (InputStream stream = ResourceLoader.class.getResourceAsStream(path)) {
             if (stream == null)
                 throw new RuntimeException("Resource not found: " + path);
