@@ -31,7 +31,7 @@ public class Main extends Application {
     private static final double WINDOWED_HEIGHT = 720;
 
     // ─── Logger ────────────────────────────────────────────────────────
-    private static final Logger logger = Logger.getLogger(Main.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
     // ─── Hardware / GPIO ───────────────────────────────────────────────
     private final Context pi4j = Pi4J.newAutoContext();
@@ -142,11 +142,11 @@ public class Main extends Application {
     }
 
     private void handleButtonStop(boolean pressed) {
-        if (pressed) logger.info("Game stopped.");
+        if (pressed) LOGGER.info("Game stopped.");
     }
 
     private void handleButtonLanguage(boolean pressed) {
-        if (pressed) logger.info("Language changed.");
+        if (pressed) LOGGER.info("Language changed.");
     }
 
     // ─── Game Loop ─────────────────────────────────────────────────────
@@ -224,7 +224,7 @@ public class Main extends Application {
             dialogBubble.setText(currentAnswer);
             step++;
         } catch (NotAValidInputException e) {
-            logger.warning("Invalid input: " + e.getMessage());
+            LOGGER.warning("Invalid input: " + e.getMessage());
         }
     }
 
@@ -278,7 +278,7 @@ public class Main extends Application {
             try {
                 currentAnswer = inputHandler.answerQuestion(input);
             } catch (NotAValidInputException e) {
-                logger.warning(e.getMessage());
+                LOGGER.warning(e.getMessage());
             }
         }
     }
