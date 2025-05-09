@@ -4,6 +4,7 @@ import ch.fhnw.team6.controller.InputHandler;
 import ch.fhnw.team6.controller.ResourceLoader;
 import ch.fhnw.team6.exceptions.NotAValidInputException;
 import ch.fhnw.team6.model.Language;
+import ch.fhnw.team6.model.PercentQuestion;
 import ch.fhnw.team6.model.Player;
 import ch.fhnw.team6.view.*;
 import javafx.animation.AnimationTimer;
@@ -19,7 +20,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     // ─── Constants ─────────────────────────────────────────────────────
-    private static final int TOTAL_STEPS = 3;
+    private static final int TOTAL_STEPS = 2;
     private static final double WINDOWED_WIDTH = 1280;
     private static final double WINDOWED_HEIGHT = 720;
 
@@ -75,7 +76,7 @@ public class Main extends Application {
         player = new Player();
         canvas = new Canvas(WINDOWED_WIDTH, WINDOWED_HEIGHT);
         inputHandler = new InputHandler(player);
-        backgroundAnimation = new BackgroundManager(canvas, TOTAL_STEPS, 3, 1280, 720);
+        backgroundAnimation = new BackgroundManager(canvas, TOTAL_STEPS, 2, 1280, 720);
         mascot = new AnimationManager(WINDOWED_WIDTH * 0.8 - 20, WINDOWED_HEIGHT * 0.6, WINDOWED_WIDTH * 0.2, WINDOWED_HEIGHT * 0.4, "mascot", 1, 4, 4);
         mascot.setCurrentAnimationVisible(false);
         dialogBubble = new DialogBubble(0, 0, 1000, 400);
@@ -156,6 +157,8 @@ public class Main extends Application {
         } else if (isAnswered) {
             proceedToNextStep();
         }
+        mascot.setCurrentAnimationVisible(false);
+        dialogBubble.setVisible(false);
     }
 
     private void handleAnswerInput(KeyCode code) {
@@ -215,6 +218,9 @@ public class Main extends Application {
 
     private void updateLanguage() {
         currentQuestion = inputHandler.getQuestionQuestion();
+        if(inputHandler.getCurrentQuestion() instanceof PercentQuestion) {
+            ((PercentQuestion) inputHandler.getCurrentQuestion()).decrementAnswer(input);
+        }
         if (isAnswered) {
             try {
                 currentAnswer = inputHandler.answerQuestion(input);
@@ -240,12 +246,22 @@ public class Main extends Application {
         }
 
         if (!isGameStarted) {
-            questionPane.setQuestion("Press SPACE to start");
+            dialogBubble.setText("press SPACE to start");
+            dialogBubble.setVisible(true);
+            mascot.setCurrentAnimationVisible(true);
+            questionPane.setVisible(false);
+
         } else if (isGameEnded) {
-            questionPane.setQuestion("Quiz complete! Press SPACE to restart");
+            dialogBubble.setText("Quiz complete! Press SPACE to restart");
+            dialogBubble.setVisible(true);
+            mascot.setCurrentAnimationVisible(true);
+            questionPane.setVisible(false);
         } else {
+            questionPane.setVisible(true);
             questionPane.setQuestion(currentQuestion);
+
         }
+
 
         //questionPane.setAnswer(currentAnswer);
         questionPane.draw(canvas.getGraphicsContext2D());
@@ -263,11 +279,23 @@ public class Main extends Application {
     }
 
     private void updateBubble() {
-        dialogBubble.setVisible(isAnswered);
-        dialogBubble.setText(currentAnswer);
+        if(!isGameStarted) {
+            dialogBubble.setVisible(true);
+//            dialogBubble.setText("Press SPACE to start");
+            currentAnswer = "Press SPACE to start!";
+        }
+        if(isGameEnded) {
+            dialogBubble.setVisible(true);
+            currentAnswer = " Quiz complete! Press SPACE to restart!";
+        }
+        if(isAnswered) {
+            dialogBubble.setVisible(true);
+            dialogBubble.setText(currentAnswer);
+        }
+
         dialogBubble.setSize(
             canvas.getWidth() * 0.5f,
-            currentAnswer.length() / (canvas.getWidth() / 10) * dialogBubble.getFontSize() * dialogBubble.getLineSpacing()
+            Math.max(canvas.getHeight()/10,currentAnswer.length() / (canvas.getWidth() / 10) * dialogBubble.getFontSize() * dialogBubble.getLineSpacing())
         );
         dialogBubble.setPosition(
                 mascot.getCurrentAnimationX() - dialogBubble.getWidth() + mascot.getCurrentAnimationWidth() / 4.2,

@@ -52,6 +52,9 @@ public class QuestionPane extends TextPane {
      */
     @Override
     public void draw(GraphicsContext gc) {
+        if (!isVisible) {
+            return;
+        }
 
         // Draw background
         drawBackground(gc);

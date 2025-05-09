@@ -26,4 +26,9 @@ public class PercentQuestion extends Question{
         return base.replace("Ї", formatted + "%");
     }
 
+    public void decrementAnswer(String id){
+        numberOfAnswers--;
+        givenAnswers.put(id, givenAnswers.get(id) -1);
+    }
+
 }

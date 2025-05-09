@@ -142,4 +142,7 @@ public class InputHandler {
         questionHandler.getPlayer().answer(answerCorrect);
     }
 
+    public Question getCurrentQuestion(){
+        return currentQuestion;
+    }
 }

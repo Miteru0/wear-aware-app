@@ -50,6 +50,9 @@ public class TextPane extends GuiObject {
      * @param gc The GraphicsContext used for drawing
      */
     public void draw(GraphicsContext gc) {
+        if (!isVisible) {
+            return;
+        }
 
         // Draw background
         drawBackground(gc);
