@@ -26,7 +26,7 @@ import java.util.logging.Logger;
 public class Main extends Application {
 
     // ─── Constants ─────────────────────────────────────────────────────
-    private static final int TOTAL_STEPS = 2;
+    private static final int TOTAL_STEPS = 7;
     private static final double WINDOWED_WIDTH = 1280;
     private static final double WINDOWED_HEIGHT = 720;
 
@@ -35,8 +35,10 @@ public class Main extends Application {
 
     // ─── Hardware / GPIO ───────────────────────────────────────────────
     private final Context pi4j = Pi4J.newAutoContext();
-    private final DigitalInput buttonStop = createButton(23, "buttonStop", 3000L);
-    private final DigitalInput buttonLanguage = createButton(27, "buttonLanguage", 3000L);
+    private final DigitalInput buttonStop = createButton(27, "buttonStop", 3000L);
+    private final DigitalInput buttonLanguage = createButton(23, "buttonLanguage", 3000L);
+    private int buttonClickedStop = 0;
+    private int buttonClickedLanguage = 0;
 
     // ─── GUI Components ─────────────────────────────────────────────────
     private Canvas canvas;
@@ -93,7 +95,7 @@ public class Main extends Application {
         inputHandler = new InputHandler(player);
         canvas = new Canvas(WINDOWED_WIDTH, WINDOWED_HEIGHT);
 
-        backgroundAnimation = new BackgroundManager(canvas, TOTAL_STEPS, 2, 1280, 720);
+        backgroundAnimation = new BackgroundManager(canvas, TOTAL_STEPS, 10, 1280, 720);
         mascot = new AnimationManager(WINDOWED_WIDTH * 0.8 - 20, WINDOWED_HEIGHT * 0.6, WINDOWED_WIDTH * 0.2, WINDOWED_HEIGHT * 0.4, "mascot", 1, 4, 4);
         mascot.setCurrentAnimationVisible(false);
 
@@ -143,10 +145,21 @@ public class Main extends Application {
 
     private void handleButtonStop(boolean pressed) {
         if (pressed) LOGGER.info("Game stopped.");
+        buttonClickedStop++;
+        if (buttonClickedStop >= 2) {
+            handleSpaceKey();
+            buttonClickedStop = 0;
+        }
+        
     }
 
     private void handleButtonLanguage(boolean pressed) {
         if (pressed) LOGGER.info("Language changed.");
+        buttonClickedLanguage++;
+        if (buttonClickedLanguage >= 2) {
+            handleLanguageSwitch();
+            buttonClickedLanguage = 0;
+        }
     }
 
     // ─── Game Loop ─────────────────────────────────────────────────────
@@ -288,7 +301,7 @@ public class Main extends Application {
     private void updateTextPane() {
         if (questionPane == null) {
             questionPane = new QuestionPane(0f, (float) canvas.getHeight(),
-                    (float) canvas.getWidth() * 0.8f, (float) canvas.getHeight() / 20f);
+                    (float) canvas.getWidth() * 0.8f, (float) canvas.getHeight() / 10f);
             questionPane.setTextAlign(TextAlign.CENTER);
             questionPane.setFrameWidth(4);
             questionPane.setBackgroundOpacity(0.75);
