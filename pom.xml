@@ -29,6 +29,9 @@
         <javafx.version>21.0.1</javafx.version>
         <javafx-plugin.version>0.0.8</javafx-plugin.version>
 
+        <pi4j.version>2.7.0</pi4j.version>
+
+
         <mainClass>ch.fhnw.team6.Main</mainClass>
     </properties>
 
@@ -63,6 +66,41 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+        <!-- Pi4J libraries -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>2.0.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-core</artifactId>
+            <version>${pi4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-plugin-gpiod</artifactId>
+            <version>${pi4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-plugin-linuxfs</artifactId>
+            <version>${pi4j.version}</version>
+        </dependency>
+
+        <!-- Pi4J Mock Platform -->
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-plugin-mock</artifactId>
+            <version>${pi4j.version}</version>
+            <!-- <scope>test</scope> -->
         </dependency>
     </dependencies>
 

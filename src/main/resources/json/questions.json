@@ -4,755 +4,364 @@
     "question": "Scan the clothing that is not vegan (i.e., made from animal products).",
     "rightClothingBarcode": "4",
     "explanationRight": "Correct, these materials are not vegan when they are of animal origin, for example, leather is made from animal skin.",
-    "explanationWrong": "Unfortunately no, materials are not vegan when they are of animal origin, for example, leather is made from animal skin.",
     "difficulty": "EASY",
+    "explanationWrong": "Unfortunately no, materials are not vegan when they are of animal origin, for example, leather is made from animal skin.",
     "language": "ENGLISH"
   },
+
   {
     "id": "1",
-    "question": "Scanne das Kleidungsstück, welches nicht vegan ist (d.h. aus tierischen Produkten).",
+    "question": "Scanne die Kleider, welche nicht vegan sind (d.h. aus tierischen Produkten).",
     "rightClothingBarcode": "4",
-    "explanationRight": "Super, das stimmt, denn Leder wird aus der Haut von Kühen hergestellt.",
-    "explanationWrong": "Leider nein, Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, z.B. wird Leder aus Tierhaut gewonnen.",
+    "explanationRight": "Richtig, diese Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen.",
     "difficulty": "EASY",
+    "explanationWrong": "Leider nein, Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren gewonnen.",
     "language": "GERMAN"
   },
   {
     "id": "1",
-    "question": "Scannez les vêtements qui ne sont pas végans (c'est‑à‑dire fabriqués à partir de produits animaux).",
+    "question": "Scannez les vêtements qui ne sont pas végans (c'est-à-dire fabriqués à partir de produits animaux).",
     "rightClothingBarcode": "4",
-    "explanationRight": "Correct, ces matériaux ne sont pas végans s’ils sont d’origine animale, par exemple le cuir est fabriqué à partir de peau animale.",
-    "explanationWrong": "Malheureusement non, les matériaux ne sont pas végans s’ils sont d’origine animale, par exemple le cuir est fabriqué à partir de peau animale.",
+    "explanationRight": "Correct, ces matériaux ne sont pas végans lorsqu'ils sont d'origine animale, par exemple, le cuir est fabriqué à partir de peau animale.",
     "difficulty": "EASY",
+    "explanationWrong": "Malheureusement non, les matériaux ne sont pas végans lorsqu'ils sont d'origine animale, par exemple, le cuir est fabriqué à partir de peau animale.",
     "language": "FRENCH"
   },
   {
     "id": "1",
-    "question": "Scansiona gli indumenti che non sono vegani (cioè realizzati con prodotti di origine animale).",
+    "question": "Scansiona gli indumenti che non sono vegani (cioè realizzati con prodotti animali).",
     "rightClothingBarcode": "4",
-    "explanationRight": "Esatto, questi materiali non sono vegani se di origine animale, ad esempio la pelle proviene dagli animali.",
-    "explanationWrong": "Purtroppo no, i materiali non sono vegani se di origine animale, ad esempio la pelle proviene dagli animali.",
+    "explanationRight": "Corretto, questi materiali non sono vegani quando sono di origine animale, ad esempio, la pelle è ricavata dalla pelle degli animali.",
     "difficulty": "EASY",
+    "explanationWrong": "Purtroppo no, i materiali non sono vegani quando sono di origine animale, ad esempio, la pelle è ricavata dalla pelle degli animali.",
     "language": "ITALIAN"
   },
-
   {
     "id": "2",
     "question": "Scan the product whose purchase leaves the smallest ecological footprint.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Correct, buying second‑hand jeans only incurs transport and storage impacts since the item was already produced.",
-    "explanationWrong": "No—the second‑hand jeans have the lowest footprint because production impacts have already occurred; only transport and storage remain.",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Correct, since the product has already been produced, only transport or storage is required.",
     "difficulty": "EASY",
+    "explanationWrong": "Unfortunately not, since a secondhand product has already been produced, only transport or storage is required.",
     "language": "ENGLISH"
   },
   {
     "id": "2",
-    "question": "Scanne das Produkt, bei dessen Kauf dein ökologischer Fußabdruck am kleinsten bleibt.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Korrekt, da die Second‑Hand‑Jeans schon produziert wurde, fallen nur Transport und Lagerung an.",
-    "explanationWrong": "Leider nicht—die Second‑Hand‑Jeans hat den kleinsten Fußabdruck, weil nur noch Transport und Lagerung anfallen.",
+    "question": "Scanne das Produkt, bei dessen Kauf dein Ökologischer Fussabdruck am kleinsten bleibt.",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Korrekt, da das Produkt schon produziert wurde fällt nur der Transport bzw. die Lagerung",
     "difficulty": "EASY",
+    "explanationWrong": "Leider nicht, da ein Produkt welches Secondhand ist schon produziert wurde, fallen dafür nur",
     "language": "GERMAN"
   },
   {
     "id": "2",
-    "question": "Scannez le produit dont l’achat laisse la plus petite empreinte écologique.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Exact, la paire de jeans d’occasion a déjà été produite, il n’y a donc que le transport et le stockage qui comptent.",
-    "explanationWrong": "Non, les jeans d’occasion ont la plus petite empreinte car la production a déjà eu lieu, seuls transport et stockage restent.",
+    "question": "Scannez le produit dont l'achat laisse la plus petite empreinte écologique.",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Correct, puisque le produit a déjà été fabriqué, seul le transport ou le stockage est nécessaire.",
     "difficulty": "EASY",
+    "explanationWrong": "Malheureusement non, puisque un produit d'occasion a déjà été fabriqué, seul le transport ou le stockage est nécessaire.",
     "language": "FRENCH"
   },
   {
     "id": "2",
-    "question": "Scansiona il prodotto il cui acquisto lascia l’impronta ecologica più piccola.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Corretto, i jeans di seconda mano sono già stati prodotti: restano solo trasporto e stoccaggio.",
-    "explanationWrong": "No, i jeans di seconda mano hanno l’impronta più bassa perché la produzione è già avvenuta; rimangono trasporto e stoccaggio.",
+    "question": "Scansiona il prodotto il cui acquisto lascia la più piccola impronta ecologica.",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Corretto, poiché il prodotto è già stato prodotto, è necessario solo il trasporto o lo stoccaggio.",
     "difficulty": "EASY",
+    "explanationWrong": "Purtroppo no, poiché un prodotto di seconda mano è già stato prodotto, è necessario solo il trasporto o lo stoccaggio.",
     "language": "ITALIAN"
   },
-
   {
     "id": "3",
-    "question": "Scan a garment that is made from multiple materials (e.g., cotton and elastane).",
-    "rightClothingBarcode": "2,4",
-    "explanationRight": "Great—you found one of the correct items. The shoes are made of leather and rubber, and the second‑hand jeans of cotton, elastane and polyester.",
-    "explanationWrong": "That’s incorrect. The shoes and the second‑hand jeans both consist of multiple materials—check the labels again.",
+    "question": "Scan clothing items that are made of multiple materials (e.g., cotton and elastane).",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Correct, these jeans are made of cotton, polyester, and elastane.",
     "difficulty": "EASY",
+    "explanationWrong": "Not quite, the secondhand jeans are made of cotton, polyester, and elastane.",
     "language": "ENGLISH"
   },
   {
     "id": "3",
-    "question": "Scanne ein Kleidungsstück, welches aus mehreren Stoffen besteht (z.B. Baumwolle und Elasthan).",
-    "rightClothingBarcode": "2,4",
-    "explanationRight": "Super, du hast eines der richtigen Kleidungsstücke gefunden. Die Schuhe sind aus Leder und Gummi und die Secondhand-Jeans aus Baumwolle, Elasthan und Polyester.",
-    "explanationWrong": "Leider falsch. Die Schuhe und die Secondhand-Jeans bestehen aus mehreren Materialien, schaue nochmals auf die Etiketten.",
+    "question": "Scanne Kleidungsstücke, welche aus mehreren Stoffen bestehen. (z.B. aus Baumwolle und Elasthan)",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Richtig, diese Jeans besteht aus Baumwolle, Polyester und Elasthan.",
     "difficulty": "EASY",
+    "explanationWrong": "Nicht ganz, die secondhand Jeans besteht aus Baumwolle, Polyester und Elasthan.",
     "language": "GERMAN"
   },
   {
     "id": "3",
-    "question": "Scannez un vêtement composé de plusieurs matériaux (par ex. coton et élasthanne).",
-    "rightClothingBarcode": "2,4",
-    "explanationRight": "Super, vous avez trouvé l’un des bons articles. Les chaussures sont en cuir et caoutchouc, et le jean d’occasion en coton, élasthanne et polyester.",
-    "explanationWrong": "Malheureusement non. Les chaussures et le jean d’occasion sont composés de plusieurs matériaux—vérifiez les étiquettes.",
+    "question": "Scannez les vêtements composés de plusieurs matériaux (par exemple, coton et élasthanne).",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Correct, ces jeans sont fabriqués en coton, polyester et élasthanne.",
     "difficulty": "EASY",
+    "explanationWrong": "Pas tout à fait, les jeans d'occasion sont fabriqués en coton, polyester et élasthanne.",
     "language": "FRENCH"
   },
   {
     "id": "3",
-    "question": "Scansiona un indumento composto da più materiali (es. cotone ed elastan).",
-    "rightClothingBarcode": "2,4",
-    "explanationRight": "Ottimo, hai trovato uno degli articoli corretti. Le scarpe sono in pelle e gomma, i jeans di seconda mano in cotone, elastan e poliestere.",
-    "explanationWrong": "Purtroppo no. Scarpe e jeans di seconda mano sono fatti di più materiali—controlla di nuovo le etichette.",
+    "question": "Scansiona gli indumenti realizzati con più materiali (ad esempio, cotone ed elastan).",
+    "rightClothingBarcode": "3",
+    "explanationRight": "Corretto, questi jeans sono realizzati in cotone, poliestere ed elastan.",
     "difficulty": "EASY",
+    "explanationWrong": "Non proprio, i jeans di seconda mano sono realizzati in cotone, poliestere ed elastan.",
     "language": "ITALIAN"
   },
-
   {
     "id": "4",
-    "question": "Scan an item that contains cotton fabric.",
-    "rightClothingBarcode": "1,2,3",
-    "explanationRight": "Perfect—you chose one of the three correct items. Both jeans and the T‑shirt contain cotton.",
-    "explanationWrong": "Incorrect. Both jeans and the T‑shirt contain at least some cotton.",
+    "question": "Scan the product that has traveled the shortest distance to reach you.",
+    "rightClothingBarcode": "1,2,3,4,5",
+    "explanationRight": "It's almost impossible to track the journey of your clothing. A T-shirt from Europe may have traveled a very long way. Therefore, all answers are correct here.",
     "difficulty": "EASY",
+    "explanationWrong": "It's almost impossible to track the journey of your clothing. A T-shirt from Europe may have traveled a very long way. Therefore, all answers are correct here.",
     "language": "ENGLISH"
   },
   {
     "id": "4",
-    "question": "Scanne ein Kleidungsstück, bei welchem der Stoff Baumwolle beinhaltet.",
-    "rightClothingBarcode": "1,2,3",
-    "explanationRight": "Perfekt, du hast eines der drei richtigen Kleidungsstücke gefunden: beide Jeans und das T‑Shirt.",
-    "explanationWrong": "Leider falsch, beide Jeans und das T‑Shirt enthalten zumindest teilweise Baumwolle.",
+    "question": "Scanne das Produkt welches den kürzesten Weg bis zu dir zurückgelegt hat.",
+    "rightClothingBarcode": "1,2,3,4,5",
+    "explanationRight": "Es ist fast unmöglich, den Weg seines Kleidungsstücks zu verfolgen. Ein T-Shirt aus Europa kann einen sehr langen Weg hinter sich haben. Deshalb sind hier alle Antworten richtig.",
     "difficulty": "EASY",
+    "explanationWrong": "Es ist fast unmöglich, den Weg seines Kleidungsstücks zu verfolgen. Ein T-Shirt aus Europa kann einen sehr langen Weg hinter sich haben. Deshalb sind hier alle Antworten richtig.",
     "language": "GERMAN"
   },
   {
     "id": "4",
-    "question": "Scannez un article contenant du coton.",
-    "rightClothingBarcode": "1,2,3",
-    "explanationRight": "Parfait, vous avez choisi l’un des trois articles corrects (les deux jeans et le T‑shirt).",
-    "explanationWrong": "Erreur, les deux jeans et le T‑shirt contiennent au moins du coton.",
+    "question": "Scannez le produit qui a parcouru la distance la plus courte pour vous parvenir.",
+    "rightClothingBarcode": "1,2,3,4,5",
+    "explanationRight": "Il est presque impossible de retracer le parcours de vos vêtements. Un t-shirt d'Europe peut avoir parcouru un très long chemin. Par conséquent, toutes les réponses sont correctes ici.",
     "difficulty": "EASY",
+    "explanationWrong": "Il est presque impossible de retracer le parcours de vos vêtements. Un t-shirt d'Europe peut avoir parcouru un très long chemin. Par conséquent, toutes les réponses sont correctes ici.",
     "language": "FRENCH"
   },
   {
     "id": "4",
-    "question": "Scansiona un capo che contiene cotone.",
-    "rightClothingBarcode": "1,2,3",
-    "explanationRight": "Perfetto, hai scelto uno dei tre articoli corretti: i due jeans e la maglietta.",
-    "explanationWrong": "Sbagliato, sia i jeans sia la maglietta contengono almeno cotone.",
+    "question": "Scansiona il prodotto che ha percorso la distanza più breve per raggiungerti.",
+    "rightClothingBarcode": "1,2,3,4,5",
+    "explanationRight": "È quasi impossibile tracciare il percorso dei tuoi vestiti. Una maglietta dall'Europa può aver viaggiato molto lontano. Pertanto, tutte le risposte sono corrette qui.",
     "difficulty": "EASY",
+    "explanationWrong": "È quasi impossibile tracciare il percorso dei tuoi vestiti. Una maglietta dall'Europa può aver viaggiato molto lontano. Pertanto, tutte le risposte sono corrette qui.",
     "language": "ITALIAN"
   },
-
   {
     "id": "5",
-    "question": "Find the product that has already been worn by someone else.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Correct—the second‑hand jeans had a previous owner.",
-    "explanationWrong": "No, only the second‑hand jeans were previously owned and worn.",
-    "difficulty": "EASY",
+    "question": "Scan the clothing item whose production requires 8,000 liters of water.",
+    "rightClothingBarcode": "2,3",
+    "explanationRight": "Correct, the production of a pair of jeans requires an average of about 8,000 liters of water globally. This amount of water would fill about 53 bathtubs (150 liters each).",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Unfortunately not, the production of a pair of jeans requires an average of about 8,000 liters of water globally. This amount of water would fill about 53 bathtubs (150 liters each).",
     "language": "ENGLISH"
   },
   {
     "id": "5",
-    "question": "Finde das Produkt, welches schon von jemand anderem getragen wurde.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Das stimmt, die Secondhand‑Jeans hatte schon einen Vorbesitzer.",
-    "explanationWrong": "Nein, nur die Secondhand‑Jeans hatte schon einen Vorbesitzer.",
-    "difficulty": "EASY",
+    "question": "Scanne das Kleidungsstück, wessen Herstellung 8.000 Liter Wasser benötigt.",
+    "rightClothingBarcode": "2,3",
+    "explanationRight": "Korrekt, für die Herstellung einer Jeans werden im globalen Durchschnitt rund 8.000 Liter Wasser benötigt. Diese Wassermenge würde rund 53 Badewannen (a 150 Liter) füllen.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Leider nein, denn für die Herstellung einer Jeans werden im globalen Durchschnitt rund 8.000 Liter Wasser benötigt. Diese Wassermenge würde rund 53 Badewannen (a 150 Liter) füllen.",
     "language": "GERMAN"
   },
   {
     "id": "5",
-    "question": "Trouvez le produit qui a déjà été porté par quelqu’un d’autre.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Exact, le jean d’occasion avait déjà un propriétaire.",
-    "explanationWrong": "Non, seul le jean d’occasion avait un ancien propriétaire.",
-    "difficulty": "EASY",
+    "question": "Scannez le vêtement dont la production nécessite 8 000 litres d'eau.",
+    "rightClothingBarcode": "2,3",
+    "explanationRight": "Correct, la production d'un jean nécessite en moyenne environ 8 000 litres d'eau à l'échelle mondiale. Cette quantité d'eau remplirait environ 53 baignoires (150 litres chacune).",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Malheureusement non, la production d'un jean nécessite en moyenne environ 8 000 litres d'eau à l'échelle mondiale. Cette quantité d'eau remplirait environ 53 baignoires (150 litres chacune).",
     "language": "FRENCH"
   },
   {
     "id": "5",
-    "question": "Trova il prodotto che è già stato indossato da qualcun altro.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Corretto, i jeans di seconda mano avevano già un proprietario.",
-    "explanationWrong": "No, solo i jeans di seconda mano avevano un proprietario precedente.",
-    "difficulty": "EASY",
+    "question": "Scansiona l'indumento la cui produzione richiede 8.000 litri d'acqua.",
+    "rightClothingBarcode": "2,3",
+    "explanationRight": "Corretto, la produzione di un paio di jeans richiede in media circa 8.000 litri d'acqua a livello globale. Questa quantità d'acqua riempirebbe circa 53 vasche da bagno (150 litri ciascuna).",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Purtroppo no, la produzione di un paio di jeans richiede in media circa 8.000 litri d'acqua a livello globale. Questa quantità d'acqua riempirebbe circa 53 vasche da bagno (150 litri ciascuna).",
     "language": "ITALIAN"
   },
-
   {
     "id": "6",
-    "question": "Select the product for which you can be sure no synthetic pesticides or insecticides were used.",
+    "question": "Which clothing item pollutes the environment the most when washing?",
     "rightClothingBarcode": "3",
-    "explanationRight": "Correct—organic cotton is grown without synthetic pesticides or insecticides.",
-    "explanationWrong": "Incorrect—only the organic‑cotton jeans are guaranteed to be grown without synthetic chemicals.",
-    "difficulty": "EASY",
+    "explanationRight": "That's correct, a single wash of polyester clothing can release 700,000 microplastic fibers that can enter the food chain.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "No, a single wash of polyester clothing can release 700,000 microplastic fibers that can enter the food chain.",
     "language": "ENGLISH"
   },
   {
     "id": "6",
-    "question": "Suche das Produkt, bei welchem du dir sicher sein kannst, dass keine synthetischen Pestizide oder Insektizide verwendet wurden.",
+    "question": "Welches Kleidungsstücks belastet die Umwelt beim Waschen am stärksten?",
     "rightClothingBarcode": "3",
-    "explanationRight": "Das stimmt, bei Bio‑Baumwolle werden keine synthetischen Pestizide oder Insektizide verwendet.",
-    "explanationWrong": "Nein—nur bei der Bio‑Baumwolle der Jeans kannst du sicher sein, dass keine synthetischen Pestizide verwendet wurden.",
-    "difficulty": "EASY",
+    "explanationRight": "Das stimmt, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Nein, bei einer einzigen Wäsche von Polyesterkleidung können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können.",
     "language": "GERMAN"
   },
   {
     "id": "6",
-    "question": "Choisissez le produit pour lequel vous êtes sûr qu’aucun pesticide ou insecticide synthétique n’a été utilisé.",
+    "question": "Quel vêtement pollue le plus l'environnement lors du lavage?",
     "rightClothingBarcode": "3",
-    "explanationRight": "Correct, le coton bio est cultivé sans pesticides ou insecticides synthétiques.",
-    "explanationWrong": "Faux, seul le jean en coton bio est garanti sans produits chimiques synthétiques.",
-    "difficulty": "EASY",
+    "explanationRight": "C'est correct, un seul lavage de vêtements en polyester peut libérer 700 000 fibres microplastiques qui peuvent entrer dans la chaîne alimentaire.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "Non, un seul lavage de vêtements en polyester peut libérer 700 000 fibres microplastiques qui peuvent entrer dans la chaîne alimentaire.",
     "language": "FRENCH"
   },
   {
     "id": "6",
-    "question": "Seleziona il prodotto per il quale puoi essere certo che non siano stati usati pesticidi o insetticidi sintetici.",
+    "question": "Quale indumento inquina di più l'ambiente durante il lavaggio?",
     "rightClothingBarcode": "3",
-    "explanationRight": "Corretto, il cotone biologico è coltivato senza pesticidi o insetticidi sintetici.",
-    "explanationWrong": "Sbagliato, solo i jeans in cotone biologico sono garantiti privi di sostanze chimiche sintetiche.",
-    "difficulty": "EASY",
+    "explanationRight": "Esatto, un singolo lavaggio di indumenti in poliestere può rilasciare 700.000 fibre microplastiche che possono entrare nella catena alimentare.",
+    "difficulty": "MEDIUM",
+    "explanationWrong": "No, un singolo lavaggio di indumenti in poliestere può rilasciare 700.000 fibre microplastiche che possono entrare nella catena alimentare.",
     "language": "ITALIAN"
-  },
-
-  {
-    "id": "7",
-    "question": "Scan the clothing you think had the lowest purchase price.",
-    "rightClothingBarcode": "",
-    "explanationRight": "Correct—all were free; they belonged to students who no longer needed them.",
-    "explanationWrong": "Remember, all items were free—they belonged to students who no longer wore them.",
-    "difficulty": "EASY",
-    "language": "ENGLISH"
   },
   {
     "id": "7",
-    "question": "Scanne das Kleidungsstück, bei welchem du den günstigsten Einkaufpreis vermutest.",
-    "rightClothingBarcode": "",
-    "explanationRight": "Richtig, alle waren gratis; sie gehörten Studierenden, die sie nicht mehr trugen.",
-    "explanationWrong": "Alle waren gratis; sie gehörten Studierenden, die sie nicht mehr trugen.",
-    "difficulty": "EASY",
-    "language": "GERMAN"
+    "question": "Scan the clothing item that is easiest to recycle.",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Correct, pure cotton fabrics are the easiest to recycle.",
+    "difficulty": "HARD",
+    "explanationWrong": "Unfortunately wrong, pure cotton fabrics are the easiest to recycle.",
+    "language": "ENGLISH"
   },
   {
     "id": "7",
-    "question": "Scannez le vêtement dont vous pensez qu’il a eu le prix d’achat le plus bas.",
-    "rightClothingBarcode": "",
-    "explanationRight": "Correct, ils étaient tous gratuits; ils appartenaient à des étudiants qui ne les portaient plus.",
-    "explanationWrong": "Tous étaient gratuits; ils appartenaient à des étudiants qui ne les portaient plus.",
-    "difficulty": "EASY",
-    "language": "FRENCH"
-  },
-  {
-    "id": "7",
-    "question": "Scansiona il capo che pensi avesse il prezzo d’acquisto più basso.",
-    "rightClothingBarcode": "",
-    "explanationRight": "Corretto, erano tutti gratis; appartenevano a studenti che non li indossavano più.",
-    "explanationWrong": "Erano tutti gratis; appartenevano a studenti che non li indossavano più.",
-    "difficulty": "EASY",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "8",
-    "question": "Scan the product that traveled the shortest distance to you.",
-    "rightClothingBarcode": "1,2,3,4,5",
-    "explanationRight": "It’s nearly impossible to track a garment’s journey. Any T‑shirt from Europe could have traveled far—so all are correct here.",
-    "explanationWrong": "",
-    "difficulty": "HARD",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "8",
-    "question": "Scanne das Produkt, welches den kürzesten Weg bis zu dir zurückgelegt hat.",
-    "rightClothingBarcode": "1,2,3,4,5",
-    "explanationRight": "Es ist fast unmöglich, den Weg eines Kleidungsstücks nachzuvollziehen. Ein T‑Shirt aus Europa kann weit gereist sein. Daher sind hier alle Antworten richtig.",
-    "explanationWrong": "",
-    "difficulty": "HARD",
-    "language": "GERMAN"
-  },
-  {
-    "id": "8",
-    "question": "Scannez le produit qui a parcouru le plus court trajet jusqu’à vous.",
-    "rightClothingBarcode": "1,2,3,4,5",
-    "explanationRight": "Il est presque impossible de retracer le parcours d’un vêtement. Un T‑shirt d’Europe peut avoir voyagé loin : toutes les réponses sont donc justes.",
-    "explanationWrong": "",
-    "difficulty": "HARD",
-    "language": "FRENCH"
-  },
-  {
-    "id": "8",
-    "question": "Scansiona il prodotto che ha percorso la distanza più breve fino a te.",
-    "rightClothingBarcode": "1,2,3,4,5",
-    "explanationRight": "È quasi impossibile tracciare il percorso di un indumento. Una maglietta europea può aver viaggiato molto – quindi tutte le risposte sono corrette.",
-    "explanationWrong": "",
-    "difficulty": "HARD",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "20",
-    "type": "percent",
-    "question": "Which clothing item do you like the most?",
-    "explanation": "Interesting choice—% of players chose the same item as you.",
-    "difficulty": "EASY",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "20",
-    "type": "percent",
-    "question": "Welches Kleidungsstück gefällt dir am besten?",
-    "explanation": "Interessante Wahl—% wählten dasselbe Kleidungsstück wie du.",
-    "difficulty": "EASY",
-    "language": "GERMAN"
-  },
-  {
-    "id": "20",
-    "type": "percent",
-    "question": "Quel vêtement vous plaît le plus ?",
-    "explanation": "Choix intéressant—% des joueurs ont choisi le même article que vous.",
-    "difficulty": "EASY",
-    "language": "FRENCH"
-  },
-  {
-    "id": "20",
-    "type": "percent",
-    "question": "Quale capo ti piace di più?",
-    "explanation": "Scelta interessante—% dei giocatori ha scelto lo stesso capo.",
-    "difficulty": "EASY",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "21",
-    "type": "percent",
-    "question": "On which item does the material feel best?",
-    "explanation": "% of our players chose the same material feel as you.",
-    "difficulty": "EASY",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "21",
-    "type": "percent",
-    "question": "Bei welchem Kleidungsstück fühlt sich das Material am besten an?",
-    "explanation": "% unserer Spieler entschieden sich für dasselbe Materialgefühl wie du.",
-    "difficulty": "EASY",
-    "language": "GERMAN"
-  },
-  {
-    "id": "21",
-    "type": "percent",
-    "question": "Sur quel article le matériau semble-t-il le plus agréable ?",
-    "explanation": "% de nos joueurs ont choisi la même sensation au toucher que vous.",
-    "difficulty": "EASY",
-    "language": "FRENCH"
-  },
-  {
-    "id": "21",
-    "type": "percent",
-    "question": "In quale capo il materiale si sente meglio?",
-    "explanation": "% dei nostri giocatori ha scelto la stessa sensazione al tatto.",
-    "difficulty": "EASY",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "22",
-    "type": "percent",
-    "question": "Which of these would you be most likely to buy?",
-    "explanation": "You have the same taste as % of our players.",
-    "difficulty": "EASY",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "22",
-    "type": "percent",
-    "question": "Welches dieser Produkte würdest du dir am ehesten kaufen?",
-    "explanation": "Du hast den gleichen Geschmack wie % unserer Spieler.",
-    "difficulty": "EASY",
-    "language": "GERMAN"
-  },
-  {
-    "id": "22",
-    "type": "percent",
-    "question": "Lequel de ces produits achèteriez-vous le plus volontiers ?",
-    "explanation": "Vous avez les mêmes goûts que % de nos joueurs.",
-    "difficulty": "EASY",
-    "language": "FRENCH"
-  },
-  {
-    "id": "22",
-    "type": "percent",
-    "question": "Quale di questi prodotti acquisteresti più volentieri?",
-    "explanation": "Hai lo stesso gusto del % dei nostri giocatori.",
-    "difficulty": "EASY",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "23",
-    "type": "percent",
-    "question": "Which label convinces you most to buy the product?",
-    "explanation": "% of players made the same label choice as you.",
-    "difficulty": "EASY",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "23",
-    "type": "percent",
-    "question": "Welches Etikett überzeugt dich am meisten, um das Kleidungsstück zu kaufen?",
-    "explanation": "Du hast dich genauso entschieden wie % unserer Spieler.",
-    "difficulty": "EASY",
-    "language": "GERMAN"
-  },
-  {
-    "id": "23",
-    "type": "percent",
-    "question": "Quelle étiquette vous convainc le plus d’acheter le vêtement ?",
-    "explanation": "% des joueurs ont fait le même choix d’étiquette que vous.",
-    "difficulty": "EASY",
-    "language": "FRENCH"
-  },
-  {
-    "id": "23",
-    "type": "percent",
-    "question": "Quale etichetta ti convince di più ad acquistare il capo?",
-    "explanation": "Il % dei giocatori ha effettuato la stessa scelta di etichetta.",
-    "difficulty": "EASY",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "24",
-    "type": "percent",
-    "question": "Read the places where the items were bought. Then scan the item from the place where you most frequently shop.",
-    "explanation": "You shop most often at the same place as % of players.",
-    "difficulty": "EASY",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "24",
-    "type": "percent",
-    "question": "Lies dir die Orte durch, an denen die Kleidungsstücke gekauft wurden. Scanne anschliessend das Kleidungsstück, welches von dem Ort stammt, an dem du selbst am häufigsten Kleidung kaufst.",
-    "explanation": "Du kaufst deine Kleidung meistens am gleichen Ort wie % der Spieler.",
-    "difficulty": "EASY",
-    "language": "GERMAN"
-  },
-  {
-    "id": "24",
-    "type": "percent",
-    "question": "Lisez les lieux d’achat des articles. Scannez ensuite l’article provenant de l’endroit où vous achetez le plus souvent vos vêtements.",
-    "explanation": "% des joueurs font leurs achats au même endroit que vous.",
-    "difficulty": "EASY",
-    "language": "FRENCH"
-  },
-  {
-    "id": "24",
-    "type": "percent",
-    "question": "Leggi i luoghi in cui sono stati acquistati i capi. Poi scansiona il capo che proviene dal luogo in cui acquisti più frequentemente.",
-    "explanation": "Fai acquisti nello stesso posto del % dei giocatori.",
-    "difficulty": "EASY",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "30",
-    "question": "Scan the garment whose production requires 8,000 to 10,000 liters of water.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Correct—a non‑organic cotton pair of jeans requires on average 8,000–10,000 Liters of water, about 53 bathtubs (150 L each).",
-    "explanationWrong": "No—a conventional cotton pair of jeans uses 8,000–10,000 L of water, about 53 bathtubs of 150 L each.",
-    "difficulty": "MEDIUM",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "30",
-    "question": "Scanne das Kleidungsstück, wessen Herstellung 8.000 bis 10.000 Liter Wasser benötigt.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Korrekt, für eine Jeans aus konventioneller Baumwolle werden rund 8.000–10.000 Liter Wasser benötigt (ca. 53 Badewannen à 150 L).",
-    "explanationWrong": "Leider nein, für eine Jeans aus konventioneller Baumwolle werden rund 8.000–10.000 Liter Wasser benötigt (ca. 53 Badewannen à 150 L).",
-    "difficulty": "MEDIUM",
-    "language": "GERMAN"
-  },
-  {
-    "id": "30",
-    "question": "Scannez le vêtement dont la fabrication nécessite 8 000 à 10 000 litres d’eau.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Exact, un jean en coton conventionnel nécessite environ 8 000–10 000 L d’eau, soit 53 baignoires de 150 L.",
-    "explanationWrong": "Non, un jean en coton conventionnel demande environ 8 000–10 000 L d’eau, soit 53 baignoires de 150 L.",
-    "difficulty": "MEDIUM",
-    "language": "FRENCH"
-  },
-  {
-    "id": "30",
-    "question": "Scansiona il capo la cui produzione richiede 8.000–10.000 litri d’acqua.",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Corretto, un paio di jeans in cotone convenzionale richiede circa 8.000–10.000 L d’acqua, ossia 53 vasche da 150 L.",
-    "explanationWrong": "No, un paio di jeans in cotone convenzionale richiede circa 8.000–10.000 L d’acqua, ossia 53 vasche da 150 L.",
-    "difficulty": "MEDIUM",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "31",
-    "question": "Which garment pollutes the environment most when washed (excluding shoes)?",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Correct—a single wash of polyester clothing can release 700,000 microplastic fibers into waterways.",
-    "explanationWrong": "No—washing polyester releases up to 700,000 microplastic fibers into the ecosystem; the second‑hand jeans are the correct answer.",
-    "difficulty": "MEDIUM",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "31",
-    "question": "Welches Kleidungsstück belastet die Umwelt beim Waschen am stärksten (ohne Schuhe)?",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Das stimmt, eine einzige Wäsche von Polyesterkleidung kann 700'000 Mikroplastikfasern freisetzen.",
-    "explanationWrong": "Nein, bei Polyester können bis zu 700'000 Mikrofasern freigesetzt werden; die Secondhand‑Jeans wäre richtig gewesen.",
-    "difficulty": "MEDIUM",
-    "language": "GERMAN"
-  },
-  {
-    "id": "31",
-    "question": "Quel vêtement pollue le plus l’environnement au lavage (hors chaussures) ?",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Exact, un seul lavage de polyester peut libérer 700 000 microfibres plastiques.",
-    "explanationWrong": "Non, le polyester peut libérer jusqu’à 700 000 microfibres plastiques ; le jean d’occasion serait correct.",
-    "difficulty": "MEDIUM",
-    "language": "FRENCH"
-  },
-  {
-    "id": "31",
-    "question": "Quale capo inquina di più durante il lavaggio (escluso le scarpe)?",
-    "rightClothingBarcode": "2",
-    "explanationRight": "Corretto, un solo lavaggio di abbigliamento in poliestere può rilasciare 700.000 microfibre di plastica.",
-    "explanationWrong": "No, il poliestere può rilasciare fino a 700.000 microfibre; i jeans di seconda mano sarebbero corretti.",
-    "difficulty": "MEDIUM",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "32",
-    "question": "Scan the garment you think had the least negative impact on people during production.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Correct—organic cotton farming avoids harmful pesticides, protecting land and workers.",
-    "explanationWrong": "Not quite—only the organic‑cotton jeans ensure socially and environmentally responsible farming standards.",
-    "difficulty": "MEDIUM",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "32",
-    "question": "Scanne das Kleidungsstück, bei dem du vermutest, dass die Herstellung die geringsten negativen Auswirkungen auf die Menschen hatte.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Das stimmt. Bio‑Baumwolle schont Land und Menschen, da keine Pestizide verwendet werden.",
-    "explanationWrong": "So nicht—nur bei Bio‑Baumwolle kannst du sicher sein, dass soziale Standards eingehalten werden.",
-    "difficulty": "MEDIUM",
-    "language": "GERMAN"
-  },
-  {
-    "id": "32",
-    "question": "Scannez le vêtement dont vous pensez que la production a eu le moins d’impact négatif sur les personnes.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Correct, le coton bio évite les pesticides, protégeant la terre et les travailleurs.",
-    "explanationWrong": "Non, seul le coton bio garantit des normes de production socialement et écologiquement responsables.",
-    "difficulty": "MEDIUM",
-    "language": "FRENCH"
-  },
-  {
-    "id": "32",
-    "question": "Scansiona il capo che pensi abbia avuto il minore impatto negativo sulle persone durante la produzione.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Corretto, il cotone biologico evita pesticidi nocivi, proteggendo terreno e lavoratori.",
-    "explanationWrong": "Non proprio—solo il cotone biologico garantisce standard responsabili dal punto di vista sociale e ambientale.",
-    "difficulty": "MEDIUM",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "33",
-    "question": "Scan the garment whose raw plants you can be sure were not genetically modified.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Correct—organic cotton cannot be genetically modified.",
-    "explanationWrong": "No—only organic cotton guarantees non‑GMO plants; other materials may have unknown origins.",
-    "difficulty": "MEDIUM",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "33",
-    "question": "Scanne das Kleidungsstück, bei dem du sicher sein kannst, dass die dafür verwendeten Pflanzen nicht genverändert wurden.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Das stimmt, Bio‑Baumwolle darf nicht genverändert werden.",
-    "explanationWrong": "Nein, nur bei Bio‑Baumwolle kannst du sicher sein, dass keine Gentechnik verwendet wurde.",
-    "difficulty": "MEDIUM",
-    "language": "GERMAN"
-  },
-  {
-    "id": "33",
-    "question": "Scannez le vêtement dont vous êtes sûr que les plantes utilisées ne sont pas génétiquement modifiées.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Correct, le coton bio ne peut pas être génétiquement modifié.",
-    "explanationWrong": "Non, seul le coton bio garantit l’absence de modification génétique.",
-    "difficulty": "MEDIUM",
-    "language": "FRENCH"
-  },
-  {
-    "id": "33",
-    "question": "Scansiona il capo per il quale puoi essere sicuro che le piante utilizzate non siano geneticamente modificate.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Corretto, il cotone biologico non può essere geneticamente modificato.",
-    "explanationWrong": "No, solo il cotone biologico garantisce l’assenza di modificazioni genetiche.",
-    "difficulty": "MEDIUM",
-    "language": "ITALIAN"
-  },
-
-  {
-    "id": "50",
-    "question": "Scan the garment that is easiest to recycle.",
-    "rightClothingBarcode": "1,3",
-    "explanationRight": "Correct—pure cotton fabrics are the easiest to recycle.",
-    "explanationWrong": "Incorrect—pure cotton fabrics are the simplest to recycle.",
-    "difficulty": "HARD",
-    "language": "ENGLISH"
-  },
-  {
-    "id": "50",
     "question": "Scanne das Kleidungsstück, welches sich am besten recyclen lässt.",
-    "rightClothingBarcode": "1,3",
+    "rightClothingBarcode": "1,2",
     "explanationRight": "Richtig, reine Baumwollstoffe lassen sich am einfachsten recyclen.",
+    "difficulty": "HARD",
     "explanationWrong": "Leider falsch, reine Baumwollstoffe lassen sich am einfachsten recyclen.",
-    "difficulty": "HARD",
     "language": "GERMAN"
   },
   {
-    "id": "50",
-    "question": "Scannez le vêtement le plus facile à recycler.",
-    "rightClothingBarcode": "1,3",
-    "explanationRight": "Correct, les tissus en pur coton sont les plus faciles à recycler.",
-    "explanationWrong": "Faux, les tissus en pur coton sont les plus faciles à recycler.",
+    "id": "7",
+    "question": "Scannez le vêtement qui est le plus facile à recycler.",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Correct, les tissus en coton pur sont les plus faciles à recycler.",
     "difficulty": "HARD",
+    "explanationWrong": "Malheureusement faux, les tissus en coton pur sont les plus faciles à recycler.",
     "language": "FRENCH"
   },
   {
-    "id": "50",
-    "question": "Scansiona il capo più facile da riciclare.",
-    "rightClothingBarcode": "1,3",
+    "id": "7",
+    "question": "Scansiona l'indumento che è più facile da riciclare.",
+    "rightClothingBarcode": "1,2",
     "explanationRight": "Corretto, i tessuti di cotone puro sono i più facili da riciclare.",
-    "explanationWrong": "Sbagliato, i tessuti di cotone puro sono i più facili da riciclare.",
     "difficulty": "HARD",
+    "explanationWrong": "Purtroppo sbagliato, i tessuti di cotone puro sono i più facili da riciclare.",
     "language": "ITALIAN"
   },
-
   {
-    "id": "51",
-    "question": "Find the garment that is not largely made from plant materials.",
-    "rightClothingBarcode": "4",
-    "explanationRight": "Correct—viscose and cotton come from plants; only leather shoes do not.",
-    "explanationWrong": "Incorrect—viscose and cotton are plant‑based; only the leather shoes are not.",
+    "id": "8",
+    "question": "40 percent of clothing in Switzerland is rarely worn. Scan how often you think this clothing is worn.",
+    "rightClothingBarcode": "2,3,4",
+    "explanationRight": "Exactly, 40 percent of our clothes we never wear or wear at most two to four times.",
     "difficulty": "HARD",
+    "explanationWrong": "40 percent of our clothes we never wear or wear at most two to four times.",
     "language": "ENGLISH"
   },
   {
-    "id": "51",
-    "question": "Finde das Kleidungsstück, welches nicht zu einem großen Teil aus Pflanzen besteht.",
-    "rightClothingBarcode": "4",
-    "explanationRight": "Korrekt, Viskose und Baumwolle bestehen aus Pflanzen; nur die Lederschuhe nicht.",
-    "explanationWrong": "Leider falsch, Viskose und Baumwolle bestehen größtenteils aus Pflanzen; nur die Lederschuhe nicht.",
+    "id": "8",
+    "question": "40 Prozent der Kleidung in der Schweiz werden nur selten getragen. Scanne wie oft das du denkst, dass diese Kleidung getragen wird.",
+    "rightClothingBarcode": "2,3,4",
+    "explanationRight": "Genau, 40 Prozent unserer Kleider tragen wir nie oder höchstens zwei- bis viermal.",
     "difficulty": "HARD",
+    "explanationWrong": "40 Prozent unserer Kleider tragen wir nie oder höchstens zwei- bis viermal.",
     "language": "GERMAN"
   },
   {
-    "id": "51",
-    "question": "Trouvez le vêtement qui n’est pas majoritairement fabriqué à partir de matériaux végétaux.",
-    "rightClothingBarcode": "4",
-    "explanationRight": "Correct, viscose et coton proviennent de plantes ; seules les chaussures en cuir n’en sont pas.",
-    "explanationWrong": "Faux, viscose et coton sont d’origine végétale ; seules les chaussures en cuir ne le sont pas.",
+    "id": "8",
+    "question": "40 % des vêtements en Suisse sont rarement portés. Scannez combien de fois vous pensez que ces vêtements sont portés.",
+    "rightClothingBarcode": "2,3,4",
+    "explanationRight": "Exactement, 40 % de nos vêtements ne sont jamais portés ou le sont au maximum deux à quatre fois.",
     "difficulty": "HARD",
+    "explanationWrong": "40 % de nos vêtements ne sont jamais portés ou le sont au maximum deux à quatre fois.",
     "language": "FRENCH"
   },
   {
-    "id": "51",
-    "question": "Trova il capo che non è in gran parte fatto di materiali vegetali.",
-    "rightClothingBarcode": "4",
-    "explanationRight": "Corretto, viscosa e cotone derivano da piante; solo le scarpe in pelle no.",
-    "explanationWrong": "Sbagliato, viscosa e cotone provengono da piante; solo le scarpe in pelle non lo sono.",
+    "id": "8",
+    "question": "Il 40% degli indumenti in Svizzera viene indossato raramente. Scansiona quanto spesso pensi che questi indumenti vengano indossati.",
+    "rightClothingBarcode": "2,3,4",
+    "explanationRight": "Esatto, il 40% dei nostri vestiti non li indossiamo mai o al massimo due-quattro volte.",
     "difficulty": "HARD",
+    "explanationWrong": "Il 40% dei nostri vestiti non li indossiamo mai o al massimo due-quattro volte.",
     "language": "ITALIAN"
   },
-
   {
-    "id": "52",
-    "question": "Scan the garment that biodegrades fastest in nature.",
-    "rightClothingBarcode": "5",
-    "explanationRight": "Great—pure viscose biodegrades in 6 weeks to 3 months, faster than cotton, leather or synthetics.",
-    "explanationWrong": "Wrong—viscose breaks down faster than cotton, leather and synthetic materials.",
+    "id": "9",
+    "question": "Which clothing item is easiest to recycle?",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "The T-shirt and the cotton jeans are made only of cotton and are therefore easier to recycle than materials made of multiple fabrics.",
     "difficulty": "HARD",
+    "explanationWrong": "Unfortunately not, as the T-shirt and the cotton jeans are made only of cotton and are therefore easier to recycle than materials made of multiple fabrics.",
     "language": "ENGLISH"
   },
   {
-    "id": "52",
-    "question": "Finde das Kleidungsstück, welches sich am schnellsten in der Natur zersetzt.",
-    "rightClothingBarcode": "5",
-    "explanationRight": "Sehr gut, reine Viskose zersetzt sich in 6 Wochen bis 3 Monaten am schnellsten.",
-    "explanationWrong": "Falsch, Viskose baut sich schneller ab als Baumwolle, Leder und synthetische Materialien.",
+    "id": "9",
+    "question": "Welches Kleidungsstück lässt sich am besten recyclen?",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Das T-Shirt und die Jeans aus Baumwolle bestehen nur aus Baumwolle und sind deshalb leichter zu recyclen als Stoffe aus mehreren Materialien.",
     "difficulty": "HARD",
+    "explanationWrong": "Leider nicht, da das T-Shirt und die Jeans aus Baumwolle bestehen nur aus Baumwolle und sind deshalb leichter zu recyclen als Stoffe aus mehreren Materialien.",
     "language": "GERMAN"
   },
   {
-    "id": "52",
-    "question": "Scannez le vêtement qui se biodégrade le plus rapidement dans la nature.",
-    "rightClothingBarcode": "5",
-    "explanationRight": "Super, la viscose pure se biodégrade en 6 semaines à 3 mois, plus vite que coton, cuir ou synthétiques.",
-    "explanationWrong": "Faux, la viscose se dégrade plus rapidement que le coton, le cuir et les synthétiques.",
+    "id": "9",
+    "question": "Quel vêtement est le plus facile à recycler?",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "Le t-shirt et le jean en coton sont fabriqués uniquement en coton et sont donc plus faciles à recycler que les matériaux composés de plusieurs tissus.",
     "difficulty": "HARD",
+    "explanationWrong": "Malheureusement non, car le t-shirt et le jean en coton sont fabriqués uniquement en coton et sont donc plus faciles à recycler que les matériaux composés de plusieurs tissus.",
     "language": "FRENCH"
   },
   {
-    "id": "52",
-    "question": "Scansiona il capo che si biodegrada più rapidamente in natura.",
-    "rightClothingBarcode": "5",
-    "explanationRight": "Ottimo, la viscosa pura si biodegrada in 6 settimane–3 mesi, più velocemente di cotone, pelle o sintetici.",
-    "explanationWrong": "Sbagliato, la viscosa si degrada più rapidamente di cotone, pelle e sintetici.",
+    "id": "9",
+    "question": "Quale indumento è più facile da riciclare?",
+    "rightClothingBarcode": "1,2",
+    "explanationRight": "La maglietta e i jeans di cotone sono realizzati solo in cotone e sono quindi più facili da riciclare rispetto ai materiali realizzati con più tessuti.",
     "difficulty": "HARD",
+    "explanationWrong": "Purtroppo no, poiché la maglietta e i jeans di cotone sono realizzati solo in cotone e sono quindi più facili da riciclare rispetto ai materiali realizzati con più tessuti.",
     "language": "ITALIAN"
   },
-
   {
-    "id": "53",
-    "question": "Scan a garment that contains petroleum‑based materials.",
-    "rightClothingBarcode": "2,4",
-    "explanationRight": "Correct—rubber, polyester and elastane are derived from petroleum.",
-    "explanationWrong": "Incorrect—cotton, leather and viscose contain no petroleum; the second‑hand jeans or rubber‑soled shoes are right.",
-    "difficulty": "HARD",
+    "id": "10",
+    "type": "percent",
+    "question": "How many times do you wear this item per month?",
+    "explanation": "You chose a frequency that Ї of players also pick.",
+    "givenAnswers": { "1": 5, "2": 3 },
+    "numberOfAnswers": 8,
+    "difficulty": "EASY",
     "language": "ENGLISH"
   },
   {
-    "id": "53",
-    "question": "Scanne ein Kleidungsstück, welches Materialien aus Erdöl beinhalten.",
-    "rightClothingBarcode": "2,4",
-    "explanationRight": "Das ist richtig, Gummi, Polyester und Elasthan werden hauptsächlich aus Erdöl hergestellt.",
-    "explanationWrong": "Das ist falsch, Baumwolle, Leder und Viskose beinhalten kein Erdöl; Secondhand‑Jeans oder Schuhe mit Gummisohle wären richtig.",
-    "difficulty": "HARD",
-    "language": "GERMAN"
+    "id": "10",
+    "type": "percent",
+    "question": "How many times do you wear this item per month?",
+    "explanation": "You chose a frequency that Ї of players also pick.",
+    "givenAnswers": { "1": 5, "2": 3 },
+    "numberOfAnswers": 8,
+    "difficulty": "EASY",
+    "language": "ITALIAN"
   },
   {
-    "id": "53",
-    "question": "Scannez un vêtement contenant des matériaux à base de pétrole.",
-    "rightClothingBarcode": "2,4",
-    "explanationRight": "Correct, le caoutchouc, le polyester et l’élasthanne proviennent du pétrole.",
-    "explanationWrong": "Faux, coton, cuir et viscose ne contiennent pas de pétrole ; le jean d’occasion ou les chaussures à semelle en caoutchouc sont corrects.",
-    "difficulty": "HARD",
+    "id": "10",
+    "type": "percent",
+    "question": "How many times do you wear this item per month?",
+    "explanation": "You chose a frequency that Ї of players also pick.",
+    "givenAnswers": { "1": 5, "2": 4},
+    "numberOfAnswers": 9,
+    "difficulty": "EASY",
     "language": "FRENCH"
   },
   {
-    "id": "53",
-    "question": "Scansiona un indumento che contiene materiali derivati dal petrolio.",
-    "rightClothingBarcode": "2,4",
-    "explanationRight": "Corretto, gomma, poliestere ed elastan derivano dal petrolio.",
-    "explanationWrong": "Sbagliato, cotone, pelle e viscosa non contengono petrolio; i jeans di seconda mano o le scarpe con suola in gomma sarebbero corretti.",
-    "difficulty": "HARD",
-    "language": "ITALIAN"
+    "id": "10",
+    "type": "percent",
+    "question": "How many times do you wear this item per month?",
+    "explanation": "You chose a frequency that Ї of players also pick.",
+    "givenAnswers": { "1": 5, "2": 3 },
+    "numberOfAnswers": 8,
+    "difficulty": "EASY",
+    "language": "GERMAN"
   }
 ]

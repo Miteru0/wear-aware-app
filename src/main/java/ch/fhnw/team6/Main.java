@@ -7,6 +7,11 @@ import ch.fhnw.team6.model.Language;
 import ch.fhnw.team6.model.PercentQuestion;
 import ch.fhnw.team6.model.Player;
 import ch.fhnw.team6.view.*;
+import com.pi4j.Pi4J;
+import com.pi4j.context.Context;
+import com.pi4j.io.gpio.digital.DigitalInput;
+import com.pi4j.io.gpio.digital.DigitalInputConfig;
+import com.pi4j.io.gpio.digital.PullResistance;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -17,12 +22,19 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Main extends Application {
+
+
 
     // ─── Constants ─────────────────────────────────────────────────────
     private static final int TOTAL_STEPS = 2;
     private static final double WINDOWED_WIDTH = 1280;
     private static final double WINDOWED_HEIGHT = 720;
+
+    private static Logger logger = Logger.getLogger(Main.class.getName());
 
     // ─── GUI Components ─────────────────────────────────────────────────
     private Canvas canvas;
@@ -45,6 +57,35 @@ public class Main extends Application {
     private int step = 0;
     private long lastFrameTime;
     private String input = "";
+//Pin 24 is f*cked
+    private Context pi4j = Pi4J.newAutoContext();
+    final DigitalInputConfig buttonConfigStop = DigitalInput.newConfigBuilder(pi4j).id("BCM_" + 23)
+        .name("buttonStop").address(23)
+        .pull(PullResistance.PULL_DOWN)
+        .debounce(3000L).build();
+    final DigitalInputConfig buttonConfigLanguage = DigitalInput.newConfigBuilder(pi4j).id("BCM_" + 27)
+        .name("ButtonLanguage").address(27)
+        .pull(PullResistance.PULL_DOWN)
+        .debounce(3000L).build(); //0.5 Seconds
+
+    DigitalInput buttonStop = pi4j.create(buttonConfigStop);
+    DigitalInput buttonLanguage = pi4j.create(buttonConfigLanguage);
+
+    public void registerListeners() {
+        buttonStop.addListener(event -> handleButtonStop(buttonStop.isHigh()));
+        buttonLanguage.addListener(event -> handleButtonLanguage(buttonLanguage.isHigh()));
+    }
+    private void handleButtonStop(boolean pressedState) {
+        if(pressedState){
+            logger.log(Level.INFO, "game stopped");
+        }
+    }
+    private void handleButtonLanguage(boolean pressedState) {
+        if(pressedState){
+            logger.log(Level.INFO, "language changed");
+        }
+    }
+
 
     // ─── Application Entry Point ────────────────────────────────────────
     public static void main(String[] args) {
@@ -132,6 +173,7 @@ public class Main extends Application {
 
     // ─── Event Handling ─────────────────────────────────────────────────
     private void handleKeyEvent(KeyCode code) {
+        registerListeners();
         switch (code) {
             case L -> handleLanguageSwitch();
             case SPACE -> handleSpaceKey();
