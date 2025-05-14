@@ -4,126 +4,131 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class TextPane extends GuiObject {
 
-    protected String text;
+    protected String text = "";
     protected int fontSize = 24;
     protected double lineSpacing = 10;
     protected double backgroundOpacity = 0.7;
     protected TextAlign textAlign = TextAlign.CENTER;
+    protected TextVAlign textVAlign = TextVAlign.TOP;
+    protected double paddingX = 10;
     protected double paddingY = 20;
     protected double cornerRadius = 0;
     protected double frameWidth = 0;
     protected boolean isVisible = true;
     protected double numberOfLines = 0;
+    protected boolean withBackground = true;
+    protected Color fontColor = Color.WHITE;
 
     /**
      * Constructor for TextPane
-     *
-     * @param x      The x-coordinate of the pane
-     * @param y      The y-coordinate of the pane
-     * @param width  The width of the pane
-     * @param height The height of the pane
+     * @param x position on the x-axis
+     * @param y position on the y-axis
+     * @param width width of the pane
+     * @param height height of the pane
      */
     public TextPane(float x, float y, float width, float height) {
         super(x, y, width, height);
-        this.text = "";
     }
 
     /**
-     * Updates the text pane
+     * Update method to be overridden by subclasses
      * 
-     * @param deltaTime The time since the last update
+     * @param deltaTime time since last update
      */
     @Override
-    public void update(double deltaTime) {
-        // No specific update logic for text pane
-    }
+    public void update(double deltaTime) {}
+
 
     /**
-     * Draws the text pane on the canvas
+     * Draw method to be overridden by subclasses
      * 
-     * @param gc The GraphicsContext used for drawing
+     * @param gc GraphicsContext for drawing
      */
     public void draw(GraphicsContext gc) {
-        if (!isVisible) {
-            return;
+        if (!isVisible) return;
+
+        if (withBackground) {
+            drawBackground(gc);
         }
 
-        // Draw background
-        drawBackground(gc);
-
-        // Set font and color
-        gc.setFill(Color.WHITE);
+        gc.setFill(fontColor);
         gc.setFont(Font.font(fontSize));
 
-        // Draw wrapped text
-        double textY = getY() + paddingY + fontSize;
-        drawText(gc, text, textY);
+        List<String> wrappedLines = wrapText(gc, text, getWidth() - 2 * paddingX);
+        numberOfLines = wrappedLines.size();
+
+        double totalTextHeight = numberOfLines * (fontSize + lineSpacing) - lineSpacing;
+        double startY = calculateAlignedY(totalTextHeight);
+
+        for (String line : wrappedLines) {
+            double textWidth = computeTextWidth(gc, line);
+            double textX = calculateAlignedX(textWidth);
+            gc.fillText(line, textX, startY);
+            startY += fontSize + lineSpacing;
+        }
     }
 
     /**
-     * Draws the background of the text pane
+     * Draws the background of the pane
      * 
-     * @param gc The GraphicsContext to draw on
+     * @param gc GraphicsContext for drawing
      */
     protected void drawBackground(GraphicsContext gc) {
         gc.setFill(Color.rgb(34, 34, 34, backgroundOpacity));
         gc.fillRoundRect(getX(), getY(), getWidth(), getHeight(), cornerRadius, cornerRadius);
-        gc.setLineWidth(frameWidth);
-        gc.setStroke(Color.BLACK);
-        gc.strokeRoundRect(getX(), getY(), getWidth(), getHeight(), cornerRadius, cornerRadius);
-    }
 
-    /**
-     * Draws the text on the canvas
-     * 
-     * @param gc    The GraphicsContext to draw on
-     * @param text  The text to be drawn
-     * @param textY The Y-coordinate for the text
-     */
-    protected void drawText(GraphicsContext gc, String text, double textY) {
-        List<String> wrappedText = wrapText(gc, text, getWidth() - 20);
-        for (String line : wrappedText) {
-            double textWidth = computeTextWidth(gc, line);
-            double textX = calculateAlignedX(line, textWidth);
-            gc.fillText(line, textX, textY);
-            textY += fontSize + lineSpacing;
+        if (frameWidth > 0) {
+            gc.setLineWidth(frameWidth);
+            gc.setStroke(Color.BLACK);
+            gc.strokeRoundRect(getX(), getY(), getWidth(), getHeight(), cornerRadius, cornerRadius);
         }
     }
 
     /**
-     * Calculates the X-coordinate for aligned text
+     * Calculates the aligned X position based on text alignment
      * 
-     * @param text      The text to be aligned
-     * @param textWidth The width of the text
+     * @param textWidth width of the text
      * 
-     * @return The aligned X-coordinate
+     * @return aligned X position
      */
-    protected double calculateAlignedX(String text, double textWidth) {
+    protected double calculateAlignedX(double textWidth) {
         switch (textAlign) {
-            case LEFT:
-                return getX() + 10;
-            case CENTER:
-                return getX() + (getWidth() - textWidth) / 2;
-            case RIGHT:
-                return getX() + getWidth() - textWidth - 10;
-            default:
-                return getX();
+            case LEFT: return getX() + paddingX;
+            case CENTER: return getX() + (getWidth() - textWidth) / 2;
+            case RIGHT: return getX() + getWidth() - textWidth - paddingX;
+            default: return getX() + paddingX;
         }
     }
 
     /**
-     * Wraps the text to fit within the specified width
+     * Calculates the aligned Y position based on text vertical alignment
      * 
-     * @param gc       The GraphicsContext to draw on
-     * @param text     The text to be wrapped
-     * @param maxWidth The maximum width for the text
-     * @return
+     * @param totalTextHeight total height of the text
+     * 
+     * @return aligned Y position
+     */
+    protected double calculateAlignedY(double totalTextHeight) {
+        switch (textVAlign) {
+            case TOP: return getY() + paddingY + fontSize;
+            case CENTER: return getY() + (getHeight() - totalTextHeight) / 2 + fontSize;
+            case BOTTOM: return getY() + getHeight() - totalTextHeight - paddingY + fontSize;
+            default: return getY() + paddingY + fontSize;
+        }
+    }
+
+    /**
+     * Wraps text to fit within the specified width
+     * 
+     * @param gc GraphicsContext for drawing
+     * @param text text to be wrapped
+     * @param maxWidth maximum width for wrapping
+     * 
+     * @return list of wrapped lines
      */
     protected List<String> wrapText(GraphicsContext gc, String text, double maxWidth) {
         List<String> lines = new ArrayList<>();
@@ -135,13 +140,14 @@ public class TextPane extends GuiObject {
             double lineWidth = computeTextWidth(gc, testLine);
 
             if (lineWidth > maxWidth) {
-                lines.add(currentLine.toString());
+                if (currentLine.length() > 0) {
+                    lines.add(currentLine.toString());
+                }
                 currentLine = new StringBuilder(word);
             } else {
-                currentLine.append(" ").append(word);
+                currentLine = new StringBuilder(testLine);
             }
         }
-
         if (currentLine.length() > 0) {
             lines.add(currentLine.toString());
         }
@@ -151,10 +157,10 @@ public class TextPane extends GuiObject {
     /**
      * Computes the width of the text
      * 
-     * @param gc   The GraphicsContext to draw on
-     * @param text The text to be measured
+     * @param gc GraphicsContext for drawing
+     * @param text text to be measured
      * 
-     * @return The width of the text
+     * @return width of the text
      */
     protected double computeTextWidth(GraphicsContext gc, String text) {
         Text tempText = new Text(text);
@@ -162,99 +168,22 @@ public class TextPane extends GuiObject {
         return tempText.getLayoutBounds().getWidth();
     }
 
-    /**
-     * Sets the font size of the text
-     * 
-     * @param fontSize The font size to be set
-     */
-    public void setFontSize(int fontSize) {
-        this.fontSize = fontSize;
-    }
-
-    public int getFontSize() {
-        return fontSize;
-    }
-
-    /**
-     * Sets the line spacing of the text
-     * 
-     * @param spacing The line spacing to be set
-     */
-    public void setLineSpacing(double spacing) {
-        this.lineSpacing = spacing;
-    }
-
-    public double getLineSpacing() {
-        return lineSpacing;
-    }
-
-    /**
-     * Sets the background opacity of the text pane
-     * 
-     * @param opacity The opacity to be set
-     */
-    public void setBackgroundOpacity(double opacity) {
-        this.backgroundOpacity = opacity;
-    }
-
-    /**
-     * Gets the background opacity of the text pane
-     * 
-     * @return The background opacity
-     */
-    public double getBackgroundOpacity() {
-        return backgroundOpacity;
-    }
-
-    /**
-     * Sets the text alignment of the text pane
-     * 
-     * @param align The text alignment to be set
-     */
-    public void setTextAlign(TextAlign align) {
-        this.textAlign = align;
-    }
-
-    /**
-     * Sets the text to be displayed in the text pane
-     * 
-     * @param text The text to be set
-     */
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    /**
-     * Sets the corner radius of the text pane
-     * 
-     * @param cornerRadius The corner radius to be set
-     */
-    public void setCornerRadius(double cornerRadius) {
-        this.cornerRadius = cornerRadius;
-    }
-
-    /**
-     * Sets the padding for the Y-axis
-     * 
-     * @param paddingY The padding to be set
-     */
-    public void setPaddingY(double paddingY) {
-        this.paddingY = paddingY;
-    }
-
-    public void setFrameWidth(double frameWidth) {
-        this.frameWidth = frameWidth;
-    }
-
-    public void setVisible(boolean visible) {
-        isVisible = visible;
-    }
-
-    public boolean isVisible() {
-        return isVisible;
-    }
-
-    public double getNumberOfLines() {
-        return numberOfLines;
-    }
+    // Getters and Setters
+    public void setFontSize(int fontSize) { this.fontSize = fontSize; }
+    public int getFontSize() { return fontSize; }
+    public void setLineSpacing(double spacing) { this.lineSpacing = spacing; }
+    public double getLineSpacing() { return lineSpacing; }
+    public void setBackgroundOpacity(double opacity) { this.backgroundOpacity = opacity; }
+    public void setTextAlign(TextAlign align) { this.textAlign = align; }
+    public void setTextVAlign(TextVAlign align) { this.textVAlign = align; }
+    public void setText(String text) { this.text = text; }
+    public void setCornerRadius(double radius) { this.cornerRadius = radius; }
+    public void setPaddingX(double paddingX) { this.paddingX = paddingX; }
+    public void setPaddingY(double paddingY) { this.paddingY = paddingY; }
+    public void setFrameWidth(double frameWidth) { this.frameWidth = frameWidth; }
+    public void setVisible(boolean visible) { isVisible = visible; }
+    public void setWithBackground(boolean withBackground) { this.withBackground = withBackground; }
+    public void setFontColor(Color color) { this.fontColor = color; }
+    public Color getFontColor() { return fontColor; }
+    public int getNumberOfLines() { return (int) numberOfLines; }
 }
