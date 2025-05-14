@@ -28,15 +28,6 @@
     "language": "FRENCH"
   },
   {
-    "id": "1",
-    "question": "Scansiona gli indumenti che non sono vegani (cioè realizzati con prodotti animali).",
-    "rightClothingBarcode": "4",
-    "explanationRight": "Corretto, questi materiali non sono vegani quando sono di origine animale, ad esempio, la pelle è ricavata dalla pelle degli animali.",
-    "difficulty": "EASY",
-    "explanationWrong": "Purtroppo no, i materiali non sono vegani quando sono di origine animale, ad esempio, la pelle è ricavata dalla pelle degli animali.",
-    "language": "ITALIAN"
-  },
-  {
     "id": "2",
     "question": "Scan the product whose purchase leaves the smallest ecological footprint.",
     "rightClothingBarcode": "3",
@@ -62,15 +53,6 @@
     "difficulty": "EASY",
     "explanationWrong": "Malheureusement non, puisque un produit d'occasion a déjà été fabriqué, seul le transport ou le stockage est nécessaire.",
     "language": "FRENCH"
-  },
-  {
-    "id": "2",
-    "question": "Scansiona il prodotto il cui acquisto lascia la più piccola impronta ecologica.",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Corretto, poiché il prodotto è già stato prodotto, è necessario solo il trasporto o lo stoccaggio.",
-    "difficulty": "EASY",
-    "explanationWrong": "Purtroppo no, poiché un prodotto di seconda mano è già stato prodotto, è necessario solo il trasporto o lo stoccaggio.",
-    "language": "ITALIAN"
   },
   {
     "id": "3",
@@ -100,15 +82,6 @@
     "language": "FRENCH"
   },
   {
-    "id": "3",
-    "question": "Scansiona gli indumenti realizzati con più materiali (ad esempio, cotone ed elastan).",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Corretto, questi jeans sono realizzati in cotone, poliestere ed elastan.",
-    "difficulty": "EASY",
-    "explanationWrong": "Non proprio, i jeans di seconda mano sono realizzati in cotone, poliestere ed elastan.",
-    "language": "ITALIAN"
-  },
-  {
     "id": "4",
     "question": "Scan the product that has traveled the shortest distance to reach you.",
     "rightClothingBarcode": "1,2,3,4,5",
@@ -134,15 +107,6 @@
     "difficulty": "EASY",
     "explanationWrong": "Il est presque impossible de retracer le parcours de vos vêtements. Un t-shirt d'Europe peut avoir parcouru un très long chemin. Par conséquent, toutes les réponses sont correctes ici.",
     "language": "FRENCH"
-  },
-  {
-    "id": "4",
-    "question": "Scansiona il prodotto che ha percorso la distanza più breve per raggiungerti.",
-    "rightClothingBarcode": "1,2,3,4,5",
-    "explanationRight": "È quasi impossibile tracciare il percorso dei tuoi vestiti. Una maglietta dall'Europa può aver viaggiato molto lontano. Pertanto, tutte le risposte sono corrette qui.",
-    "difficulty": "EASY",
-    "explanationWrong": "È quasi impossibile tracciare il percorso dei tuoi vestiti. Una maglietta dall'Europa può aver viaggiato molto lontano. Pertanto, tutte le risposte sono corrette qui.",
-    "language": "ITALIAN"
   },
   {
     "id": "5",
@@ -172,15 +136,6 @@
     "language": "FRENCH"
   },
   {
-    "id": "5",
-    "question": "Scansiona l'indumento la cui produzione richiede 8.000 litri d'acqua.",
-    "rightClothingBarcode": "2,3",
-    "explanationRight": "Corretto, la produzione di un paio di jeans richiede in media circa 8.000 litri d'acqua a livello globale. Questa quantità d'acqua riempirebbe circa 53 vasche da bagno (150 litri ciascuna).",
-    "difficulty": "MEDIUM",
-    "explanationWrong": "Purtroppo no, la produzione di un paio di jeans richiede in media circa 8.000 litri d'acqua a livello globale. Questa quantità d'acqua riempirebbe circa 53 vasche da bagno (150 litri ciascuna).",
-    "language": "ITALIAN"
-  },
-  {
     "id": "6",
     "question": "Which clothing item pollutes the environment the most when washing?",
     "rightClothingBarcode": "3",
@@ -206,15 +161,6 @@
     "difficulty": "MEDIUM",
     "explanationWrong": "Non, un seul lavage de vêtements en polyester peut libérer 700 000 fibres microplastiques qui peuvent entrer dans la chaîne alimentaire.",
     "language": "FRENCH"
-  },
-  {
-    "id": "6",
-    "question": "Quale indumento inquina di più l'ambiente durante il lavaggio?",
-    "rightClothingBarcode": "3",
-    "explanationRight": "Esatto, un singolo lavaggio di indumenti in poliestere può rilasciare 700.000 fibre microplastiche che possono entrare nella catena alimentare.",
-    "difficulty": "MEDIUM",
-    "explanationWrong": "No, un singolo lavaggio di indumenti in poliestere può rilasciare 700.000 fibre microplastiche che possono entrare nella catena alimentare.",
-    "language": "ITALIAN"
   },
   {
     "id": "7",
@@ -244,15 +190,6 @@
     "language": "FRENCH"
   },
   {
-    "id": "7",
-    "question": "Scansiona l'indumento che è più facile da riciclare.",
-    "rightClothingBarcode": "1,2",
-    "explanationRight": "Corretto, i tessuti di cotone puro sono i più facili da riciclare.",
-    "difficulty": "HARD",
-    "explanationWrong": "Purtroppo sbagliato, i tessuti di cotone puro sono i più facili da riciclare.",
-    "language": "ITALIAN"
-  },
-  {
     "id": "8",
     "question": "40 percent of clothing in Switzerland is rarely worn. Scan how often you think this clothing is worn.",
     "rightClothingBarcode": "2,3,4",
@@ -278,15 +215,6 @@
     "difficulty": "HARD",
     "explanationWrong": "40 % de nos vêtements ne sont jamais portés ou le sont au maximum deux à quatre fois.",
     "language": "FRENCH"
-  },
-  {
-    "id": "8",
-    "question": "Il 40% degli indumenti in Svizzera viene indossato raramente. Scansiona quanto spesso pensi che questi indumenti vengano indossati.",
-    "rightClothingBarcode": "2,3,4",
-    "explanationRight": "Esatto, il 40% dei nostri vestiti non li indossiamo mai o al massimo due-quattro volte.",
-    "difficulty": "HARD",
-    "explanationWrong": "Il 40% dei nostri vestiti non li indossiamo mai o al massimo due-quattro volte.",
-    "language": "ITALIAN"
   },
   {
     "id": "9",
@@ -316,15 +244,6 @@
     "language": "FRENCH"
   },
   {
-    "id": "9",
-    "question": "Quale indumento è più facile da riciclare?",
-    "rightClothingBarcode": "1,2",
-    "explanationRight": "La maglietta e i jeans di cotone sono realizzati solo in cotone e sono quindi più facili da riciclare rispetto ai materiali realizzati con più tessuti.",
-    "difficulty": "HARD",
-    "explanationWrong": "Purtroppo no, poiché la maglietta e i jeans di cotone sono realizzati solo in cotone e sono quindi più facili da riciclare rispetto ai materiali realizzati con più tessuti.",
-    "language": "ITALIAN"
-  },
-  {
     "id": "10",
     "type": "percent",
     "question": "How many times do you wear this item per month?",
@@ -333,16 +252,6 @@
     "numberOfAnswers": 8,
     "difficulty": "EASY",
     "language": "ENGLISH"
-  },
-  {
-    "id": "10",
-    "type": "percent",
-    "question": "How many times do you wear this item per month?",
-    "explanation": "You chose a frequency that Ї of players also pick.",
-    "givenAnswers": { "1": 5, "2": 3 },
-    "numberOfAnswers": 8,
-    "difficulty": "EASY",
-    "language": "ITALIAN"
   },
   {
     "id": "10",

@@ -21,6 +21,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 public class Main extends Application {
@@ -29,6 +31,16 @@ public class Main extends Application {
     private static final int TOTAL_STEPS = 7;
     private static final double WINDOWED_WIDTH = 1280;
     private static final double WINDOWED_HEIGHT = 720;
+    private static final Map<Language, String> startScreen = new    HashMap<>(Map.of(
+            Language.GERMAN, "Hallo, ich bin Beni und begleite dich durch das Spiel. Drücke jetzt den Startknopf, um loszulegen!",
+            Language.ENGLISH, "Hello, I am Beni and I will guide you through the game. Press the start button now to get started!",
+            Language.FRENCH, "Bonjour, je suis Beni et je vais t'accompagner tout au long du jeu. Appuie maintenant sur le bouton de démarrage pour commencer !"
+    ));
+    private static final Map<Language, String> endScreen = new HashMap<>(Map.of(
+            Language.GERMAN, "ich hoffe, das Spiel hat dir gut gefallen und du was gelernt hast. Drücke jetzt den Startknopf, um das Spiel neuzustarten.",
+            Language.ENGLISH, "I hope you enjoyed the game and learned something. Press the start button now to restart the game.",
+            Language.FRENCH, "J'espère que le jeu t'a plu et que tu as appris quelque chose. Appuie maintenant sur le bouton de démarrage pour recommencer le jeu."
+    ));
 
     // ─── Logger ────────────────────────────────────────────────────────
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
@@ -210,10 +222,10 @@ public class Main extends Application {
     }
 
     private void handleLanguageSwitch() {
+        Language nextLanguage = Language.getNextLanguage(player.getLanguage());
+        flagsManager.setActiveFlag(nextLanguage);
+        player.setLanguage(nextLanguage);
         if (isGameStarted && !isGameEnded) {
-            Language nextLang = Language.getNextLanguage(player.getLanguage());
-            player.setLanguage(nextLang);
-            flagsManager.setActiveFlag(nextLang);
             updateLanguage();
         }
     }
@@ -300,33 +312,39 @@ public class Main extends Application {
 
     private void updateTextPane() {
         if (questionPane == null) {
-            questionPane = new QuestionPane(0f, (float) canvas.getHeight(),
-                    (float) canvas.getWidth() * 0.8f, (float) canvas.getHeight() / 10f);
+            questionPane = new QuestionPane(
+                    0f, (float) canvas.getHeight(),
+                    (float) canvas.getWidth() * 0.8f,
+                    (float) canvas.getHeight() / 6f
+            );
             questionPane.setTextAlign(TextAlign.CENTER);
             questionPane.setFrameWidth(4);
             questionPane.setBackgroundOpacity(0.75);
             questionPane.setCornerRadius(60);
-            questionPane.setTextVAlign(TextVAlign.CENTER);
             repositionTextPane();
         }
 
         if (!isGameStarted) {
-            dialogBubble.setText("Press SPACE to start");
+            dialogBubble.setText(startScreen.get(player.getLanguage()));
             dialogBubble.setVisible(true);
             mascot.setCurrentAnimationVisible(true);
             questionPane.setVisible(false);
+
         } else if (isGameEnded) {
-            dialogBubble.setText("Quiz complete! Press SPACE to restart");
+            dialogBubble.setText(endScreen.get(player.getLanguage()));
             dialogBubble.setVisible(true);
             mascot.setCurrentAnimationVisible(true);
             questionPane.setVisible(false);
         } else {
             questionPane.setVisible(true);
             questionPane.setQuestion(currentQuestion);
+
         }
+
+
+        //questionPane.setAnswer(currentAnswer);
         questionPane.draw(canvas.getGraphicsContext2D());
     }
-
     private void updateMascot() {
         mascot.setCurrentAnimationSize(canvas.getWidth() / 4, canvas.getHeight() / 2.5);
         mascot.setCurrentAnimationPosition(canvas.getWidth() - mascot.getCurrentAnimationWidth(),
@@ -334,8 +352,8 @@ public class Main extends Application {
     }
 
     private void updateBubble() {
-        if (!isGameStarted) currentAnswer = "Press SPACE to start!";
-        if (isGameEnded) currentAnswer = "Quiz complete! Press SPACE to restart!";
+        if (!isGameStarted) currentAnswer = startScreen.get(player.getLanguage());
+        if (isGameEnded) currentAnswer = endScreen.get(player.getLanguage());
 
         if (isAnswered || !isGameStarted || isGameEnded) {
             dialogBubble.setVisible(true);

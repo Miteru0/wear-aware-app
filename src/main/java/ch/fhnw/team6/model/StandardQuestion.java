@@ -29,7 +29,7 @@ public class StandardQuestion extends Question {
         if(correctAnswer == null || explanationCorrect == null || explanationIncorrect == null || difficulty == null){
             throw new IllegalArgumentException("Question not formatted correctly");
         }
-        if(explanationCorrect.size() < 4 || explanationIncorrect.size() < 4){
+        if(explanationCorrect.size() < 3 || explanationIncorrect.size() < 3){
             throw new IllegalArgumentException("not all of the languages are handled");
         }
         this.correctAnswer = correctAnswer;
