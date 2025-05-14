@@ -26,15 +26,6 @@
       "explanationWrong": "TEST TEST TEST",
       "language": "FRENCH"
     },
-    {
-      "id": "1",
-      "question": "Italiano-Dummy Frage",
-      "rightClothingBarcode": "4,1",
-      "explanationRight": "TEST TEST TEST",
-      "difficulty": "EASY",
-      "explanationWrong": "TEST TEST TEST",
-      "language": "ITALIAN"
-    },
   {
     "id": "2",
     "question": "English-Dummy Frage 2",
@@ -61,15 +52,6 @@
     "difficulty": "EASY",
     "explanationWrong": "TEST TEST TEST 2",
     "language": "FRENCH"
-  },
-  {
-    "id": "2",
-    "question": "Italiano-Dummy Frage 2",
-    "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST 2",
-    "difficulty": "EASY",
-    "explanationWrong": "TEST TEST TEST 2",
-    "language": "ITALIAN"
   },
   {
     "id": "3",
@@ -99,15 +81,6 @@
     "language": "FRENCH"
   },
   {
-    "id": "3",
-    "question": "Italiano-Dummy Frage 3",
-    "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST 3",
-    "difficulty": "EASY",
-    "explanationWrong": "TEST TEST TEST 3",
-    "language": "ITALIAN"
-  },
-  {
     "id": "4",
     "question": "English-Dummy Frage 4",
     "rightClothingBarcode": "4",
@@ -133,15 +106,6 @@
     "difficulty": "EASY",
     "explanationWrong": "TEST TEST TEST 4",
     "language": "FRENCH"
-  },
-  {
-    "id": "4",
-    "question": "Italiano-Dummy Frage 4",
-    "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST 4",
-    "difficulty": "EASY",
-    "explanationWrong": "TEST TEST TEST 4",
-    "language": "ITALIAN"
   },
   {
     "id": "5",
@@ -171,15 +135,6 @@
     "language": "FRENCH"
   },
   {
-    "id": "5",
-    "question": "Italiano-Dummy Frage 5",
-    "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST 5",
-    "difficulty": "EASY",
-    "explanationWrong": "TEST TEST TEST 5",
-    "language": "ITALIAN"
-  },
-  {
     "id": "6",
     "question": "English-Dummy Frage 6",
     "rightClothingBarcode": "4",
@@ -205,15 +160,6 @@
     "difficulty": "EASY",
     "explanationWrong": "TEST TEST TEST 6",
     "language": "FRENCH"
-  },
-  {
-    "id": "6",
-    "question": "Italiano-Dummy Frage 6",
-    "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST 6",
-    "difficulty": "EASY",
-    "explanationWrong": "TEST TEST TEST 6",
-    "language": "ITALIAN"
   },
   {
     "id": "7",
@@ -243,15 +189,6 @@
     "language": "FRENCH"
   },
   {
-    "id": "7",
-    "question": "Italiano-Dummy Frage 7",
-    "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST 7",
-    "difficulty": "EASY",
-    "explanationWrong": "TEST TEST TEST 7",
-    "language": "ITALIAN"
-  },
-  {
     "id": "8",
     "question": "English-Dummy Frage 8",
     "rightClothingBarcode": "4",
@@ -277,14 +214,5 @@
     "difficulty": "EASY",
     "explanationWrong": "TEST TEST TEST 8",
     "language": "FRENCH"
-  },
-  {
-    "id": "8",
-    "question": "Italiano-Dummy Frage 8",
-    "rightClothingBarcode": "4",
-    "explanationRight": "TEST TEST TEST 8",
-    "difficulty": "EASY",
-    "explanationWrong": "TEST TEST TEST 8",
-    "language": "ITALIAN"
   }
 ]

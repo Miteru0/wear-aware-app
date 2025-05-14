@@ -63,7 +63,6 @@ class JsonHandlerTest {
         assertEquals("English-Dummy Frage", question.getQuestion(Language.ENGLISH));
         assertEquals("Deutsch-Dummy Frage", question.getQuestion(Language.GERMAN));
         assertEquals("Français-Dummy Frage", question.getQuestion(Language.FRENCH));
-        assertEquals("Italiano-Dummy Frage", question.getQuestion(Language.ITALIAN));
     }
 
     @Test

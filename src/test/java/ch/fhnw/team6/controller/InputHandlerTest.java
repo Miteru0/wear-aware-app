@@ -35,21 +35,18 @@ public class InputHandlerTest {
         Map<Language, String> sampleText = Map.of(
                 Language.ENGLISH, "Sample Question",
                 Language.GERMAN, "Beispiel Frage",
-                Language.FRENCH, "Question Exemple",
-                Language.ITALIAN, "Domanda Esempio");
+                Language.FRENCH, "Question Exemple");
         // Another one to check right answer
         Map<Language, String> sampleTextExplanationRight = Map.of(
                 Language.ENGLISH, "Right!",
                 Language.GERMAN, "Richtig!",
-                Language.FRENCH, "Idk french, La verdad!",
-                Language.ITALIAN, "Same as french, La verdad!");
+                Language.FRENCH, "Idk french, La verdad!");
 
         // Another one to check wrong ones
         Map<Language, String> sampleTextExplanationWrong = Map.of(
                 Language.ENGLISH, "Wrong!",
                 Language.GERMAN, "Falsch!",
-                Language.FRENCH, "Idk french, Bullshit!",
-                Language.ITALIAN, "Same as french, bullshito!");
+                Language.FRENCH, "Idk french, Bullshit!");
 
         List<Question> questions = Arrays.asList(
                 new StandardQuestion(sampleText, sampleTextExplanationRight, sampleTextExplanationWrong, List.of("1"),

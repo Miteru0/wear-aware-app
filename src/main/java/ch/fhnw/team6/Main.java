@@ -31,12 +31,12 @@ public class Main extends Application {
     private static final int TOTAL_STEPS = 7;
     private static final double WINDOWED_WIDTH = 1280;
     private static final double WINDOWED_HEIGHT = 720;
-    private static final Map<Language, String> startScreen = new    HashMap<>(Map.of(
+    private static final Map<Language, String> START_SCREEN = new    HashMap<>(Map.of(
             Language.GERMAN, "Hallo, ich bin Beni und begleite dich durch das Spiel. Drücke jetzt den Startknopf, um loszulegen!",
             Language.ENGLISH, "Hello, I am Beni and I will guide you through the game. Press the start button now to get started!",
             Language.FRENCH, "Bonjour, je suis Beni et je vais t'accompagner tout au long du jeu. Appuie maintenant sur le bouton de démarrage pour commencer !"
     ));
-    private static final Map<Language, String> endScreen = new HashMap<>(Map.of(
+    private static final Map<Language, String> END_SCREEN = new HashMap<>(Map.of(
             Language.GERMAN, "ich hoffe, das Spiel hat dir gut gefallen und du was gelernt hast. Drücke jetzt den Startknopf, um das Spiel neuzustarten.",
             Language.ENGLISH, "I hope you enjoyed the game and learned something. Press the start button now to restart the game.",
             Language.FRENCH, "J'espère que le jeu t'a plu et que tu as appris quelque chose. Appuie maintenant sur le bouton de démarrage pour recommencer le jeu."
@@ -325,13 +325,13 @@ public class Main extends Application {
         }
 
         if (!isGameStarted) {
-            dialogBubble.setText(startScreen.get(player.getLanguage()));
+            dialogBubble.setText(START_SCREEN.get(player.getLanguage()));
             dialogBubble.setVisible(true);
             mascot.setCurrentAnimationVisible(true);
             questionPane.setVisible(false);
 
         } else if (isGameEnded) {
-            dialogBubble.setText(endScreen.get(player.getLanguage()));
+            dialogBubble.setText(END_SCREEN.get(player.getLanguage()));
             dialogBubble.setVisible(true);
             mascot.setCurrentAnimationVisible(true);
             questionPane.setVisible(false);
@@ -352,8 +352,8 @@ public class Main extends Application {
     }
 
     private void updateBubble() {
-        if (!isGameStarted) currentAnswer = startScreen.get(player.getLanguage());
-        if (isGameEnded) currentAnswer = endScreen.get(player.getLanguage());
+        if (!isGameStarted) currentAnswer = START_SCREEN.get(player.getLanguage());
+        if (isGameEnded) currentAnswer = END_SCREEN.get(player.getLanguage());
 
         if (isAnswered || !isGameStarted || isGameEnded) {
             dialogBubble.setVisible(true);

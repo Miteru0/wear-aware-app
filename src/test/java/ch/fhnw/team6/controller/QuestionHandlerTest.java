@@ -26,8 +26,7 @@ public class QuestionHandlerTest {
         Map<Language, String> sampleText = Map.of(
                 Language.ENGLISH, "Sample Question",
                 Language.GERMAN, "Beispiel Frage",
-                Language.FRENCH, "Question Exemple",
-                Language.ITALIAN, "Domanda Esempio");
+                Language.FRENCH, "Question Exemple");
 
         List<Question> questions = Arrays.asList(
                 new StandardQuestion(sampleText, sampleText, sampleText, List.of("123456"), "EASY", "1"),
