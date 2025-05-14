@@ -48,23 +48,6 @@ public class ResourceLoader {
         }
     }
 
-    // /**
-    //  * Loads an image from resources without scaling.
-    //  *
-    //  * @param path The resource path to the image.
-    //  * @return The loaded Image.
-    //  */
-    // private static Image loadImage(String path) {
-    //     try (InputStream stream = ResourceLoader.class.getResourceAsStream(path)) {
-    //         if (stream == null)
-    //             throw new RuntimeException("Resource not found: " + path);
-                    
-    //         return new Image(stream);
-    //     } catch (Exception e) {
-    //         throw new RuntimeException("Failed to load image: " + path, e);
-    //     }
-    // }
-
 
     /**
      * Loads flag images for all supported languages.
@@ -72,11 +55,15 @@ public class ResourceLoader {
      * @return A map of Language to Image.
      */
     public static Map<Language, Image> loadFlagImages(double width, double height) {
+        return loadFlagImages(width, height, "/images/flags/");
+    }
+
+    public static Map<Language, Image> loadFlagImages(double width, double height, String path) { 
         Map<Language, Image> flags = new LinkedHashMap<>();
         for (Language lang : Language.values()) {
-            String path = String.format("/images/flags/%s.png", lang.name().toLowerCase());
-            flags.put(lang, loadImage(path, width, height));
-            System.out.println("Loaded flag: " + path);
+            String flagPath = String.format("%s%s.png", path, lang.name().toLowerCase());
+            flags.put(lang, loadImage(flagPath, width, height));
+            System.out.println("Loaded flag: " + flagPath);
         }
         return flags;
     }

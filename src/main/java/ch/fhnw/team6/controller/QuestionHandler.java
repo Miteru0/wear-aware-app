@@ -56,12 +56,22 @@
             allQuestions = sortAllQuestions(questions);
             createQuestionsForGame();
         }
+
+        /**
+         * Groups and sorts all questions by difficulty.
+         * @param allQuestions List of all available questions.
+         * @return A map grouping questions by difficulty level.
+         */
+        private Map<Difficulty, List<Question>> sortAllQuestions(List<Question> allQuestions) {
+            return allQuestions.stream()
+                    .collect(Collectors.groupingBy(Question::getDifficulty));
+        }
     
         /**
          * Creates a fresh copy of the question list for a new game session.
          * Ensures that modifications during gameplay do not affect the original question pool.
          */
-        public void createQuestionsForGame() {
+        private void createQuestionsForGame() {
             currentQuestions = allQuestions.entrySet().stream()
                 .collect(Collectors.toMap(
                     Map.Entry::getKey,
@@ -95,7 +105,7 @@
         private void checkQuestions() {
             if ((currentQuestions.get(Difficulty.EASY) == null || currentQuestions.get(Difficulty.EASY).isEmpty()) &&
                     (currentQuestions.get(Difficulty.MEDIUM) == null || currentQuestions.get(Difficulty.MEDIUM).isEmpty()) &&
-                    (currentQuestions.get(Difficulty.HARD) == null) || currentQuestions.get(Difficulty.HARD).isEmpty()) {
+                    ((currentQuestions.get(Difficulty.HARD) == null) || currentQuestions.get(Difficulty.HARD).isEmpty())) {
                 throw new NoMoreQuestionsException("No questions available for the player.");
             }
         }
@@ -124,16 +134,6 @@
         }
     
         /**
-         * Groups and sorts all questions by difficulty.
-         * @param allQuestions List of all available questions.
-         * @return A map grouping questions by difficulty level.
-         */
-        public Map<Difficulty, List<Question>> sortAllQuestions(List<Question> allQuestions) {
-            return allQuestions.stream()
-                    .collect(Collectors.groupingBy(Question::getDifficulty));
-        }
-    
-        /**
          * Method returns size of the list of question depending on Difficulty provided
          * For testing purposes only
          * @param difficulty difficulty to find correct list in the map
@@ -145,13 +145,5 @@
     
         public Player getPlayer() {
             return player;
-        }
-    
-        public int questionsLeft() {
-            int questionsLeft = 0;
-            for (List<Question> questions : currentQuestions.values()) {
-                questionsLeft += questions.size();
-            }
-            return questionsLeft;
         }
     }

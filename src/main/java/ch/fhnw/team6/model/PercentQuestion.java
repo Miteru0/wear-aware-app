@@ -31,4 +31,12 @@ public class PercentQuestion extends Question{
         givenAnswers.put(id, givenAnswers.get(id) -1);
     }
 
+    public int getNumberOfAnswers() {
+        return numberOfAnswers;
+    }
+
+    public Map<String, Integer> getGivenAnswers() {
+        return givenAnswers;
+    }
+
 }
