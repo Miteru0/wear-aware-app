@@ -256,21 +256,22 @@
   {
     "id": "10",
     "type": "percent",
-    "question": "How many times do you wear this item per month?",
-    "explanation": "You chose a frequency that Ї of players also pick.",
-    "givenAnswers": { "1": 5, "2": 3},
-    "numberOfAnswers": 8,
+    "question": "Combien de fois portez-vous cet article par mois ?",
+    "explanation": "Vous avez choisi une fréquence que Ї des joueurs choisissent également.",
+    "givenAnswers": { "1": 5, "2": 4 },
+    "numberOfAnswers": 9,
     "difficulty": "EASY",
     "language": "FRENCH"
   },
   {
     "id": "10",
     "type": "percent",
-    "question": "How many times do you wear this item per month?",
-    "explanation": "You chose a frequency that Ї of players also pick.",
+    "question": "Wie oft trägst du diesen Artikel pro Monat?",
+    "explanation": "Du hast eine Häufigkeit gewählt, die Ї der Spieler ebenfalls auswählen.",
     "givenAnswers": { "1": 5, "2": 3 },
     "numberOfAnswers": 8,
     "difficulty": "EASY",
     "language": "GERMAN"
   }
+  
 ]

@@ -1,8 +1,6 @@
 package ch.fhnw.team6;
 
 import ch.fhnw.team6.controller.InputHandler;
-import ch.fhnw.team6.controller.JsonHandler;
-import ch.fhnw.team6.controller.QuestionHandler;
 import ch.fhnw.team6.controller.ResourceLoader;
 import ch.fhnw.team6.exceptions.NotAValidInputException;
 import ch.fhnw.team6.model.Language;
@@ -23,7 +21,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -31,7 +28,7 @@ import java.util.logging.Logger;
 public class Main extends Application {
 
     // ─── Constants ─────────────────────────────────────────────────────
-    private static final int TOTAL_STEPS = 2;
+    private static final int TOTAL_STEPS = 7;
     private static final double WINDOWED_WIDTH = 1280;
     private static final double WINDOWED_HEIGHT = 720;
     private static final Map<Language, String> START_SCREEN = new    HashMap<>(Map.of(
@@ -122,7 +119,7 @@ public class Main extends Application {
         dialogBubble.setTextVAlign(TextVAlign.CENTER);
         dialogBubble.setFontColor(Color.BLACK);
 
-        flagsManager = new FlagsManager(canvas.getWidth() - 4 * 75, canvas.getHeight() - 50, 75, 30);
+        flagsManager = new FlagsManager(canvas.getWidth() - 3 * 75, canvas.getHeight() - 50, 75, 30);
         flagsManager.setActiveFlag(player.getLanguage());
 
         lastFrameTime = System.nanoTime();
@@ -247,9 +244,6 @@ public class Main extends Application {
         try {
             input = code.getName();
             currentAnswer = inputHandler.answerQuestion(input);
-//            if(inputHandler.getCurrentQuestion() instanceof PercentQuestion){
-//                JsonHandler.updatePercentAnswer("src/main/resources/json/questions.json", inputHandler.getCurrentQuestion().getId(), input);
-//            }
             isAnswered = true;
             mascot.setCurrentAnimationVisible(true);
             dialogBubble.setText(currentAnswer);
@@ -257,9 +251,6 @@ public class Main extends Application {
         } catch (NotAValidInputException e) {
             LOGGER.warning("Invalid input: " + e.getMessage());
         }
-//        } catch (IOException e) {
-//            LOGGER.warning("sth wrong with json update" + e.getMessage());
-//        }
     }
 
     // ─── Game State Management ─────────────────────────────────────────
@@ -399,7 +390,7 @@ public class Main extends Application {
     }
 
     private void updateFlags() {
-        flagsManager.setFlagsPosition(canvas.getWidth() - 5 * flagsManager.getFlagWidth() + 10,
+        flagsManager.setFlagsPosition(canvas.getWidth() - 4 * flagsManager.getFlagWidth() + 10,
                 flagsManager.getFlagHeight() - 5);
     }
 }

@@ -26,23 +26,20 @@ public class QuestionHandlerTest {
         Map<Language, String> sampleText = Map.of(
                 Language.ENGLISH, "Sample Question",
                 Language.GERMAN, "Beispiel Frage",
-                Language.FRENCH, "Question Exemple",
-                Language.ITALIAN, "Domanda Esempio"
-        );
+                Language.FRENCH, "Question Exemple");
 
-       List<Question> questions = Arrays.asList(
-               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123456"), "EASY", "1"),
-               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123457"), "EASY", "2"),
-               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123458"), "MEDIUM", "3"),
-               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123459"), "MEDIUM", "4"),
-               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123460"), "HARD", "5"),
-               new StandardQuestion(sampleText, sampleText, sampleText, List.of("123461"), "HARD", "6")
-       );
+        List<Question> questions = Arrays.asList(
+                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123456"), "EASY", "1"),
+                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123457"), "EASY", "2"),
+                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123458"), "MEDIUM", "3"),
+                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123459"), "MEDIUM", "4"),
+                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123460"), "HARD", "5"),
+                new StandardQuestion(sampleText, sampleText, sampleText, List.of("123461"), "HARD", "6"));
 
-       questionHandler = new QuestionHandler(player, questions);
+        questionHandler = new QuestionHandler(player, questions);
     }
 
-     @Test
+    @Test
     void testGetNextQuestionReturnsCorrectDifficulty() {
         player.setPoints(1); // Should get EASY question
         assertEquals(Difficulty.EASY, questionHandler.getNextQuestion().getDifficulty());
@@ -88,6 +85,23 @@ public class QuestionHandlerTest {
         assertEquals(2, questionHandler.getSizeOnDifficulty(Difficulty.EASY));
         assertEquals(2, questionHandler.getSizeOnDifficulty(Difficulty.MEDIUM));
         assertEquals(2, questionHandler.getSizeOnDifficulty(Difficulty.HARD));
+    }
+
+    @Test
+    void testGetSizeOnDifficultyAfterConsumption() {
+        player.setPoints(0); // EASY difficulty
+        questionHandler.getNextQuestion();
+        questionHandler.getNextQuestion();
+
+        assertEquals(0, questionHandler.getSizeOnDifficulty(Difficulty.EASY));
+    }
+
+    @Test
+    void testMultipleSequentialQuestions() {
+        for (int i = 0; i < 6; i++) {
+            questionHandler.getNextQuestion();
+        }
+        assertThrows(NoMoreQuestionsException.class, () -> questionHandler.getNextQuestion());
     }
 
 }
