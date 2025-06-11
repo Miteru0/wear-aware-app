@@ -10,9 +10,9 @@
   },
   {
     "id": "1",
-    "question": "Scanne das Kleidungsstuck, welches nicht vegan ist (d.h. aus tierischen Produkten).",
+    "question": "Scanne das Kleidungsstück, welches nicht vegan ist (d.h. aus tierischen Produkten).",
     "rightClothingBarcode": "4",
-    "explanationRight": "Super, das stimmt, denn Leder wird aus der Haut von Kuhen hergestellt.",
+    "explanationRight": "Super, das stimmt, denn Leder wird aus der Haut von Kühen hergestellt.",
     "difficulty": "EASY",
     "explanationWrong": "Leider nein, Materialien sind nicht vegan, wenn sie tierischen Ursprungs sind, so wird z.B. Leder aus der Haut von Tieren hergestellt. Also waren die Schuhe hier die richtige Antwort gewesen.",
     "language": "GERMAN"
@@ -37,11 +37,11 @@
   },
   {
     "id": "2",
-    "question": "Scanne das Produkt, bei dessen Kauf dein okologischer Fussabdruck am kleinsten bleibt.",
+    "question": "Scanne das Produkt, bei dessen Kauf dein ökologischer Fussabdruck am kleinsten bleibt.",
     "rightClothingBarcode": "2",
-    "explanationRight": "Korrekt, da die Secondhand-Jeans schon produziert wurde, fallt nur der Transport bzw. die Lagerung an.",
+    "explanationRight": "Korrekt, da die Secondhand-Jeans schon produziert wurde, fällt nur der Transport bzw. die Lagerung an.",
     "difficulty": "EASY",
-    "explanationWrong": "Da ein Produkt, welches Secondhand ist, schon produziert wurde, fallen dafur nur Transportkosten an. Hier ware also die Secondhand-Jeans die richtige Antwort gewesen.",
+    "explanationWrong": "Da ein Produkt, welches Secondhand ist, schon produziert wurde, fallen dafür nur Transportkosten an. Hier ware also die Secondhand-Jeans die richtige Antwort gewesen.",
     "language": "GERMAN"
   },
   {
@@ -64,11 +64,11 @@
   },
   {
     "id": "3",
-    "question": "Scanne ein Kleidungsstuck, welches aus mehreren Stoffen besteht. (z.B. aus Baumwolle und Elasthan)",
+    "question": "Scanne ein Kleidungsstück, welches aus mehreren Stoffen besteht. (z.B. aus Baumwolle und Elastan)",
     "rightClothingBarcode": "2",
-    "explanationRight": "Super, du hast das richtige Kleidungsstuck gefunden. Die Secondhand-Jeans ist aus Baumwolle, Elastan und Polyester.",
+    "explanationRight": "Super, du hast das richtige Kleidungsstück gefunden. Die Secondhand-Jeans ist aus Baumwolle, Elastan und Polyester.",
     "difficulty": "EASY",
-    "explanationWrong": "Leider hast du ein falsches Kleidungsstuck gewahlt. Schau dir die Etiketten nochmals an, die Secondhand-Jeans bestehen aus mehreren Materialien.",
+    "explanationWrong": "Leider hast du ein falsches Kleidungsstück gewählt. Schau dir die Etiketten nochmals an, die Secondhand-Jeans bestehen aus mehreren Materialien.",
     "language": "GERMAN"
   },
   {
@@ -91,11 +91,11 @@
   },
   {
     "id": "4",
-    "question": "Scanne ein Kleidungsstuck, bei welchem der Stoff Baumwolle beinhaltet.",
+    "question": "Scanne ein Kleidungsstück, bei welchem der Stoff Baumwolle beinhaltet.",
     "rightClothingBarcode": "1,2,3",
-    "explanationRight": "Perfekt, du hast eines der drei richtigen Kleidungsstucke gefunden. Diese waren die beiden Jeans und das T-Shirt.",
+    "explanationRight": "Perfekt, du hast eines der drei richtigen Kleidungsstücke gefunden. Diese waren die beiden Jeans und das T-Shirt.",
     "difficulty": "EASY",
-    "explanationWrong": "Leider hast du ein falsches Kleidungsstuck gewahlt, beide Jeans und das T-Shirt bestehen zumindest teilweise aus Baumwolle.",
+    "explanationWrong": "Leider hast du ein falsches Kleidungsstück gewählt, beide Jeans und das T-Shirt bestehen zumindest teilweise aus Baumwolle.",
     "language": "GERMAN"
   },
   {
@@ -172,11 +172,11 @@
   },
   {
     "id": "7",
-    "question": "Scanne das Kleidungsstuck, bei welchem du den gunstigsten Einkaufpreis vermutest.",
+    "question": "Scanne das Kleidungsstück, bei welchem du den günstigsten Einkaufpreis vermutest.",
     "rightClothingBarcode": "",
-    "explanationRight": "Richtig, alle waren gratis, diese gehorten den Studenten, welche dieses Projekt erarbeitet haben, aber nicht mehr getragen wurden.",
+    "explanationRight": "Richtig, alle waren gratis, diese gehörten den Studenten, welche dieses Projekt erarbeitet haben, aber nicht mehr getragen wurden.",
     "difficulty": "EASY",
-    "explanationWrong": "Alle waren gratis, diese gehorten den Studenten, welche dieses Projekt erarbeitet haben, aber nicht mehr getragen wurden.",
+    "explanationWrong": "Alle waren gratis, diese gehörten den Studenten, welche dieses Projekt erarbeitet haben, aber nicht mehr getragen wurden.",
     "language": "GERMAN"
   },
   {
@@ -199,9 +199,9 @@
   },
   {
     "id": "8",
-    "question": "Scanne das Produkt, welches den kurzesten Weg bis zu dir zuruckgelegt hat.",
+    "question": "Scanne das Produkt, welches den kürzesten Weg bis zu dir zurückgelegt hat.",
     "rightClothingBarcode": "1,2,3,4,5",
-    "explanationRight": "Es ist fast unmoglich, den Weg seines Kleidungsstucks zu verfolgen. Ein T-Shirt aus Europa kann einen sehr langen Weg hinter sich haben. Deshalb sind hier alle Antworten richtig.",
+    "explanationRight": "Es ist fast unmöglich, den Weg seines Kleidungsstücks zu verfolgen. Ein T-Shirt aus Europa kann einen sehr langen Weg hinter sich haben. Deshalb sind hier alle Antworten richtig.",
     "difficulty": "HARD",
     "explanationWrong": "",
     "language": "GERMAN"
@@ -228,8 +228,8 @@
   {
     "id": "20",
     "type": "percent",
-    "question": "Welches Kleidungsstuck gefallt dir am besten?",
-    "explanation": "Interessante Wahl - Ї % wahlten das gleiche Kleidungsstuck.",
+    "question": "Welches Kleidungsstück gefällt dir am besten?",
+    "explanation": "Interessante Wahl - Ї % wählten das gleiche Kleidungsstück.",
     "givenAnswers": { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1 },
     "numberOfAnswers": 5,
     "difficulty": "EASY",
@@ -258,8 +258,8 @@
   {
     "id": "21",
     "type": "percent",
-    "question": "Bei welchem Kleidungsstuck fuhlt sich das Material am besten an?",
-    "explanation": "Ї % unserer Spieler entschieden sich fur das Material des gleichen Kleidungsstucks.",
+    "question": "Bei welchem Kleidungsstück fühlt sich das Material am besten an?",
+    "explanation": "Ї % unserer Spieler entschieden sich fur das Material des gleichen Kleidungsstücks.",
     "givenAnswers": { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1 },
     "numberOfAnswers": 5,
     "difficulty": "EASY",
@@ -288,7 +288,7 @@
   {
     "id": "22",
     "type": "percent",
-    "question": "Welches dieser Produkte wurdest du dir am ehesten kaufen?",
+    "question": "Welches dieser Produkte würdest du dir am ehesten kaufen?",
     "explanation": "Du hast den gleichen Geschmack wie Ї % unserer Spieler.",
     "givenAnswers": { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1 },
     "numberOfAnswers": 5,
@@ -318,7 +318,7 @@
   {
     "id": "23",
     "type": "percent",
-    "question": "Welches Etikett uberzeugt dich am meisten, um das Kleidungsstuck zu kaufen?",
+    "question": "Welches Etikett überzeugt dich am meisten, um das Kleidungsstück zu kaufen?",
     "explanation": "Du hast dich gleich entschieden, wie Ї % unserer Spieler.",
     "givenAnswers": { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1 },
     "numberOfAnswers": 5,
@@ -348,7 +348,7 @@
   {
     "id": "24",
     "type": "percent",
-    "question": "Lies dir die Orte durch, an denen die Kleidungsstucke gekauft wurden. Scanne anschliessend das Kleidungsstuck, welches von dem Ort stammt, an dem du selbst am haufigsten Kleidung kaufst.",
+    "question": "Lies dir die Orte durch, an denen die Kleidungsstücke gekauft wurden. Scanne anschliessend das Kleidungsstück, welches von dem Ort stammt, an dem du selbst am häufigsten Kleidung kaufst.",
     "explanation": "Du kaufst deine Kleidung meistens am gleichen Ort wie Ї % der Spieler.",
     "givenAnswers": { "1": 1, "2": 1, "3": 1, "4": 1, "5": 1 },
     "numberOfAnswers": 5,
@@ -376,11 +376,11 @@
   },
   {
     "id": "30",
-    "question": "Scanne das Kleidungsstuck, wessen Herstellung 8.000 bis 10.000 Liter Wasser benotigt.",
+    "question": "Scanne das Kleidungsstück, wessen Herstellung 8.000 bis 10.000 Liter Wasser benotigt.",
     "rightClothingBarcode": "2",
-    "explanationRight": "Korrekt, fur die Herstellung einer Jeans, welche nicht aus Bio-Baumwolle besteht, werden im Durchschnitt rund 8.000 bis 10.000 Liter Wasser benotigt. Diese Wassermenge wurde rund 53 Badewannen (a 150 Liter) fullen.",
+    "explanationRight": "Korrekt, fur die Herstellung einer Jeans, welche nicht aus Bio-Baumwolle besteht, werden im Durchschnitt rund 8.000 bis 10.000 Liter Wasser benotigt. Diese Wassermenge würde rund 53 Badewannen (a 150 Liter) füllen.",
     "difficulty": "MEDIUM",
-    "explanationWrong": "Leider nein, denn fur die Herstellung einer Jeans, welche nicht aus Bio-Baumwolle ist, werden im Durchschnitt rund 8.000 bis 10.000 Liter Wasser benotigt. Diese Wassermenge wurde rund 53 Badewannen (a 150 Liter) fullen.",
+    "explanationWrong": "Leider nein, denn fur die Herstellung einer Jeans, welche nicht aus Bio-Baumwolle ist, werden im Durchschnitt rund 8.000 bis 10.000 Liter Wasser benötigt. Diese Wassermenge würde rund 53 Badewannen (a 150 Liter) füllen.",
     "language": "GERMAN"
   },
   {
@@ -403,11 +403,11 @@
   },
   {
     "id": "31",
-    "question": "Welches Kleidungsstuck belastet die Umwelt beim Waschen am starksten (ohne Schuhe)?",
+    "question": "Welches Kleidungsstück belastet die Umwelt beim Waschen am stärksten (ohne Schuhe)?",
     "rightClothingBarcode": "2",
-    "explanationRight": "Das stimmt, bei einer einzigen Wasche von Kleidung aus Polyester konnen 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen konnen.",
+    "explanationRight": "Das stimmt, bei einer einzigen Wäsche von Kleidung aus Polyester können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können.",
     "difficulty": "MEDIUM",
-    "explanationWrong": "Nein, bei einer einzigen Wasche von Kleidung aus Polyester konnen 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen konnen. Die Secondhand-Jeans ware somit die richtige Antwort gewesen.",
+    "explanationWrong": "Nein, bei einer einzigen Wäsche von Kleidung aus Polyester können 700'000 Mikroplastikfasern freigesetzt werden, die in die Nahrungskette gelangen können. Die Secondhand-Jeans wäre somit die richtige Antwort gewesen.",
     "language": "GERMAN"
   },
   {
@@ -446,7 +446,7 @@
     "explanationWrong": "Ce n'est pas correct. Avec le coton bio, vous pouvez être sûr que les normes sont respectées, comme l'absence d'utilisation de pesticides.",
     "language": "FRENCH"
   },
-
+ 
   {
     "id": "33",
     "question": "Scan the piece of clothing that you believe requires the least amount of water to produce.",
@@ -474,7 +474,7 @@
     "explanationWrong": "Incorrect. Le coton bio nécessite généralement moins d'eau que le coton non bio.",
     "language": "FRENCH"
   },
-
+ 
   {
     "id": "50",
     "question": "Scan the piece of clothing that you think is made from recycled materials.",
@@ -529,7 +529,7 @@
     "explanationWrong": "Incorrect. Cet article n'est pas aussi durable que celui que vous auriez dû choisir.",
     "language": "FRENCH"
   },
-
+ 
   {
     "id": "52",
     "question": "Scan the piece of clothing you think has the highest price when new.",
@@ -557,7 +557,7 @@
     "explanationWrong": "Incorrect. L'article que vous avez choisi n'a pas habituellement le prix d'achat neuf le plus élevé.",
     "language": "FRENCH"
   },
-
+ 
   {
     "id": "53",
     "question": "Scan the piece of clothing that you believe has the lowest environmental footprint overall.",
@@ -586,3 +586,5 @@
     "language": "FRENCH"
   }
 ]
+ 
+ 
