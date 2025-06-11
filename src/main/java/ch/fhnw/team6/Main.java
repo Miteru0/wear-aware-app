@@ -28,7 +28,7 @@ import java.util.logging.Logger;
 public class Main extends Application {
 
     // ─── Constants ─────────────────────────────────────────────────────
-    private static final int TOTAL_STEPS = 7;
+    private static final int TOTAL_STEPS = 3;
     private static final double WINDOWED_WIDTH = 1280;
     private static final double WINDOWED_HEIGHT = 720;
     private static final Map<Language, String> START_SCREEN = new    HashMap<>(Map.of(
