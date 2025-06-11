@@ -37,10 +37,11 @@ public class Main extends Application {
             Language.FRENCH, "Bonjour, je suis Beni et je vais t'accompagner tout au long du jeu. Appuie maintenant sur le bouton de démarrage pour commencer !"
     ));
     private static final Map<Language, String> END_SCREEN = new HashMap<>(Map.of(
-            Language.GERMAN, "ich hoffe, das Spiel hat dir gut gefallen und du was gelernt hast. Drücke jetzt den Startknopf, um das Spiel neuzustarten.",
+            Language.GERMAN, "Ich hoffe, das Spiel hat dir gut gefallen und du was gelernt hast. Drücke jetzt den Startknopf, um das Spiel neuzustarten.",
             Language.ENGLISH, "I hope you enjoyed the game and learned something. Press the start button now to restart the game.",
             Language.FRENCH, "J'espère que le jeu t'a plu et que tu as appris quelque chose. Appuie maintenant sur le bouton de démarrage pour recommencer le jeu."
     ));
+    private static final long INACTIVITY_TIMEOUT = 120_000_000_000L; // 120 seconds
 
     // ─── Logger ────────────────────────────────────────────────────────
     private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
@@ -73,6 +74,7 @@ public class Main extends Application {
     private boolean isGameEnded = false;
     private int step = 0;
     private long lastFrameTime;
+    private long lastInputTime;
 
     // ─── Application Entry Point ────────────────────────────────────────
     public static void main(String[] args) {
@@ -123,7 +125,9 @@ public class Main extends Application {
         flagsManager.setActiveFlag(player.getLanguage());
 
         lastFrameTime = System.nanoTime();
+        lastInputTime = System.nanoTime();
         registerButtonListeners();
+
     }
 
     private void setupStage(Stage stage) {
@@ -162,7 +166,7 @@ public class Main extends Application {
             handleSpaceKey();
             buttonClickedStop = 0;
         }
-        
+        lastInputTime = System.nanoTime();
     }
 
     private void handleButtonLanguage(boolean pressed) {
@@ -172,13 +176,23 @@ public class Main extends Application {
             handleLanguageSwitch();
             buttonClickedLanguage = 0;
         }
+        lastInputTime = System.nanoTime();
     }
 
     // ─── Game Loop ─────────────────────────────────────────────────────
 
     private void updateGameLoop(long now) {
+
         double deltaTime = Math.min((now - lastFrameTime) / 1_000_000_000.0, 0.1);
         lastFrameTime = now;
+
+        if (isGameStarted && !isGameEnded && (now - lastInputTime > INACTIVITY_TIMEOUT)) {
+            LOGGER.info("No input detected. Restarting game due to inactivity.");
+            restartGame();
+            mascot.setCurrentAnimationVisible(false);
+            dialogBubble.setVisible(false);
+            return;
+        }
 
         GraphicsContext gc = canvas.getGraphicsContext2D();
         clearCanvas(gc);
@@ -213,6 +227,7 @@ public class Main extends Application {
     // ─── Event Handling ─────────────────────────────────────────────────
 
     private void handleKeyEvent(KeyCode code) {
+        lastInputTime = System.nanoTime();
         switch (code) {
             case L -> handleLanguageSwitch();
             case SPACE -> handleSpaceKey();
@@ -284,6 +299,7 @@ public class Main extends Application {
         inputHandler.restartGame(player);
         backgroundAnimation.nextAnimation();
         resetGameFlags();
+        flagsManager.setActiveFlag(player.getLanguage());
     }
 
     private void resetGameFlags() {
