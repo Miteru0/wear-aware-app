@@ -58,7 +58,10 @@ public class JsonHandler {
                 String id = obj.get("id").getAsString();
 
                 if ("percent".equals(type)) {
-                    if (!percentDTOs.containsKey(id)) {
+                    if (percentDTOs.containsKey(id)) {
+                        updatePercentDTO(percentDTOs.get(id), obj);
+                    }
+                    else {
                         percentDTOs.put(id, parsePercentQuestionElement(obj));
                     }
                 } else {
@@ -118,6 +121,12 @@ public class JsonHandler {
         dto.addQuestion(obj.get("question").getAsString(), lang);
         dto.addExplanationRight(obj.get("explanationRight").getAsString(), lang);
         dto.addExplanationWrong(obj.get("explanationWrong").getAsString(), lang);
+    }
+
+    private static void updatePercentDTO(PercentQuestionDTO dto, JsonObject obj) {
+        Language lang = Language.valueOf(obj.get("language").getAsString());
+        dto.addQuestion(obj.get("question").getAsString(), lang);
+        dto.addExplanation(obj.get("explanation").getAsString(), lang);
     }
 
     private static PercentQuestionDTO parsePercentQuestionElement(JsonObject obj) {

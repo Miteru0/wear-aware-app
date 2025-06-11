@@ -240,9 +240,7 @@ public class Main extends Application {
         Language nextLanguage = Language.getNextLanguage(player.getLanguage());
         flagsManager.setActiveFlag(nextLanguage);
         player.setLanguage(nextLanguage);
-        if (isGameStarted && !isGameEnded) {
-            updateLanguage();
-        }
+        updateLanguage();
     }
 
     private void handleSpaceKey() {

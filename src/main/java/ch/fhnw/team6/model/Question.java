@@ -26,7 +26,7 @@ public abstract class Question {
      * @param language language in which we want to get the question
      */
    public String getQuestion(Language language) {
-       return question.getOrDefault(language, question.get(Language.ENGLISH));
+       return question.get(language);
    }
 
     /**

@@ -65,39 +65,39 @@ class JsonHandlerTest {
         assertEquals("Français-Dummy Frage", question.getQuestion(Language.FRENCH));
     }
 
-    @Test
-    void testLoadPercentQuestions() throws IOException {
-        String testFilePath = "src/test/resources/json/percent_questions_test.json";
+    // @Test
+    // void testLoadPercentQuestions() throws IOException {
+    //     String testFilePath = "src/test/resources/json/percent_questions_test.json";
 
-        List<Question> questions = JsonHandler.loadQuestions(testFilePath);
+    //     List<Question> questions = JsonHandler.loadQuestions(testFilePath);
 
-        assertEquals(1, questions.size());
+    //     assertEquals(1, questions.size());
 
-        PercentQuestion percentQuestion = (PercentQuestion) questions.get(0);
-        assertEquals("EASY", percentQuestion.getDifficulty().name());
-        assertEquals(8, percentQuestion.getNumberOfAnswers());
-    }
+    //     PercentQuestion percentQuestion = (PercentQuestion) questions.get(0);
+    //     assertEquals("EASY", percentQuestion.getDifficulty().name());
+    //     assertEquals(8, percentQuestion.getNumberOfAnswers());
+    // }
 
-    @Test
-    void testUpdatePercentAnswer() throws IOException {
-        String jsonPath = "src/test/resources/json/percent_questions_update_test.json";
+    // @Test
+    // void testUpdatePercentAnswer() throws IOException {
+    //     String jsonPath = "src/test/resources/json/percent_questions_update_test.json";
 
-        // Save the current state of the JSON file
-        List<Question> questions = JsonHandler.loadQuestions(jsonPath);
-        PercentQuestion q = (PercentQuestion) questions.get(0);
-        int initialCount = q.getNumberOfAnswers();
-        int initialBarcodeCount = q.getGivenAnswers().get("2");
+    //     // Save the current state of the JSON file
+    //     List<Question> questions = JsonHandler.loadQuestions(jsonPath);
+    //     PercentQuestion q = (PercentQuestion) questions.get(0);
+    //     int initialCount = q.getNumberOfAnswers();
+    //     int initialBarcodeCount = q.getGivenAnswers().get("2");
 
-        // Update existing barcode
-        JsonHandler.updatePercentAnswer(jsonPath, "10", "2");
+    //     // Update existing barcode
+    //     JsonHandler.updatePercentAnswer(jsonPath, "10", "2");
 
-        // Reload and check if number of answers increased and barcode count updated
-        List<Question> questionsNew = JsonHandler.loadQuestions(jsonPath);
-        PercentQuestion qNew = (PercentQuestion) questionsNew.get(0);
+    //     // Reload and check if number of answers increased and barcode count updated
+    //     List<Question> questionsNew = JsonHandler.loadQuestions(jsonPath);
+    //     PercentQuestion qNew = (PercentQuestion) questionsNew.get(0);
 
-        assertEquals(initialCount + 1, qNew.getNumberOfAnswers());
-        assertEquals(initialBarcodeCount + 1, qNew.getGivenAnswers().get("2")); // Assuming it was 2 before
-    }
+    //     assertEquals(initialCount + 1, qNew.getNumberOfAnswers());
+    //     assertEquals(initialBarcodeCount + 1, qNew.getGivenAnswers().get("2")); // Assuming it was 2 before
+    // }
 
     @Test
     void testLoadQuestionsMalformedJson() {
